@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,10 +16,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Index');
-});
 
+Route::get('/', [ViewController::class, 'index']);
+Route::get('/barangays', [ViewController::class, 'barangays']);
+Route::get('/municipal', [ViewController::class, 'municipal']);
+Route::get('/visitors', [ViewController::class, 'visitors']);
+Route::get('/sign-in', [AuthController::class, 'sign_in']);
+Route::get('/support', [ViewController::class, 'support']);
+Route::get('/contact-us', [ViewController::class, 'contact_us']);
 Route::get('/about', function () {
     return Inertia::render('About');
 });
