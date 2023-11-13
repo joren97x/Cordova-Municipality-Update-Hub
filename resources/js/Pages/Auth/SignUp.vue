@@ -22,7 +22,7 @@ const Loginform = useForm({
       </v-card-item>
     </v-card>
     <v-card width="100%" elevation="0">
-      <v-card-title class="text-center text-h3">Sign in</v-card-title>
+      <v-card-title class="text-center text-h3">Sign up</v-card-title>
       <v-card-item>
         <v-text-field
           label="email"
@@ -49,7 +49,7 @@ const Loginform = useForm({
           id="login-button"
           color="pink"
           class="login-button"
-          @click="Loginform.post('/signin')"
+          @click="Loginform.post('/signup')"
           >Login</v-btn
         >
         <p class="text-red mt-5 text-center mb-8">FOR CORDOVA WEB PORTAL STAFF ONLY</p>

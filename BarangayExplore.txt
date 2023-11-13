@@ -1,0 +1,111 @@
+<script setup>
+import Layout from "../Layouts/UserLayout.vue";
+defineOptions({
+  layout: Layout,
+});
+defineProps({
+  barangay: Object,
+});
+</script>
+
+<template>
+  <v-row>
+    <v-col cols="7">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        "
+      >
+        <img
+          :src="`../images/${barangay.image}`"
+          alt=""
+          srcset=""
+          width="500"
+          style="border: 5px solid black; margin: 5% 0"
+        />
+      </div>
+    </v-col>
+    <v-col cols="3">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+        <h1 style="font-size: 75px; margin: 5% 0">{{ barangay.name }}</h1>
+      </div>
+    </v-col>
+    <v-col cols="12">
+      <div style="text-align: center; margin-top: 20px">
+        <h2 style="font-size: 55px">About</h2>
+        <p>asdasdhasdhasdhasdh</p>
+      </div>
+    </v-col>
+    <v-col cols="12">
+      <div style="display: flex; justify-content: space-between; margin-top: 20px">
+        <div style="flex: 1; text-align: center">
+          <h2 style="font-size: 55px">Mission</h2>
+          <p>asdhasdhashdhashdhasdh</p>
+        </div>
+        <div style="flex: 1; text-align: center">
+          <h2 style="font-size: 55px">Vision</h2>
+          <p>ashdhasdhahsdhashd</p>
+        </div>
+      </div>
+    </v-col>
+    <v-col cols="12">
+      <div style="text-align: center; margin-top: 20px">
+        <h2 style="font-size: 50px">Barangay & SK Officials</h2>
+      </div>
+    </v-col>
+  </v-row>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style>
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+  border-radius: 1%;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
+  width: auto;
+}
+
+.icon-title {
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 2%;
+}
+
+.icon-description {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 150%;
+  color: #212f3d;
+  text-align: center;
+  margin-top: 5%;
+  max-width: 500%;
+}
+</style>
