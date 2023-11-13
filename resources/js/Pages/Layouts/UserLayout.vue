@@ -26,7 +26,11 @@ import { format } from "date-fns";
       >
     </v-app-bar>
     <v-app-bar>
-      <v-app-bar-title> REPUBLIC OF BASTA KAPOY </v-app-bar-title>
+      <v-app-bar-title>
+        <Link href="/">
+          <v-img src="images/logo/Capture.PNG" width="100%" height="60"></v-img>
+        </Link>
+      </v-app-bar-title>
       <v-spacer />
       <Link href="/" :id="$page.component == 'User/Index' ? 'border_bottom' : ''"
         ><v-btn class="buttons">Home</v-btn></Link

@@ -67,26 +67,27 @@ defineProps({
         <h2 style="font-size: 50px">Barangay & SK Officials</h2>
         <div style="display: flex; justify-content: space-between; margin-top: 20px">
           <div style="flex: 1; justify-content: center">
-            <v-card
-              :key="SKofficial.id"
-              v-for="SKofficial in SKofficials"
-              style="width: 55%; margin-left: 25%"
-            >
-              <v-img :src="`../images/${SKofficial.image}`" style="height: 50%"></v-img>
-            </v-card>
+            <v-carousel hide-delimiters>
+              <v-carousel-item
+                :key="BOofficial.id"
+                v-for="BOofficial in BOofficials"
+                style="width: 40%"
+              >
+                <v-img :src="`../images/${BOofficial.image}`" style=""></v-img>
+              </v-carousel-item>
+            </v-carousel>
           </div>
           <div style="flex: 1; justify-content: center">
-            <v-card
-              :key="BOofficial.id"
-              v-for="BOofficial in BOofficials"
-              style="width: 55%; margin-left: 15%"
-            >
-              <v-img :src="`../images/${BOofficial.image}`" style="height: 50%"></v-img>
-            </v-card>
+            <v-carousel hide-delimiters>
+              <v-carousel-item :key="SKofficial.id" v-for="SKofficial in SKofficials">
+                <v-img :src="`../images/${SKofficial.image}`" style=""></v-img>
+              </v-carousel-item>
+            </v-carousel>
           </div>
         </div>
       </div>
     </v-col>
+
     <v-col cols="12">
       <div style="text-align: center; margin-top: 20px">
         <h1>Feast Day</h1>
@@ -100,6 +101,67 @@ defineProps({
           <v-img :src="`../images/${BOofficial.image}`"></v-img>
           {{ BOofficial.image }}
         </v-card> -->
+        <div class="icon-container">
+          <div class="icon">
+            <img
+              src="images/Cordova-local-news.jpg"
+              alt="Festival"
+              width="350"
+              height="320"
+              style="border-radius: 3%"
+            />
+            <div class="icon-title">Local News</div>
+            <p class="icon-description">
+              Garden Resort Here is a list of boat operators in Cordova who are now
+              starting to get back on their feet, process the necessary.
+            </p>
+          </div>
+          <div class="icon">
+            <img
+              src="images/Cordova-events.jpg"
+              alt="Map"
+              width="350"
+              height="320"
+              style="border-radius: 3%"
+            />
+            <div class="icon-title">Events</div>
+            <p class="icon-description">
+              Explore the beautiful Cordova region and discover its rich culture and
+              natural beauty. Plan your journey and make the most of your visit.
+            </p>
+          </div>
+          <div class="icon">
+            <img
+              src="images/Cordova-sports.jpg"
+              alt="Province"
+              width="350"
+              height="320"
+              style="border-radius: 3%"
+            />
+            <div class="icon-title">Sports</div>
+            <p class="icon-description">
+              Best Sports & Activities in Cordova, Cebu. Cattleya Gardens and Memorial
+              Park, Nalusuan Marine Sanctuary, Kasadya Park n Play Center, Gilutongan
+              Marine.
+            </p>
+          </div>
+          <div class="icon">
+            <img
+              src="images/Cordova-health-wellness.jpg"
+              alt="Province"
+              width="350"
+              height="320"
+              style="border-radius: 3%"
+            />
+            <div class="icon-title">Health & Wellness</div>
+            <p class="icon-description">
+              We are the only rural health unit in the municipality of Cordova and we
+              provide free medical services to all residents of our town. Our goal is to
+              improve the quality of life for everyone living here by providing them with
+              access to healthcare that they otherwise would not have been able to afford.
+            </p>
+          </div>
+        </div>
       </div>
     </v-col>
   </v-row>
@@ -144,5 +206,13 @@ export default {
   text-align: center;
   margin-top: 5%;
   max-width: 500%;
+}
+.image-container img {
+  width: 400px;
+  height: 350px;
+  object-fit: cover;
+  justify-content: center;
+  display: flex;
+  border-radius: 20px;
 }
 </style>
