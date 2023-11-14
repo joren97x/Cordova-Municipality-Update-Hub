@@ -36,6 +36,9 @@ Route::get('/barangay/{brgy}', [ViewController::class, 'barangay_explore']);
 Route::get('/Visitors/{topic}', function () {
     return Inertia::render('User/VisitorExplore');
 });
+Route::get('MunicipalAdmin/Dashboard', function() {
+    return Inertia::render('MunicipalAdmin/Dashboard');
+});
 Route::post('/signin', [AuthController::class, 'signin']);
 Route::post('/signup', [AuthController::class, 'sign_up']);
 Route::get('/sign-in', [AuthController::class, 'sign_in']);

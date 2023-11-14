@@ -105,7 +105,7 @@ defineProps({
         <div class="icon-container">
           <div class="icon">
             <img
-              src="images/Cordova-local-news.jpg"
+              src="/images/Cordova-local-news.jpg"
               alt="Festival"
               width="350"
               height="320"
@@ -119,7 +119,7 @@ defineProps({
           </div>
           <div class="icon">
             <img
-              src="images/Cordova-events.jpg"
+              src="/images/Cordova-events.jpg"
               alt="Map"
               width="350"
               height="320"
@@ -133,7 +133,7 @@ defineProps({
           </div>
           <div class="icon">
             <img
-              src="images/Cordova-sports.jpg"
+              src="/images/Cordova-sports.jpg"
               alt="Province"
               width="350"
               height="320"
@@ -148,7 +148,7 @@ defineProps({
           </div>
           <div class="icon">
             <img
-              src="images/Cordova-health-wellness.jpg"
+              src="/images/Cordova-health-wellness.jpg"
               alt="Province"
               width="350"
               height="320"

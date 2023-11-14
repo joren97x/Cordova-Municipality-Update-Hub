@@ -25,6 +25,14 @@
             class="custom-title"
             @click="showPendingPostContent"
           ></v-list-item>
+          <v-btn
+            prepend-icon="mdi-logout"
+            width="300"
+            title="LOGOUT"
+            @click="logout"
+            style="margin-top: 230%; background-color: black; color: red; font-size: 20px"
+            >LOGOUT</v-btn
+          >
         </v-list>
       </v-navigation-drawer>
 
@@ -75,10 +83,13 @@
                     model-value="pag yaw yaw diha"
                   ></v-textarea>
                   <v-btn
-                    class="float-end"
-                    icon="mdi-note-check-outline"
+                    prepend-icon="mdi-note-check-outline"
+                    variant="outlined"
                     size="x-large"
-                  ></v-btn>
+                    class="float-end"
+                  >
+                    POST
+                  </v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -89,7 +100,7 @@
             </h1>
             <v-container>
               <v-row class="mx-auto justify-center" style="margin-top: 5vh">
-                <v-col cols="2" style="margin-top: 6%">
+                <v-col cols="2" style="margin-top: 10.1%">
                   <v-select
                     label="BARANGAY"
                     :items="[
@@ -115,10 +126,13 @@
                 </v-col>
                 <v-col cols="6">
                   <v-btn
-                    icon="mdi-check-decagram-outline"
+                    prepend-icon="mdi-check-decagram-outline"
+                    variant="outlined"
                     size="x-large"
-                    style="margin-bottom: 2%; margin-left: 91.5%"
-                  ></v-btn>
+                    style="margin-bottom: 2%; margin-left: 82.5%"
+                  >
+                    EDIT
+                  </v-btn>
                   <v-text-field
                     label="Title for your ambot"
                     model-value="Grocery delivery"
@@ -132,12 +146,20 @@
                     variant="outlined"
                     model-value="pag yaw yaw diha"
                   ></v-textarea>
-                  <v-btn icon="mdi-check-decagram-outline" size="x-large"></v-btn>
+                  <v-btn
+                    prepend-icon="mdi-check-decagram-outline"
+                    variant="outlined"
+                    size="x-large"
+                  >
+                    APPROVED
+                  </v-btn>
                   <v-btn
                     class="float-end"
-                    icon="mdi-file-clock-outline"
+                    prepend-icon="mdi-file-clock-outline"
+                    variant="outlined"
                     size="x-large"
-                  ></v-btn>
+                    >PENDING</v-btn
+                  >
                 </v-col>
               </v-row>
             </v-container>
