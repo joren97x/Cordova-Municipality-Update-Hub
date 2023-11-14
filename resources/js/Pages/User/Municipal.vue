@@ -117,7 +117,7 @@ defineOptions({
       sure oipp kakuyaw ba ani oipp ahhahhahahhahhahaha
     </div>
   </div>
-  <div style="margin-bottom: 5%; margin-top: 3%; width: 70%; margin-left: 15%">
+  <div style="margin-bottom: 5%; margin-top: 3%; width: 80%; margin-left: 10%">
     <v-table height="400px">
       <thead style="font-size: 30px">
         <tr style="background-color: #cfd2d3">
@@ -135,7 +135,7 @@ defineOptions({
       </tbody>
     </v-table>
   </div>
-  <div style="margin-bottom: 5%; margin-top: 3%; width: 70%; margin-left: 15%">
+  <div style="margin-bottom: 5%; margin-top: 3%; width: 80%; margin-left: 10%">
     <v-table height="400px">
       <thead style="font-size: 30px">
         <tr style="background-color: #cfd2d3">

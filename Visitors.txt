@@ -3,57 +3,167 @@ import Layout from "../Layouts/UserLayout.vue";
 defineOptions({
   layout: Layout,
 });
-
-const topics = [
-  {
-    title: "Essential Travel Facts",
-    image: "/images/Travel-sites.jpg",
-  },
-  {
-    title: "Must See Sites",
-    image: "/images/Must-see-sites.jpg",
-  },
-  {
-    title: "Entertainment, Shopping and Leisure",
-    image: "/images/Entertainment-shopping-leisure.jpg",
-  },
-  {
-    title: "Bed and Dine",
-    image: "/images/Bed-dine.jpg",
-  },
-  {
-    title: "Moving Around the City",
-    image: "/images/Moving-city.jpg",
-  },
-  {
-    title: "Money Exchange Centers",
-    image: "/images/Money-exchange.jpg",
-  },
-  {
-    title: "Events, Festivals and Activities",
-    image: "/images/Events-festivals.jpg",
-  },
-];
 </script>
 <template>
   <v-container fluid fill-height>
     <v-row align="center" justify="center">
-      <v-col cols="3" v-for="topic in topics" :key="topic.title">
+      <v-col cols="3">
         <v-card
           class="mx-auto card-hover-shadow"
           max-width="400"
           style="margin-bottom: 4%; margin: 3%"
         >
-          <!-- Add the .image-zoom class here -->
           <v-img
             class="text-white image-zoom"
             height="200"
-            :src="topic.image"
+            src="/images/Travel-sites.jpg"
             cover
           ></v-img>
-          <v-card-text class="text-truncate custom-title">{{ topic.title }}</v-card-text>
+          <v-card-text class="text-truncate custom-title"
+            >Essential Travel Facts</v-card-text
+          >
           <v-card-actions>
-            <a :href="'/Visitors/${topic.title}'" class="button-link">
+            <a href="/Visitors/Essential%20Travel%20Facts" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Must-see-sites.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title">Must See Sites</v-card-text>
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Entertainment-shopping-leisure.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title"
+            >Entertainment, Shopping and Leisure</v-card-text
+          >
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Bed-dine.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title">Bed and Dine</v-card-text>
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Moving-city.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title"
+            >Moving Around the City</v-card-text
+          >
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Money-exchange.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title"
+            >Money Exchange Centers</v-card-text
+          >
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
+              Explore
+              <span class="link-hover"></span>
+            </a>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="3">
+        <v-card
+          class="mx-auto card-hover-shadow"
+          max-width="400"
+          style="margin-bottom: 4%; margin: 3%"
+        >
+          <v-img
+            class="text-white image-zoom"
+            height="200"
+            src="/images/Events-festivals.jpg"
+            cover
+          ></v-img>
+          <v-card-text class="text-truncate custom-title"
+            >Events, Festivals and Activities</v-card-text
+          >
+          <v-card-actions>
+            <a href="/Visitors/Must%20See%20Sites" class="button-link">
               Explore
               <span class="link-hover"></span>
             </a>

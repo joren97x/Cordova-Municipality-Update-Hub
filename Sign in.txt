@@ -17,7 +17,7 @@ const Loginform = useForm({
     <v-card width="100%" class="text-center" elevation="0">
       <v-card-item>
         <div class="logo-container">
-          <v-img src="../fakelogo-transformed.jpeg" cover width="250"></v-img>
+          <v-img src="../fakelogo.jpg" cover width="250"></v-img>
         </div>
       </v-card-item>
     </v-card>

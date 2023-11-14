@@ -36,8 +36,7 @@ defineOptions({
       </p>
     </div>
   </div>
-  <hr />
-  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 3%">
+  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 5%">
     <v-carousel
       hide-delimiters
       v-model="carouselIndex"
@@ -56,13 +55,12 @@ defineOptions({
         font-size: 25px;
         max-width: 80%;
         margin-top: 2%;
-        margin-bottom: 3%;
+        margin-bottom: 5%;
       "
     >
       {{ carouselText }}
     </p>
   </div>
-  <hr />
   <div style="display: flex; justify-content: space-between">
     <div class="text-container">
       <h1 style="margin-left: 25%">Cordova Hymn</h1>
@@ -111,11 +109,49 @@ defineOptions({
   </div>
   <div class="mission-vision-container">
     <div class="mission-container">
-      <!-- Mission text goes here -->
+      <h1>Mission</h1>
+      unsa diay nakalimot ko or wala gyud ko nakahibaw siguro man ahahhahahahhahaha
     </div>
     <div class="vision-container">
-      <!-- Vision text goes here -->
+      <h1>Vision</h1>
+      sure oipp kakuyaw ba ani oipp ahhahhahahhahhahaha
     </div>
+  </div>
+  <div style="margin-bottom: 5%; margin-top: 3%; width: 70%; margin-left: 15%">
+    <v-table height="400px">
+      <thead style="font-size: 30px">
+        <tr style="background-color: #cfd2d3">
+          <th style="color: black">DEPARTMENT/OFFICES</th>
+          <th style="color: black; text-align: center">LOCATION</th>
+          <th style="color: black; text-align: center">CONTACT NO.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in offices" :key="item.name" style="font-size: 20px">
+          <td>{{ item.departmenttexts }}</td>
+          <td style="text-align: center">{{ item.location }}</td>
+          <td style="text-align: center">{{ item.contact }}</td>
+        </tr>
+      </tbody>
+    </v-table>
+  </div>
+  <div style="margin-bottom: 5%; margin-top: 3%; width: 70%; margin-left: 15%">
+    <v-table height="400px">
+      <thead style="font-size: 30px">
+        <tr style="background-color: #cfd2d3">
+          <th style="color: black">SCHOOL NAME</th>
+          <th style="color: black; text-align: center">ADDRESS</th>
+          <th style="color: black; text-align: center">CONTACT NO.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in schools" :key="item.name" style="font-size: 20px">
+          <td>{{ item.schoolname }}</td>
+          <td style="text-align: center">{{ item.address }}</td>
+          <td style="text-align: center">{{ item.contact }}</td>
+        </tr>
+      </tbody>
+    </v-table>
   </div>
 </template>
 
@@ -193,6 +229,7 @@ defineOptions({
   display: flex;
   justify-content: space-between;
   margin: 3% 0;
+  text-align: center;
 }
 
 .mission-container,
@@ -227,6 +264,110 @@ export default {
         },
       ],
       carouselIndex: 0,
+      offices: [
+        {
+          departmenttexts: "Frozen Yogurt",
+          location: 159,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Ice cream sandwich",
+          location: 237,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Eclair",
+          location: 262,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Cupcake",
+          location: 305,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Gingerbread",
+          location: 356,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Jelly bean",
+          location: 375,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Lollipop",
+          location: 392,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Honeycomb",
+          location: 408,
+          contact: 482,
+        },
+        {
+          departmenttexts: "Donut",
+          location: 452,
+          contact: 482,
+        },
+        {
+          departmenttexts: "KitKat",
+          location: 518,
+          contact: 482,
+        },
+      ],
+      schools: [
+        {
+          schoolname: "Frozen Yogurt",
+          address: 159,
+          contact: 482,
+        },
+        {
+          schoolname: "Ice cream sandwich",
+          address: 237,
+          contact: 482,
+        },
+        {
+          schoolname: "Eclair",
+          address: 262,
+          contact: 482,
+        },
+        {
+          schoolname: "Cupcake",
+          address: 305,
+          contact: 482,
+        },
+        {
+          schoolname: "Gingerbread",
+          address: 356,
+          contact: 482,
+        },
+        {
+          schoolname: "Jelly bean",
+          address: 375,
+          contact: 482,
+        },
+        {
+          schoolname: "Lollipop",
+          address: 392,
+          contact: 482,
+        },
+        {
+          schoolname: "Honeycomb",
+          address: 408,
+          contact: 482,
+        },
+        {
+          schoolname: "Donut",
+          address: 452,
+          contact: 482,
+        },
+        {
+          schoolname: "KitKat",
+          address: 518,
+          contact: 482,
+        },
+      ],
     };
   },
   computed: {
