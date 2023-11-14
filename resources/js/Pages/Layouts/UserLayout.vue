@@ -1,12 +1,10 @@
 <script setup>
 import Footer from "./UserFooter.vue";
-import { format } from "date-fns";
 </script>
 <template>
   <v-layout>
     <v-app-bar height="30" color="grey-lighten-4" elevation="0" border>
-      THE OFFICIAL WEB PORTAL OF MUNICIPALITY OF CORDOVA |
-      {{ format(new Date(), "MMMM d, y EEEE h:m a") }}
+      THE OFFICIAL WEB PORTAL OF MUNICIPALITY OF CORDOVA | {{ new Date() }}
       <v-spacer />
 
       <Link href="/sign-in"
@@ -27,9 +25,7 @@ import { format } from "date-fns";
     </v-app-bar>
     <v-app-bar>
       <v-app-bar-title>
-        <Link href="/">
-          <v-img src="images/logo/Capture.PNG" width="100%" height="60"></v-img>
-        </Link>
+        <Link href="/">CORDOVA MUNICIPALITY UPDATE HUB</Link>
       </v-app-bar-title>
       <v-spacer />
       <Link href="/" :id="$page.component == 'User/Index' ? 'border_bottom' : ''"

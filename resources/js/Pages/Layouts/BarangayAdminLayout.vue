@@ -114,6 +114,11 @@
                   ></v-select>
                 </v-col>
                 <v-col cols="6">
+                  <v-btn
+                    icon="mdi-check-decagram-outline"
+                    size="x-large"
+                    style="margin-bottom: 2%; margin-left: 91.5%"
+                  ></v-btn>
                   <v-text-field
                     label="Title for your ambot"
                     model-value="Grocery delivery"
