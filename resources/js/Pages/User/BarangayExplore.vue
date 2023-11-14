@@ -66,31 +66,32 @@ defineProps({
       <div style="text-align: center; margin-top: 5%">
         <h2 style="font-size: 50px">Barangay & SK Officials</h2>
         <div style="display: flex; justify-content: space-between; margin-top: 20px">
-          <div style="flex: 1; justify-content: center">
-            <v-carousel hide-delimiters>
+          <v-col col="6">
+            <v-carousel hide-delimiters style="width: 70%; margin-left: 20%">
               <v-carousel-item
-                :key="BOofficial.id"
-                v-for="BOofficial in BOofficials"
-                style="width: 40%"
-              >
-                <v-img :src="`../images/${BOofficial.image}`" style=""></v-img>
-              </v-carousel-item>
+                v-for="(item, i) in items"
+                :key="i"
+                :src="item.src"
+                cover
+              ></v-carousel-item>
             </v-carousel>
-          </div>
-          <div style="flex: 1; justify-content: center">
-            <v-carousel hide-delimiters>
-              <v-carousel-item :key="SKofficial.id" v-for="SKofficial in SKofficials">
-                <v-img :src="`../images/${SKofficial.image}`" style=""></v-img>
-              </v-carousel-item>
+          </v-col>
+          <v-col col="6">
+            <v-carousel hide-delimiters style="width: 70%; margin-right: 20%">
+              <v-carousel-item
+                v-for="(item, i) in items"
+                :key="i"
+                :src="item.src"
+                cover
+              ></v-carousel-item>
             </v-carousel>
-          </div>
+          </v-col>
         </div>
       </div>
     </v-col>
-
     <v-col cols="12">
       <div style="text-align: center; margin-top: 20px">
-        <h1>Feast Day</h1>
+        <h2 style="font-size: 50px">Feast Day</h2>
         <p>{{ barangay.feastday }}</p>
       </div>
     </v-col>
@@ -170,7 +171,22 @@ defineProps({
 <script>
 export default {
   data() {
-    return {};
+    return {
+      items: [
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+        },
+      ],
+    };
   },
 };
 </script>

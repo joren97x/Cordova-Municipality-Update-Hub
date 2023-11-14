@@ -40,7 +40,5 @@ Route::post('/signin', [AuthController::class, 'signin']);
 Route::post('/signup', [AuthController::class, 'sign_up']);
 Route::get('/sign-in', [AuthController::class, 'sign_in']);
 Route::get('/sign-up', [AuthController::class, 'signUp']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/hello', function() {
-    return Inertia::render('hello');
-});

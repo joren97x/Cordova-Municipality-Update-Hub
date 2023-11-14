@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Inertia;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,8 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-        $userr = Auth::create($user);
+        $user['role'] = 'municipal_admin';
+        User::create($user);
         return redirect('/sign-in');
     }
 
@@ -27,17 +29,23 @@ class AuthController extends Controller
         return Inertia::render('Auth/SignUp');
     }
 
+    public function logout() {
+        Auth::logout();
+        return redirect('/sign-in');
+    }
+
     public function signin(Request $request) {
         $user = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-        dd($user);
         if(Auth::attempt($user)){
-            dd('kekek');
-        }
-        else {
-            dd('sdasdsd');
+            $userr = User::where('email', $user['email'])->first();
+            Auth::login($userr);
+            if($userr['role'] == 'barangay_admin') {
+            return redirect('/BarangayAdminLayout');
+            }
+            return redirect('/MunicipalAdminLayout');
         }
     }
 }

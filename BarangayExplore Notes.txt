@@ -1,0 +1,18 @@
+          <div style="flex: 1; justify-content: center">
+            <v-carousel hide-delimiters>
+              <v-carousel-item
+                :key="BOofficial.id"
+                v-for="BOofficial in BOofficials"
+                style="width: 40%"
+              >
+                <v-img :src="`../images/${BOofficial.image}`" style=""></v-img>
+              </v-carousel-item>
+            </v-carousel>
+          </div>
+          <div style="flex: 1; justify-content: center">
+            <v-carousel hide-delimiters style="width: 30%">
+              <v-carousel-item :key="SKofficial.id" v-for="SKofficial in SKofficials">
+                <v-img :src="`../images/${SKofficial.image}`" style="width: 50%"></v-img>
+              </v-carousel-item>
+            </v-carousel>
+          </div>
