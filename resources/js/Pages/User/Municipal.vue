@@ -17,31 +17,29 @@ defineOptions({
       <div class="overlay-text">OUR HISTORY</div>
     </div>
     <h1 class="history-title">The History of Cordova Municipality</h1>
+    <hr width="50%" style="margin-left: 25%" />
     <div class="history-text">
-      <p style="margin-bottom: 30px">
+      <p style="margin-bottom: 7px">
         Cordova is a picturesque municipality located on Mactan Island in the Philippines.
         Its history is deeply intertwined with the rich heritage of Mactan and the broader
-        story of the nation.
-      </p>
-      <p style="margin-bottom: 30px">
-        Before the arrival of Spanish colonizers in the 16th century, Mactan Island,
-        including Cordova, was home to Cebuano-speaking indigenous people. It is renowned
-        for the Battle of Mactan in 1521 when Lapu-Lapu, the local chieftain, successfully
-        resisted Ferdinand Magellan's attempt to conquer the island.
+        story of the nation. Before the arrival of Spanish colonizers in the 16th century,
+        Mactan Island, including Cordova, was home to Cebuano-speaking indigenous people.
+        It is renowned for the Battle of Mactan in
       </p>
       <p>
-        During the Spanish colonization, Cordova, like many other places in the
-        Philippines, was brought under Spanish rule. It underwent significant changes as
-        the Spaniards established settlements and introduced Christianity.
+        1521 when Lapu-Lapu, the local chieftain, successfully resisted Ferdinand
+        Magellan's attempt to conquer the island. During the Spanish colonization,
+        Cordova, like many other places in the Philippines, was brought under Spanish
+        rule. It underwent significant changes as the Spaniards established settlements
+        and introduced Christianity. The municipality has since evolved, reflecting a
+        blend of indigenous roots and influences from colonial history. Today, Cordova
+        stands as a testament to the enduring cultural heritage of the Philippines.
       </p>
+      <hr style="margin-top: 1%" />
     </div>
   </div>
-  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 5%">
-    <v-carousel
-      hide-delimiters
-      v-model="carouselIndex"
-      style="width: 50%; border-radius: 5%"
-    >
+  <div style="display: flex; flex-direction: column; align-items: center">
+    <v-carousel hide-delimiters v-model="carouselIndex" style="width: 100%;%">
       <v-carousel-item
         v-for="(item, i) in items"
         :key="i"
@@ -61,6 +59,7 @@ defineOptions({
       {{ carouselText }}
     </p>
   </div>
+  <hr />
   <div style="display: flex; justify-content: space-between">
     <div class="text-container">
       <h1 style="margin-left: 25%">Cordova Hymn</h1>
@@ -162,7 +161,7 @@ defineOptions({
 
 .background-image {
   width: 100%;
-  height: 865px;
+  height: 897px;
 }
 
 .overlay-text {
@@ -186,30 +185,30 @@ defineOptions({
   top: 0;
   left: 0;
   width: 100%;
-  height: 99%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .history-title {
-  font-size: 36px;
+  font-size: 50px;
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 .history-text {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 300;
   text-align: justify;
   margin: 20px;
-  max-width: 650px;
   word-spacing: 5%;
+  word-wrap: pre;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
 }
-
 .image-container {
   flex: 1;
   margin: 0;
