@@ -1,6 +1,7 @@
 <script setup>
 import Footer from "./UserFooter.vue";
 </script>
+<script setup></script>
 <template>
   <v-layout>
     <v-app-bar height="30" color="grey-lighten-4" elevation="0" border>
@@ -53,7 +54,6 @@ import Footer from "./UserFooter.vue";
     </v-main>
   </v-layout>
 </template>
-
 <style scoped>
 #border_bottom {
   border-bottom: 3px solid red;

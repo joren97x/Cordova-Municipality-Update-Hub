@@ -25,7 +25,7 @@ const Loginform = useForm({
       <v-card-title class="text-center text-h3">Sign in</v-card-title>
       <v-card-item>
         <v-text-field
-          label="email"
+          label="Email"
           variant="outlined"
           clearable
           class="mt-2 input-field"

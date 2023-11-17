@@ -1,4 +1,0 @@
-<template>
-  <h1>alskjjlaskjd</h1>
-</template>
-

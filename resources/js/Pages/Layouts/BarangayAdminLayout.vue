@@ -25,14 +25,20 @@
             class="custom-title"
             @click="showPendingPostContent"
           ></v-list-item>
-          <v-btn
-            prepend-icon="mdi-logout"
-            width="300"
-            title="LOGOUT"
-            @click="logout"
-            style="margin-top: 230%; background-color: black; color: red; font-size: 20px"
-            >LOGOUT</v-btn
-          >
+          <Link href="/logout" method="GET">
+            <v-btn
+              prepend-icon="mdi-logout"
+              width="300"
+              title="LOGOUT"
+              style="
+                margin-top: 230%;
+                background-color: black;
+                color: red;
+                font-size: 20px;
+              "
+              >LOGOUT</v-btn
+            >
+          </Link>
         </v-list>
       </v-navigation-drawer>
 
@@ -61,17 +67,17 @@
                     :items="[
                       'Basketball',
                       'Sipa',
-                      'Kaog Bato',
-                      'Kaog Tae',
-                      'Kaona Ko',
-                      'Sumbagay',
+                      'Volleyball',
+                      'Tennis',
+                      'Ping Pong',
+                      'Badminton',
                     ]"
                   ></v-select>
                 </v-col>
                 <v-col cols="6">
                   <v-text-field
-                    label="Title for your ambot"
-                    model-value="Grocery delivery"
+                    label="Title for your POST"
+                    placeholder="Title"
                     hint="For example, flowers or used cars"
                     variant="outlined"
                   ></v-text-field>
@@ -80,7 +86,7 @@
                     clear-icon="mdi-close-circle"
                     label="Text"
                     variant="outlined"
-                    model-value="pag yaw yaw diha"
+                    placeholder="Type Here"
                   ></v-textarea>
                   <v-btn
                     prepend-icon="mdi-note-check-outline"
@@ -117,10 +123,10 @@
                     :items="[
                       'Basketball',
                       'Sipa',
-                      'Kaog Bato',
-                      'Kaog Tae',
-                      'Kaona Ko',
-                      'Sumbagay',
+                      'Volleyball',
+                      'Tennis',
+                      'Ping Pong',
+                      'Badminton',
                     ]"
                   ></v-select>
                 </v-col>
@@ -134,8 +140,8 @@
                     EDIT
                   </v-btn>
                   <v-text-field
-                    label="Title for your ambot"
-                    model-value="Grocery delivery"
+                    label="Title for your POST"
+                    placeholder="Title"
                     hint="For example, flowers or used cars"
                     variant="outlined"
                   ></v-text-field>
@@ -144,7 +150,7 @@
                     clear-icon="mdi-close-circle"
                     label="Text"
                     variant="outlined"
-                    model-value="pag yaw yaw diha"
+                    placeholder="Type Here."
                   ></v-textarea>
                   <v-btn
                     prepend-icon="mdi-check-decagram-outline"

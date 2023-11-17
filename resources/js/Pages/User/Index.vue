@@ -5,79 +5,65 @@ defineOptions({
   layout: Layout,
 });
 
-const backgroundImages = ["url(images/Cordova-10K.jpg)"];
-
 const municipalityDescription = "The beauty of Province";
 const republicAct = "Republic Act of the Philippines";
-</script>
 
+const items = [
+  {
+    src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+  },
+  {
+    src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+  },
+  {
+    src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+  },
+  {
+    src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+  },
+];
+</script>
 <template>
   <div class="background-container">
-    <v-sheet
-      :style="{
-        backgroundImage: backgroundImages[0],
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        position: 'relative',
-      }"
-      height="861"
-    >
-      <div class="background-overlay"></div>
-      <div class="d-flex fill-height justify-center align-center flex-column">
-        <h1 class="title">MUNICIPALITY OF CORDOVA</h1>
-        <div class="text-paragraph">{{ municipalityDescription }}</div>
-        <div class="bottom-text">{{ republicAct }}</div>
-      </div>
+    <v-sheet class="image-background">
+      <v-carousel cycle height="900" hide-delimiters :show-arrows="false">
+        <v-carousel-item v-for="(item, i) in items" :src="item.src" :key="i" cover>
+          <v-sheet class="background-overlay"></v-sheet>
+          <div class="d-flex fill-height justify-center align-center flex-column">
+            <h1 class="title">MUNICIPALITY OF CORDOVA</h1>
+            <div class="text-paragraph">{{ municipalityDescription }}</div>
+            <div class="bottom-text">{{ republicAct }}</div>
+          </div>
+        </v-carousel-item>
+      </v-carousel>
     </v-sheet>
   </div>
   <div class="icon-container">
-    <div class="icon" style="margin-right: 70px">
+    <div v-for="(item, i) in iconItems" :key="i" class="icon" @click="openDialog(item)">
       <img
-        src="images/Cordova-Festival.jpg"
-        alt="Festival"
+        :src="item.src"
+        :alt="item.title"
         width="500"
         height="320"
         style="border-radius: 3%"
       />
-      <div class="icon-title">Festivals</div>
-      <p class="icon-description">
-        The Municipality of Cordova is known for its vibrant festivals celebrating culture
-        and traditions. These lively events feature parades, music, dance, and local
-        cuisine, creating unforgettable memories for visitors and locals alike.
-      </p>
-    </div>
-    <div class="icon">
-      <img
-        src="images/Cordova-Map.jpg"
-        alt="Map"
-        width="500"
-        height="320"
-        style="border-radius: 3%"
-      />
-      <div class="icon-title">Explore</div>
-      <p class="icon-description">
-        Explore the beautiful Cordova region and discover its rich culture and natural
-        beauty. Plan your journey and make the most of your visit.
-      </p>
-    </div>
-    <div class="icon" style="margin-left: 70px">
-      <img
-        src="images/Cordova-Expressway.jpg"
-        alt="Province"
-        width="500"
-        height="320"
-        style="border-radius: 3%"
-      />
-      <div class="icon-title">Province</div>
-      <p class="icon-description">
-        Cordova, a picturesque province, offers natural beauty, serene landscapes, and a
-        welcoming atmosphere. It's a peaceful retreat for those seeking a break from city
-        life, with lush forests, pristine beaches, and charming villages for nature lovers
-        and tranquility seekers.
-      </p>
+      <div class="icon-title">{{ item.title }}</div>
     </div>
   </div>
-
+  <v-dialog v-model="dialog" width="auto">
+    <v-card>
+      <v-card-text>
+        <img v-if="selectedImage" :src="selectedImage.src" :alt="selectedImage.title" />
+        <p v-if="selectedImage && selectedImage.title">{{ selectedImage.title }}</p>
+        <p v-if="selectedImage && selectedImage.description">
+          {{ selectedImage.description }}
+        </p>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn color="primary" block @click="closeDialog">Close Dialog</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
   <div>
     <h2 style="justify-content: center; display: flex; font-size: 40px">
       CORDOVA LATEST NEWS
@@ -93,66 +79,113 @@ const republicAct = "Republic Act of the Philippines";
     </v-card>
   </div>
   <div class="icon-container">
-    <div class="icon">
+    <div v-for="(item, i) in secondItems" :key="i" class="icon" @click="openDialog(item)">
       <img
-        src="images/Cordova-local-news.jpg"
-        alt="Festival"
-        width="350"
+        :src="item.src"
+        :alt="item.title"
+        width="400"
         height="320"
         style="border-radius: 3%"
       />
-      <div class="icon-title">Local News</div>
-      <p class="icon-description">
-        Garden Resort Here is a list of boat operators in Cordova who are now starting to
-        get back on their feet, process the necessary.
-      </p>
-    </div>
-    <div class="icon">
-      <img
-        src="images/Cordova-events.jpg"
-        alt="Map"
-        width="350"
-        height="320"
-        style="border-radius: 3%"
-      />
-      <div class="icon-title">Events</div>
-      <p class="icon-description">
-        Explore the beautiful Cordova region and discover its rich culture and natural
-        beauty. Plan your journey and make the most of your visit.
-      </p>
-    </div>
-    <div class="icon">
-      <img
-        src="images/Cordova-sports.jpg"
-        alt="Province"
-        width="350"
-        height="320"
-        style="border-radius: 3%"
-      />
-      <div class="icon-title">Sports</div>
-      <p class="icon-description">
-        Best Sports & Activities in Cordova, Cebu. Cattleya Gardens and Memorial Park,
-        Nalusuan Marine Sanctuary, Kasadya Park n Play Center, Gilutongan Marine.
-      </p>
-    </div>
-    <div class="icon">
-      <img
-        src="images/Cordova-health-wellness.jpg"
-        alt="Province"
-        width="350"
-        height="320"
-        style="border-radius: 3%"
-      />
-      <div class="icon-title">Health & Wellness</div>
-      <p class="icon-description">
-        We are the only rural health unit in the municipality of Cordova and we provide
-        free medical services to all residents of our town. Our goal is to improve the
-        quality of life for everyone living here by providing them with access to
-        healthcare that they otherwise would not have been able to afford.
-      </p>
+      <div class="icon-title">{{ item.title }}</div>
     </div>
   </div>
+  <v-dialog v-model="dialog" width="auto">
+    <v-card>
+      <v-card-text>
+        <img v-if="selectedImage" :src="selectedImage.src" :alt="selectedImage.title" />
+        <p v-if="selectedImage && selectedImage.title">{{ selectedImage.title }}</p>
+        <p v-if="selectedImage && selectedImage.description">
+          {{ selectedImage.description }}
+        </p>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn color="primary" block @click="closeDialog">Close Dialog</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      dialog: false,
+      selectedImage: null,
+      selectedImageIndex: -1, // Add the new property here
+      items: [
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+        },
+      ],
+      iconItems: [
+        {
+          src: "images/Cordova-Festival.jpg",
+          title: "Festivals",
+          description: "Description for Festivals",
+        },
+        {
+          src: "images/Cordova-Map.jpg",
+          title: "Explore",
+          description: "Description for Explore",
+        },
+        {
+          src: "images/Cordova-Expressway.jpg",
+          title: "Province",
+          description: "Description for Province",
+        },
+      ],
+      latestNews: {
+        title: "Latest News Title",
+        description:
+          "This is the latest news in Cordova. It's an example news description.",
+        image: "images/buagsong.jpg",
+      },
+      secondItems: [
+        {
+          src: "images/Cordova-local-news.jpg",
+          title: "Local News",
+          description: "Description for Image 1",
+        },
+        {
+          src: "images/Cordova-events.jpg",
+          title: "Events",
+          description: "Description for Image 2",
+        },
+        {
+          src: "images/Cordova-sports.jpg",
+          title: "Sports",
+          description: "Description for Image 3",
+        },
+        {
+          src: "images/Cordova-health-wellness.jpg",
+          title: "Health & Wellness",
+          description: "Description for Image 4",
+        },
+      ],
+    };
+  },
+  methods: {
+    openDialog(item) {
+      this.selectedImage = item;
+      this.dialog = true;
+    },
+    closeDialog() {
+      this.dialog = false;
+      this.selectedImage = null;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .title {
@@ -164,7 +197,7 @@ const republicAct = "Republic Act of the Philippines";
   animation: floatin 1s ease-in-out forwards;
   white-space: pre;
   letter-spacing: 10px;
-  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.5);
+  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 
@@ -195,7 +228,7 @@ const republicAct = "Republic Act of the Philippines";
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
 
@@ -215,6 +248,41 @@ const republicAct = "Republic Act of the Philippines";
   animation: floatin 2s ease-in-out forwards;
 }
 
+@media only screen and (max-width: 1000px) {
+  .title {
+    font-size: 300%;
+  }
+
+  .text-paragraph {
+    font-size: 100%;
+  }
+
+  .bottom-text {
+    font-size: 80%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .title {
+    font-size: 200%;
+  }
+
+  .text-paragraph {
+    font-size: 100%;
+  }
+
+  .bottom-text {
+    font-size: 80%;
+  }
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon {
+    margin-bottom: 20px; /* Adjust spacing between items */
+  }
+}
 @keyframes floatin {
   0% {
     opacity: 0;
@@ -226,108 +294,8 @@ const republicAct = "Republic Act of the Philippines";
   }
 }
 
-.icon-container {
-  display: flex;
-  justify-content: center;
-  margin: 2%;
-  border-radius: 1%;
-  background-color: #f7f9f9;
-}
-
-.icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2%;
-  width: auto;
-}
-
-.icon-title {
-  font-family: monospace;
-  font-size: 250%;
-  font-weight: bold;
-  color: #333;
-  margin-top: 2%;
-}
-
-.icon-description {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 150%;
-  color: #212f3d;
-  text-align: center;
-  margin-top: 5%;
-  max-width: 500%;
-}
-
-.latest-news-container {
-  text-align: center;
-  padding: 5%;
-}
-
-.latest-news-title {
-  font-size: 20%;
-  margin-bottom: 20px;
-}
-
-.latest-news-card {
-  max-width: 200%;
-  margin: 0 auto;
-  background-color: #f7f7f7;
-  border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.latest-news-image {
-  border-top-left-radius: 5%;
-  border-top-right-radius: 5%;
-}
-
-.card-events {
-  background-color: #f7f9f9;
-}
-
-.additional-images {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2% 0;
-}
-
-.image-row {
-  display: flex;
-}
-
-.image-container {
-  margin-right: 20px;
-  position: relative;
-}
-
-.image-container:last-child {
-  margin-right: 0;
-}
-
-.image-container img {
-  width: 400px;
-  height: 350px;
-  object-fit: cover;
-  justify-content: center;
-  display: flex;
-  border-radius: 20px;
+.responsive-image {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: auto; /* Maintain the image aspect ratio */
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      selectedImageIndex: -1,
-      latestNews: {
-        title: "Latest News Title",
-        description:
-          "This is the latest news in Cordova. It's an example news description.",
-        image: "images/buagsong.jpg",
-      },
-    };
-  },
-};
-</script>
