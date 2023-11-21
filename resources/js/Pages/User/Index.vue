@@ -65,7 +65,7 @@ const items = [
     </v-card>
   </v-dialog>
   <div>
-    <h2 style="justify-content: center; display: flex; font-size: 40px">
+    <h2 class="lates" style="justify-content: center; display: flex; font-size: 40px">
       CORDOVA LATEST NEWS
     </h2>
     <v-card>
@@ -189,100 +189,214 @@ export default {
 
 <style scoped>
 .title {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: 30;
-  color: white;
-  font-size: 400%;
-  opacity: 0;
-  animation: floatin 1s ease-in-out forwards;
-  white-space: pre;
-  letter-spacing: 10px;
-  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.7);
-  z-index: 1;
-}
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: 30;
+    color: white;
+    font-size: 400%;
+    opacity: 0;
+    animation: floatin 1s ease-in-out forwards;
+    white-space: pre;
+    letter-spacing: 10px;
+    text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 
-.text-paragraph {
-  font-family: monospace;
-  font-size: 200%;
-  font-weight: 30;
-  color: white;
-  display: flex;
-  text-align: justify;
-  opacity: 0;
-  letter-spacing: 5px;
-  animation: floatin 1s ease-in-out forwards;
-  text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.5);
-}
+  .text-paragraph {
+    font-family: monospace;
+    font-size: 200%;
+    font-weight: 30;
+    color: white;
+    display: flex;
+    text-align: justify;
+    opacity: 0;
+    letter-spacing: 5px;
+    animation: floatin 1s ease-in-out forwards;
+    text-shadow: 20px 20px 40px rgba(0, 0, 0, 0.5);
+  }
 
-.image-background {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
+  .image-background {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 
-.background-container {
-  position: relative;
-}
+  .background-container {
+    position: relative;
+  }
 
-.background-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-}
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
 
-.bottom-text {
-  font-family: monospace;
-  font-size: 130%;
-  font-weight: 300;
-  color: white;
-  text-align: center;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  z-index: 1;
-}
+  .bottom-text {
+    font-family: monospace;
+    font-size: 130%;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .bottom-text {
+    animation: floatin 2s ease-in-out forwards;
+  }
+
+  @keyframes floatin {
+    0% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+    border-radius: 1%;
+  }
+
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    width: auto;
+  }
+
+  .icon-title {
+    font-family: monospace;
+    font-size: 240%;
+    font-weight: bold;
+    color: #333;
+    margin-top: 2%;
+  }
+
+  .icon-description {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 150%;
+    color: #212f3d;
+    text-align: center;
+    margin-top: 5%;
+    max-width: 500%;
+  }
+
+  .latest-news-container {
+    text-align: center;
+    padding: 5%;
+  }
+
+  .latest-news-title {
+    font-size: 20%;
+    margin-bottom: 20px;
+  }
+
+  .latest-news-card {
+    max-width: 200%;
+    margin: 0 auto;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .latest-news-image {
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+  }
+
+  .additional-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0;
+  }
+
+  .image-row {
+    display: flex;
+  }
+
+  .image-container {
+    margin-right: 20px;
+    position: relative;
+  }
+
+  .image-container:last-child {
+    margin-right: 0;
+  }
+
+  .image-container img {
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
+    justify-content: center;
+    display: flex;
+    border-radius: 20px;
+  }
 
 .bottom-text {
   animation: floatin 2s ease-in-out forwards;
 }
+@media only screen and (max-width: 1500px) {
+    .title {
+        font-size: 200%;
+    }
 
-@media only screen and (max-width: 1000px) {
-  .title {
-    font-size: 300%;
-  }
+    .lates {
+      text-align: center;
+    }
 
-  .text-paragraph {
-    font-size: 100%;
-  }
+    .text-paragraph {
+      font-size: 70%;
+    }
 
-  .bottom-text {
-    font-size: 80%;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .title {
-    font-size: 200%;
-  }
-
-  .text-paragraph {
-    font-size: 100%;
-  }
-
-  .bottom-text {
-    font-size: 80%;
-  }
-  .icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
+    .bottom-text {
+      font-size: 80%;
+    }
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   .icon {
     margin-bottom: 20px; /* Adjust spacing between items */
   }
 }
+
+@media only screen and (max-width: 1700px) {
+    .title {
+      text-align: center;
+    }
+
+    .lates {
+      text-align: center;
+    }
+
+    .text-paragraph {
+      font-size: 200%;
+    }
+
+    .bottom-text {
+      font-size: 80%;
+    }
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  .icon {
+    margin-bottom: 20px; /* Adjust spacing between items */
+  }
+}
+
 @keyframes floatin {
   0% {
     opacity: 0;

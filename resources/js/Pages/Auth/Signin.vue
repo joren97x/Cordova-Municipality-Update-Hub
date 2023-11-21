@@ -52,7 +52,7 @@ const Loginform = useForm({
           @click="Loginform.post('/signin')"
           >Login</v-btn
         >
-        <p class="text-red mt-5 text-center mb-8">FOR CORDOVA WEB PORTAL STAFF ONLY</p>
+        <p class="text-red mt-5 text-center" style="margin-bottom: 3.5%;">FOR CORDOVA WEB PORTAL STAFF ONLY</p>
       </v-card-item>
     </v-card>
   </v-row>

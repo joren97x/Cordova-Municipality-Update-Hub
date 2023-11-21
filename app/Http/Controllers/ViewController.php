@@ -41,4 +41,7 @@ class ViewController extends Controller
         return Inertia::render('User/Support');
     }
 
+    public function forgotpassword() {
+        return Inertia::render('Auth/forgotpassword');
+    }
 }

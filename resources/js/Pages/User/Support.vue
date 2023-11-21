@@ -51,7 +51,8 @@ const questions = [
 .button-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 6%;
+  margin-top: 3%;
+  margin-bottom: 5.5%;
 }
 
 .rounded-button {
@@ -68,5 +69,11 @@ const questions = [
 .rounded-button:hover {
   background-color: darkred;
   transform: scale(1.05);
+}
+
+@media only screen and (max-width: 1000px) {
+    h1 {
+        text-align: center;
+    }
 }
 </style>

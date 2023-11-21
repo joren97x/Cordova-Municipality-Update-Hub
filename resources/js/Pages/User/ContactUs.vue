@@ -6,27 +6,16 @@ defineOptions({
 </script>
 
 <template>
-  <div>
-    <v-row>
-      <v-col cols="5">
-        <p class="text-h2" style="margin-top: 25%; margin-left: 28%; margin-bottom: 3%">
-          Contact Us
+    <div class="contact-container">
+      <div class="contact-section">
+        <h1>Contact Us</h1>
+        <p class="contact-info">
+          Poblacion, Cordova Cebu Philippines <br />
+          Telephone: 123-456-789 <br />
+          Fax No: 123-56-123 <br />
+          Email Address: cordova.cebu@gmail.com <br />
         </p>
-        <p
-          style="
-            margin-bottom: 3%;
-            font-size: 20px;
-            font-family: monospace;
-            word-spacing: 5px;
-            text-align: center;
-          "
-        >
-          Poblacion,Cordova Cebu Philippines <br />
-          Telephone : 123-456-789 <br />
-          Fax No : 123-56-123 <br />
-          Email Address :cordova.cebu@gmail.com <br />
-        </p>
-        <div class="icon-container" style="margin-left: 0%">
+        <div class="icon-container">
           <v-btn
             class="ma-2 icon-button"
             color="indigo"
@@ -44,71 +33,100 @@ defineOptions({
             style="font-size: 40px"
           ></v-btn>
         </div>
-      </v-col>
-      <v-col cols="6">
-        <v-row>
-          <v-col cols="12">
-            <p
-              class="text-h2"
-              style="margin-top: 12%; margin-bottom: 2mt-4%; margin-left: 15%"
-            >
-              How Can We Help You?
-            </p>
-            <v-text-field
-              label="Full Name"
-              variant="outlined"
-              clearable
-              prepend-inner-icon="mdi-account"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="6">
-            <v-text-field
-              label="Email"
-              variant="outlined"
-              clearable
-              prepend-inner-icon="mdi-email"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="6">
-            <v-text-field
-              label="Contact Number"
-              variant="outlined"
-              clearable
-              prepend-inner-icon="mdi-phone"
-            ></v-text-field>
-          </v-col>
-        </v-row>
+      </div>
+      <div class="help-section">
+        <h1 class="head">We're here to support you!</h1>
+        <v-text-field
+        label="Full Name"
+        variant="outlined"
+        clearable
+        prepend-inner-icon="mdi-account"
+      ></v-text-field>
+        <v-text-field
+        label="Email"
+        variant="outlined"
+        clearable
+        prepend-inner-icon="mdi-email"
+        ></v-text-field>
+        <v-text-field
+        label="Contact Number"
+        variant="outlined"
+        clearable
+        prepend-inner-icon="mdi-phone"
+        ></v-text-field>
         <v-textarea
-          class="mt-5"
-          label="Message"
-          variant="outlined"
-          clearable
-          prepend-inner-icon="mdi-message"
-        ></v-textarea>
-        <v-btn flat color="red" class="mt-4 send-button" style="margin-bottom: 13.4%"
-          >Send</v-btn
-        >
-      </v-col>
-    </v-row>
-  </div>
-</template>
+        label="Message"
+        variant="outlined"
+        clearable
+        prepend-inner-icon="mdi-message"
+    ></v-textarea>
+        <v-btn flat color="red" class="send-button" style="margin-bottom: 12%;">Send</v-btn>
+      </div>
+    </div>
+  </template>
 
-<style>
-.icon-button {
-  transition: transform 0.3s ease-in-out;
-}
+  <style>
+    .contact-container {
+      display: flex;
+    }
 
-.icon-button:hover {
-  background-color: darkblue;
-  transform: scale(1.1);
-}
+    .contact-section {
+      margin-left: 10%;
+      text-align: left;
+      margin-top: 10.5%;
+    }
 
-.send-button {
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
+    .contact-info {
+      justify-content: left;
+      display: flex;
+      margin-left: 1%;
+      font-size: 20px;
+      text-align: center;
+    }
 
-.send-button:hover {
-  background-color: darkred; /* Change the hover background color */
-  transform: scale(1.05);
-}
-</style>
+    .icon-container {
+      justify-content: left;
+      display: flex;
+      margin-left: 25.5%;
+      text-align: center;
+    }
+
+    .help-section {
+      margin-left: 12%; /* Adjust the margin as needed */
+      margin-top: 4%;
+    }
+
+    .head {
+      font-size: 60px;
+      display: flex;
+      justify-content: right;
+    }
+
+
+   @media only screen and (max-width: 800px) {
+        .contact-info {
+            justify-content: center;
+            display: flex;
+        }
+
+        .contact-container {
+            flex-direction: column;
+          }
+    }
+
+     @media only screen and (max-width: 1650px) {
+        h1 {
+           margin-left: 5%;
+            text-align: center;
+        }
+        .icon-container {
+            margin-right: 20%;
+        }
+
+        .help-section {
+            margin-right: 5%;
+        }
+    }
+  </style>
+
+

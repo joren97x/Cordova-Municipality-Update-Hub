@@ -23,6 +23,7 @@ Route::get('/municipal', [ViewController::class, 'municipal']);
 Route::get('/visitors', [ViewController::class, 'visitors']);
 Route::get('/support', [ViewController::class, 'support']);
 Route::get('/contact-us', [ViewController::class, 'contact_us']);
+Route::get('/forgotpassword', [ViewController::class, 'forgotpassword']);
 Route::get('/about', function () {
     return Inertia::render('About');
 });
