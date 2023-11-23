@@ -139,6 +139,7 @@ defineOptions({
       <thead style="font-size: 30px">
         <tr style="background-color: #cfd2d3">
           <th style="color: black">SCHOOL NAME</th>
+          <th class="text-center" style="color: black">SCHOOL LEVEL</th>
           <th style="color: black; text-align: center">ADDRESS</th>
           <th style="color: black; text-align: center">CONTACT NO.</th>
         </tr>
@@ -146,6 +147,7 @@ defineOptions({
       <tbody>
         <tr v-for="item in schools" :key="item.name" style="font-size: 20px">
           <td>{{ item.schoolname }}</td>
+          <td class="text-center">{{ item.schlvl }}</td>
           <td style="text-align: center">{{ item.address }}</td>
           <td style="text-align: center">{{ item.contact }}</td>
         </tr>
@@ -211,7 +213,7 @@ defineOptions({
 }
 .image-container {
   flex: 1;
-  margin: 0;
+  margin-right: 9%;
 }
 
 .image {
@@ -238,7 +240,7 @@ defineOptions({
 
 .lyrics {
   font-family: "Arial", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   white-space: pre-wrap;
   margin-left: 25%;
 }
@@ -315,56 +317,135 @@ export default {
           contact: 482,
         },
       ],
+
+
+
       schools: [
         {
-          schoolname: "Frozen Yogurt",
-          address: 159,
+          schoolname: "Cordova Central School",
+          schlvl: "Elementary (Public)",
+          address: "Poblacion Cordova Cebu",
           contact: 482,
         },
         {
-          schoolname: "Ice cream sandwich",
-          address: 237,
+          schoolname: "Day-as Elementary School",
+          schlvl: "Elementary (Public)",
+          address: "Day-as Cordova Cebu",
           contact: 482,
         },
         {
-          schoolname: "Eclair",
-          address: 262,
+          schoolname: "Gabi Elementary School",
+          schlvl: "Elementary (Public)",
+          address: "Gabi Cordova Cebu",
           contact: 482,
         },
         {
-          schoolname: "Cupcake",
-          address: 305,
-          contact: 482,
+            schoolname: "Alegria Elementary School",
+            schlvl: "Elementary (Public)",
+            address: "Alegria Cordova Cebu",
+            contact: "Public"
         },
         {
-          schoolname: "Gingerbread",
-          address: 356,
-          contact: 482,
+            schoolname: "Bang-Bang Elementary School",
+            schlvl: "Elementary (Public)",
+            address: "Bang-Bang Cordova Cebu",
+            contact: "Public"
         },
         {
-          schoolname: "Jelly bean",
-          address: 375,
-          contact: 482,
+            schoolname: "Buagsong Elementary School",
+            schlvl: "Elementary (Public)",
+            address: "Buagsong Cordova Cebu",
+            contact: "Public"
         },
         {
-          schoolname: "Lollipop",
-          address: 392,
-          contact: 482,
+            schoolname: "Pilipog Elementary School",
+            schlvl: "Elementary (Public)",
+            address: "Pilipog Cordova Cebu",
+            contact: "Public"
         },
         {
-          schoolname: "Honeycomb",
-          address: 408,
-          contact: 482,
+            schoolname: "Cogon Elementary School",
+            schlvl: "Elementary (Public)",
+            address: "Cogon Cordova Cebu",
+            contact: "Public"
         },
         {
-          schoolname: "Donut",
-          address: 452,
-          contact: 482,
+            schoolname: "Nobble Minds Christian Academy",
+            schlvl: "Elementary (Private)",
+            address: "San Miguel Cordova Cebu",
+            contact: "Private"
         },
         {
-          schoolname: "KitKat",
-          address: 518,
-          contact: 482,
+            schoolname: "Cordova Korea Friendship School",
+            schlvl: "Elementary (Private)",
+            address: "Alegria Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "Benthel Asia School of Technology",
+            schlvl: "Elementary (Private)",
+            address: "Mahayahay, Gabi Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "San Roque College de Cebu",
+            schlvl: "Elementary",
+            address: "Gabi Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "Gilutongan Integrated School",
+            schlvl: "Elementary (Public)",
+            address: "Gilutongan Cordova Cebu",
+            contact: "Public"
+        },
+        {
+            schoolname: "CORDOVA CATHOLIC COOPERATIVE SCHOOL",
+            schlvl: "Elementary (Private)",
+            address: "Poblacion Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "Cordova National High School",
+            schlvl: "Elementary (Public)",
+            address: "Day-As Cordova Cebu",
+            contact: "Public"
+        },
+        {
+            schoolname: "Pilipog Night High School",
+            schlvl: "Elementary (Public)",
+            address: "Pilipog Cordova Cebu",
+            contact: "Public"
+        },
+        {
+            schoolname: "Benthel Asia School of Technology",
+            schlvl: "Elementary (Private)",
+            address: "Mahayahay, Gabi Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "Nobble Minds Christian Academy",
+            schlvl: "Elementary (Private)",
+            address: "San Miguel Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "San Roque College de Cebu",
+            schlvl: "Elementary (Private)",
+            address: "Gabi Cordova Cebu",
+            contact: "Private"
+        },
+        {
+            schoolname: "Gilutongan Integrated School",
+            schlvl: "Elementary (Public)",
+            address: "Gilutongan Cordova Cebu",
+            contact: "Public"
+        },
+        {
+            schoolname: "Cordova Public College",
+            schlvl: "Elementary (Public)",
+            address: "Gabi Cordova Cebu",
+            contact: "Public"
         },
       ],
     };

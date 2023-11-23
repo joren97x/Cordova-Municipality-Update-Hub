@@ -66,33 +66,95 @@ defineProps({
           <v-img :src="`../images/${BOofficial.image}`"></v-img>
           {{ BOofficial.image }}
         </v-card> -->
-        <div class="icon-container ml-0">
-            <div v-for="(item, i) in secondItems" :key="i" class="icon" @click="openDialog(item)">
-              <img
-                :src="item.src"
-                :alt="item.title"
-                width="400"
-                height="320"
-                style="border-radius: 3%"
-              />
-              <div class="icon-title">{{ item.title }}</div>
         </div>
-          </div>
-          <v-dialog v-model="dialog" width="auto">
-            <v-card>
-              <v-card-text>
-                <img v-if="selectedImage" :src="selectedImage.src" :alt="selectedImage.title" />
-                <p v-if="selectedImage && selectedImage.title">{{ selectedImage.title }}</p>
-                <p v-if="selectedImage && selectedImage.description">
-                  {{ selectedImage.description }}
-                </p>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" block @click="closeDialog">Close Dialog</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-      </div>
+        <v-row style="margin-bottom: 3%;">
+            <v-col cols="12" lg="3" md="6" sm="6">
+                <v-card @click="dialogLocalnews = true">
+                    <v-img src="/images/Cordova-local-news.jpg"></v-img>
+                    <v-card-text style="font-size: 50px; font-weight: bold; padding-bottom: 11px;" class="text-center">Local News</v-card-text>
+                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-dialog v-model="dialogLocalnews" scrollable max-width="800">
+                <v-card>
+                  <v-img src="/images/Cordova-local-news.jpg" height="500" style="margin-top: 1%;"></v-img>
+                  <v-card-title style="font-size: 30px; font-weight: bold;" class="text-center">Local News</v-card-title>
+                  <v-card-text>
+                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdjasdjasdhad</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn color="primary" @click="dialogLocalnews = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+
+            <v-col cols="12" lg="3" md="6" sm="6">
+                <v-card @click="dialogEvents = true">
+                    <v-img src="/images/Cordova-events.jpg"></v-img>
+                    <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-text>
+                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-dialog v-model="dialogEvents" scrollable max-width="800">
+                <v-card>
+                  <v-img src="../images/Cordova-events.jpg" height="500" style="margin-top: 1%;"></v-img>
+                  <v-card-title style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-title>
+                  <v-card-text>
+                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdhasfhasdha</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn color="primary" @click="dialogEvents = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+            <v-col cols="12" lg="3" md="6" sm="6">
+                <v-card @click="dialogSports = true">
+                    <v-img src="/images/Cordova-sports.jpg"></v-img>
+                    <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Sports</v-card-text>
+                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-dialog v-model="dialogSports" scrollable max-width="800">
+                <v-card>
+                  <v-img src="/images/Cordova-sports.jpg" height="500" style="margin-top: 1%;"></v-img>
+                  <v-card-title style="font-size: 50px; font-weight: bold;" class="text-center">Sports</v-card-title>
+                  <v-card-text>
+                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdjasdjasdha</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn color="primary" @click="dialogSports = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+            <v-col cols="12" lg="3" md="6" sm="6">
+                <v-card @click="dialogHealthWellness = true">
+                    <v-img src="/images/Cordova-health-wellness.jpg"></v-img>
+                    <v-card-text style="font-size: 40px; font-weight: bold; padding-bottom: 47px" class="text-center">Health-Wellness</v-card-text>
+                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                </v-card>
+            </v-col>
+
+            <v-dialog v-model="dialogHealthWellness" scrollable max-width="800">
+                <v-card>
+                  <v-img src="../images/Cordova-health-wellness.jpg" height="500" style="margin-top: 1%;"></v-img>
+                  <v-card-title style="font-size: 40px; font-weight: bold;" class="text-center">Health-Wellness</v-card-title>
+                  <v-card-text>
+                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdhasfhasdhasdhasdhasd</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn color="primary" @click="dialogHealthWellness = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+        </v-row>
+
 </template>
 
 <script>
@@ -102,6 +164,13 @@ export default {
       dialog: false,
       selectedImage: null,
       selectedImageIndex: -1,
+      dialogFestival: false,
+      dialogExplore: false,
+      dialogProvince: false,
+      dialogLocalnews: false,
+      dialogEvents: false,
+      dialogSports: false,
+      dialogHealthWellness: false,
       secondItems: [
         {
           src: "../images/Cordova-local-news.jpg",
@@ -144,6 +213,23 @@ export default {
     openDialog(item) {
       this.selectedImage = item;
       this.dialog = true;
+    },
+    openDialog(type) {
+      if (type === 'Festival') {
+        this.dialogFestival = true;
+      } else if (type === 'Explore') {
+        this.dialogExplore = true;
+      } else if (type === 'Province') {
+        this.dialogProvince = true;
+      } else if (type === 'Localnews') {
+        this.dialogLocalnews = true;
+      } else if (type === 'Events') {
+        this.dialogEvents = true;
+      } else if (type === 'Sports') {
+        this.dialogSports = true;
+      } else if (type === 'Wellness') {
+        this.dialogHealthWellness = true;
+      }
     },
     closeDialog() {
       this.dialog = false;
@@ -226,22 +312,25 @@ h1 {
       align-items: center;
     }
   }
-.icon-container {
+  .icon-container {
     display: flex;
     justify-content: center;
     margin: 2%;
     border-radius: 1%;
+    background-color: #f7f9f9;
   }
 
   .icon {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 2%;
     width: auto;
   }
 
   .icon-title {
     font-family: monospace;
-    font-size: 240%;
+    font-size: 250%;
     font-weight: bold;
     color: #333;
     margin-top: 2%;
@@ -255,7 +344,6 @@ h1 {
     margin-top: 5%;
     max-width: 500%;
   }
-
   .latest-news-container {
     text-align: center;
     padding: 5%;

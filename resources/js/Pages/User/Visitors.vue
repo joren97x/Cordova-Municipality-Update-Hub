@@ -23,10 +23,10 @@ defineOptions({
             >Essential Travel Facts</v-card-text
           >
           <v-card-actions>
-            <a href="/Visitors/Essential%20Travel%20Facts" class="button-link">
-              Explore
-              <span class="link-hover"></span>
-            </a>
+            <Link href="/visitors/essential-travel-facts">
+                Explore
+                <span class="link-hover"></span>
+            </Link>
           </v-card-actions>
         </v-card>
       </v-col>

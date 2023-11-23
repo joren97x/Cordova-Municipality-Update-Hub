@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MunicipalAdminHomeController;
 use App\Http\Controllers\ViewController;
+use App\Models\Barangay;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -46,3 +48,19 @@ Route::get('/sign-in', [AuthController::class, 'sign_in']);
 Route::get('/sign-up', [AuthController::class, 'signUp']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::get('/municipal-admin/municipality', [MunicipalAdminHomeController::class, 'municipality']);
+Route::get('/municipal-admin/dashboard', [MunicipalAdminHomeController::class, 'dashboard']);
+Route::get('/municipal-admin/posts', [MunicipalAdminHomeController::class, 'posts']);
+Route::get('/municipal-admin/requests', [MunicipalAdminHomeController::class, 'requests']);
+Route::get('/municipal-admin/contact-us', [MunicipalAdminHomeController::class, 'contact_us']);
+Route::get('/municipal-admin/email-notify-lists', [MunicipalAdminHomeController::class, 'email_notify_lists']);
+Route::get('/municipal-admin/visitor', [MunicipalAdminHomeController::class, 'visitor']);
+Route::get('/municipal-admin/the-municipal', [MunicipalAdminHomeController::class, 'the_municipal']);
+
+
+Route::get('/visitors/essential-travel-facts', function() {
+    return Inertia::render('User/VisitorExplore');
+});
+
+
+Route::get('/barangay/edit-barangay/{barangay}', [MunicipalAdminHomeController::class, 'edit_barangay']);
