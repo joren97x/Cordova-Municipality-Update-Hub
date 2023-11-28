@@ -42,7 +42,8 @@ const questions = [
       Do You Have Any Questions?
     </h1>
     <div class="button-container">
-      <button class="rounded-button">Ask a Question</button>
+
+      <Link href="/contact-us"><button class="rounded-button">Ask a Question</button></Link>
     </div>
   </div>
 </template>
