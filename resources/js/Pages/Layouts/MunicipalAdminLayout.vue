@@ -26,7 +26,22 @@
           <Link href="/municipal-admin/email-notify-lists"><v-list-item value="ss" class="pa-2"> Email notify list </v-list-item></Link>
           <Link href="/municipal-admin/visitor"><v-list-item value="dash3board" class="pa-2"> Visitor </v-list-item></Link>
           <Link href="/municipal-admin/the-municipal"><v-list-item value="dashsboard" class="pa-2"> The municipal </v-list-item></Link>
+          <Link href="/logout" method="GET">
+            <v-btn
+              prepend-icon="mdi-logout"
+              width="300"
+              title="LOGOUT"
+              style="
+                margin-top: 165%;
+                background-color: black;
+                color: red;
+                font-size: 20px;
+              "
+              >LOGOUT</v-btn
+            >
+          </Link>
         </v-list>
+
       </v-navigation-drawer>
 
       <v-main>

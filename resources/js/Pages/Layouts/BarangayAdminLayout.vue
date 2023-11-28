@@ -155,6 +155,7 @@
                   <v-btn
                     prepend-icon="mdi-check-decagram-outline"
                     variant="outlined"
+                    readonly
                     size="x-large"
                   >
                     APPROVED
@@ -163,6 +164,7 @@
                     class="float-end"
                     prepend-icon="mdi-file-clock-outline"
                     variant="outlined"
+                    readonly
                     size="x-large"
                     >PENDING</v-btn
                   >

@@ -15,23 +15,22 @@ defineOptions({
           Fax No: 123-56-123 <br />
           Email Address: cordova.cebu@gmail.com <br />
         </p>
-        <div class="icon-container">
+        <div class="container-icon">
           <v-btn
-            class="ma-2 icon-button"
-            color="indigo"
-            height="100px"
-            width="100px"
-            icon="mdi-facebook"
-            style="font-size: 40px"
-          ></v-btn>
+          class="ma-2"
+          color="red"
+          icon="mdi-gmail"
+        ></v-btn>
+        <v-btn
+        class="ma-2"
+        color="indigo"
+        icon="mdi-facebook"
+      ></v-btn>
           <v-btn
-            class="ma-2 icon-button"
-            color="indigo"
-            height="100px"
-            width="100px"
-            icon="mdi-google"
-            style="font-size: 40px"
-          ></v-btn>
+          class="ma-2"
+          color="red"
+          icon="mdi-google"
+        ></v-btn>
         </div>
       </div>
       <div class="help-section">
@@ -84,10 +83,7 @@ defineOptions({
       text-align: center;
     }
 
-    .icon-container {
-      justify-content: left;
-      display: flex;
-      margin-left: 25.5%;
+    .container-icon {
       text-align: center;
     }
 
@@ -119,8 +115,9 @@ defineOptions({
            margin-left: 5%;
             text-align: center;
         }
-        .icon-container {
+        .container-icon {
             margin-right: 20%;
+            text-align: center;
         }
 
         .help-section {

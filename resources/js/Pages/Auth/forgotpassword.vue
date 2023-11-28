@@ -32,7 +32,7 @@ defineProps({
             id="login-button"
             color="pink"
             class="login-button"
-            >Login</v-btn
+            >Reset</v-btn
           >
           <p class="text-red mt-12 text-center" style="margin-bottom: 5%;">FOR CORDOVA WEB PORTAL STAFF ONLY</p>
         </v-card-item>

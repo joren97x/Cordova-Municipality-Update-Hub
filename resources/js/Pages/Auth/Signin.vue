@@ -44,7 +44,9 @@ const Loginform = useForm({
           :error-messages="Loginform.errors.password"
         >
         </v-text-field>
-        <span class="forgot-password-link" @click="forgotPassword">Forgot Password</span>
+        <Link href="/forgot-password">
+          <span class="forgot-password-link" @click="forgotPassword">Forgot Password</span>
+        </Link>
         <v-btn
           id="login-button"
           color="pink"
