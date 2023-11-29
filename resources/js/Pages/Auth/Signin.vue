@@ -52,6 +52,7 @@ const Loginform = useForm({
           color="pink"
           class="login-button"
           @click="Loginform.post('/signin')"
+          type="submit"
           >Login</v-btn
         >
         <p class="text-red mt-5 text-center" style="margin-bottom: 3.5%;">FOR CORDOVA WEB PORTAL STAFF ONLY</p>

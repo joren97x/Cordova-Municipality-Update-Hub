@@ -27,6 +27,10 @@ Route::get('/visitors', [ViewController::class, 'visitors']);
 Route::get('/support', [ViewController::class, 'support']);
 Route::get('/contact-us', [ViewController::class, 'contact_us']);
 Route::get('/forgotpassword', [ViewController::class, 'forgotpassword']);
+Route::get('/{barangay}/events', [ViewController::class, 'events']);
+Route::get('/{barangay}/sports', [ViewController::class, 'sports']);
+Route::get('/{barangay}/local-news', [ViewController::class, 'local_news']);
+Route::get('/{barangay}/health-wellness', [ViewController::class, 'health_wellness']);
 Route::get('/about', function () {
     return Inertia::render('About');
 });

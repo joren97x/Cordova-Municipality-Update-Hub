@@ -91,11 +91,13 @@ defineProps({
 
 
             <v-col cols="12" lg="3" md="6" sm="6">
-                <v-card @click="dialogEvents = true">
-                    <v-img src="/images/Cordova-events.jpg"></v-img>
-                    <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-text>
-                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
-                </v-card>
+                <Link :href="`/${barangay.name}/events`">
+                    <v-card>
+                      <v-img src="/images/Cordova-events.jpg"></v-img>
+                      <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-text>
+                      <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                  </v-card>
+                </Link>
             </v-col>
 
             <v-dialog v-model="dialogEvents" scrollable max-width="800">

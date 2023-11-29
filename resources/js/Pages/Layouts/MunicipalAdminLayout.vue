@@ -44,7 +44,7 @@
       </v-navigation-drawer>
 
       <v-main>
-        <slot> <h1>Hello World</h1> </slot>
+        <slot> <h1 style="text-align: center;">Welcome To Dashboard</h1> </slot>
       </v-main>
     </v-layout>
   </v-card>

@@ -31,7 +31,7 @@
               width="300"
               title="LOGOUT"
               style="
-                margin-top: 200px;
+                margin-top: 70vh;
                 background-color: black;
                 color: rgb(255, 255, 255);
                 font-size: 20px;
@@ -155,7 +155,7 @@
                   <v-btn
                     prepend-icon="mdi-check-decagram-outline"
                     variant="outlined"
-                    readonly
+                    label="Read-only"
                     size="x-large"
                   >
                     APPROVED
@@ -164,7 +164,7 @@
                     class="float-end"
                     prepend-icon="mdi-file-clock-outline"
                     variant="outlined"
-                    readonly
+                    label="Read-only"
                     size="x-large"
                     >PENDING</v-btn
                   >
