@@ -15,14 +15,14 @@
 
 
 
-          <Link href="/municipal-admin/dashboard"><v-list-item value="dashboard" > <p> Dashboard </p> </v-list-item></Link>
-          <Link href="/municipal-admin/municipality"><v-list-item value="Municipality" > <p >Municipality</p> </v-list-item></Link>
-          <Link href="/municipal-admin/posts"><v-list-item value="Post" > <p >Post</p> </v-list-item></Link>
-          <Link href="/municipal-admin/requests"><v-list-item value="Request" > <v-badge size="20"  offset-x="-12" offset-y="45" content="5" color="red"><p>Request</p></v-badge> </v-list-item></Link>
-          <Link href="/municipal-admin/contact-us"><v-list-item value="Contact" >  <p > Contact Us </p> </v-list-item></Link>
-          <Link href="/municipal-admin/email-notify-lists"><v-list-item value="ss" > <p >Email notify list</p> </v-list-item></Link>
-          <Link href="/municipal-admin/visitor"><v-list-item value="dash3board" > <p >Visitor</p> </v-list-item></Link>
-          <Link href="/municipal-admin/the-municipal"><v-list-item value="dashsboard" > <p >The municipal</p> </v-list-item></Link>
+          <Link href="/municipal-admin/dashboard"><v-list-item prepend-icon="mdi mdi-view-dashboard-edit-outline" value="dashboard"> <p class="custom-text"> Dashboard </p> </v-list-item></Link>
+          <Link href="/municipal-admin/municipality"><v-list-item value="Municipality" prepend-icon="mdi mdi-bank"> <p >Municipality</p> </v-list-item></Link>
+          <Link href="/municipal-admin/posts"><v-list-item value="Post" prepend-icon="mdi mdi-post-outline"> <p >Post</p> </v-list-item></Link>
+          <Link href="/municipal-admin/requests"><v-list-item value="Request" prepend-icon="mdi mdi-account-question-outline"> <v-badge size="25"  offset-x="-11" offset-y="2" content="9+" color="red"><p>Request</p></v-badge> </v-list-item></Link>
+          <Link href="/municipal-admin/contact-us"><v-list-item value="Contact" prepend-icon="mdi mdi-card-account-phone-outline">  <p > Contact Us </p> </v-list-item></Link>
+          <Link href="/municipal-admin/email-notify-lists"><v-list-item value="ss" prepend-icon="mdi mdi-message-badge-outline"> <p >Email notify list</p> </v-list-item></Link>
+          <Link href="/municipal-admin/visitor"><v-list-item value="dash3board" prepend-icon="mdi mdi-account-group"> <p >Visitor</p> </v-list-item></Link>
+          <Link href="/municipal-admin/the-municipal"><v-list-item value="dashsboard"  prepend-icon="mdi mdi-bank-outline"> <p >The municipal</p> </v-list-item></Link>
 
 
           <Link href="/logout" method="GET">
@@ -31,7 +31,7 @@
               width="300"
               title="LOGOUT"
               style="
-                margin-top: 200px;
+                margin-top: 105%;
                 background-color: black;
                 color: rgb(255, 255, 255);
                 font-size: 20px;
@@ -65,9 +65,16 @@ a {
 }
 .v-list-item {
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 
-p {
-    margin-top: 30px;
-}
+.custom-list-item {
+    display: flex;
+    font-size: 25px;
+  }
+
+  .custom-text {
+    display: flex;
+
+  }
 </style>

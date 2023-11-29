@@ -8,6 +8,8 @@ defineProps({
   barangays: Object,
 });
 </script>
+
+
 <template>
   <v-container fluid fill-height>
     <v-row align="center" justify="center">

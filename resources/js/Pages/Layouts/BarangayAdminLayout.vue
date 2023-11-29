@@ -31,9 +31,9 @@
               width="300"
               title="LOGOUT"
               style="
-                margin-top: 230%;
+                margin-top: 200px;
                 background-color: black;
-                color: red;
+                color: rgb(255, 255, 255);
                 font-size: 20px;
               "
               >LOGOUT</v-btn
