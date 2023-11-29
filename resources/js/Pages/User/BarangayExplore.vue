@@ -9,17 +9,7 @@
 </script>
 
 <template>
-	<!-- <div class="container">
-		<img
-		:src="`../images/${barangay.image}`"
-		alt=""
-		srcset=""
-		width="500"
-		class="image"
-		/>
-		<h1 class="heading">{{ barangay.name }}</h1>
-	</div> -->
-	<v-parallax :src="`../images/${barangay.image}`" height="480">
+	<v-parallax :src="`/images/${barangay.image}`" height="480">
 		<div class="d-flex flex-column fill-height justify-center align-center text-white">
 			<h1 class="text-h1 font-weight-thin mb-4">
 				{{ barangay.name }}
@@ -28,41 +18,28 @@
 	</v-parallax>
 	
 	<div class="my-5">
-		<p class="text-center text-h3">About</p>
+		<p class="text-center text-h4">About {{ barangay.name }} </p>
 		<p class="text-center text-h6">{{ barangay.about }}</p>
 	</div>
-
+    <v-divider class="my-6" />
 	<v-row class="my-4">
 		<v-col cols="6">
-			<p class="text-center text-h3">Mission</p>
+			<p class="text-center text-h4">Mission</p>
 			<p class="text-center text-h6">{{ barangay.mission }}</p>
 		</v-col>
+        <v-col cols="6">
+            <v-img src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"></v-img>
+        </v-col>
+        <v-col cols="6">
+            <v-img src="https://img.freepik.com/premium-photo/starry-night-lake_68067-618.jpg"></v-img>
+        </v-col>
 		<v-col cols="6">
-			<p class="text-center text-h3">Vision</p>
+			<p class="text-center text-h4">Vision</p>
 			<p class="text-center text-h6">{{ barangay.vision }}</p>
 		</v-col>
 	</v-row>
-
-	<div style="text-align: center; margin-top: 5%">
-		<h2 style="font-size: 50px">Barangay & SK Officials</h2>
-		<!-- <div style="display: flex; justify-content: space-between; margin-top: 20px">
-			<v-carousel hide-delimiters style="width: 70%; margin-left: 10%">
-				<v-carousel-item
-					v-for="(item, i) in items"
-					:key="i"
-					:src="item.src"
-					cover
-				></v-carousel-item>
-				</v-carousel>
-				<v-carousel hide-delimiters style="width: 70%; margin-right: 10%; margin-left:10%;">
-				<v-carousel-item
-					v-for="(item, i) in items"
-					:key="i"
-					:src="item.src"
-					cover
-				></v-carousel-item>
-			</v-carousel>
-		</div> -->
+    <v-divider class="my-5" />
+		<p class="text-center text-h4">Barangay & SK Officials</p>
 		<v-row>
 			<v-col cols="6">
 				<v-slide-group class="pa-4" show-arrows>
@@ -91,190 +68,83 @@
 				</v-slide-group>
 			</v-col>
 		</v-row>
-			<p class="text-h3">Feast Day</p>
-			<p>{{ barangay.feastday }} date picker here!</p>
-			
-</div>
-        <p class="text-center text-h2">IMPORTANT ANNOUNCEMENT</p>
-        <!-- <v-card :key="BOofficial.id" v-for="BOofficial in BOofficials">
-          <v-img :src="`../images/${BOofficial.image}`"></v-img>
-          {{ BOofficial.image }}
-        </v-card> -->
+
+        <v-divider class="my-5"/>
+
+        <div class="text-center">
+            <p class="text-h4">Feast Day</p>
+            <p>{{ barangay.feastday }} date picker here!</p>
+        </div>
+
+        <v-divider class="my-5"/>
+
+        <p class="text-center text-h4">IMPORTANT ANNOUNCEMENTS</p>
         <v-row style="margin-bottom: 3%;">
             <v-col cols="12" lg="3" md="6" sm="6">
-                <v-card @click="dialogLocalnews = true">
-                    <v-img src="/images/Cordova-local-news.jpg"></v-img>
-                    <v-card-text style="font-size: 50px; font-weight: bold; padding-bottom: 11px;" class="text-center">Local News</v-card-text>
-                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
-                </v-card>
+                <Link>
+                    <v-card>
+                        <v-img src="/images/Cordova-local-news.jpg" cover height="250"></v-img>
+                        <v-card-text>
+                            <p class="text-h5">Local news</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn>See more</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </Link>
             </v-col>
-
-            <v-dialog v-model="dialogLocalnews" scrollable max-width="800">
-                <v-card>
-                  <v-img src="/images/Cordova-local-news.jpg" height="500" style="margin-top: 1%;"></v-img>
-                  <v-card-title style="font-size: 30px; font-weight: bold;" class="text-center">Local News</v-card-title>
-                  <v-card-text>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdjasdjasdhad</p>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn color="primary" @click="dialogLocalnews = false">Close</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
 
 
             <v-col cols="12" lg="3" md="6" sm="6">
                 <Link :href="`/${barangay.name}/events`">
                     <v-card>
-                      <v-img src="/images/Cordova-events.jpg"></v-img>
-                      <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-text>
-                      <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
+                      <v-img src="/images/Cordova-events.jpg" cover height="250"></v-img>
+                      <v-card-text>
+                        <p class="text-h5">Events</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn>See more</v-btn>
+                    </v-card-actions>
                   </v-card>
                 </Link>
             </v-col>
 
-            <v-dialog v-model="dialogEvents" scrollable max-width="800">
-                <v-card>
-                  <v-img src="../images/Cordova-events.jpg" height="500" style="margin-top: 1%;"></v-img>
-                  <v-card-title style="font-size: 50px; font-weight: bold;" class="text-center">Events</v-card-title>
-                  <v-card-text>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdhasfhasdha</p>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn color="primary" @click="dialogEvents = false">Close</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-
             <v-col cols="12" lg="3" md="6" sm="6">
-                <v-card @click="dialogSports = true">
-                    <v-img src="/images/Cordova-sports.jpg"></v-img>
-                    <v-card-text style="font-size: 50px; font-weight: bold;" class="text-center">Sports</v-card-text>
-                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
-                </v-card>
+                <Link>
+                    <v-card>
+                        <v-img src="/images/Cordova-sports.jpg" cover height="250"></v-img>
+                        <v-card-text>
+                            <p class="text-h5">Sports</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn>See more</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </Link>
             </v-col>
 
-            <v-dialog v-model="dialogSports" scrollable max-width="800">
-                <v-card>
-                  <v-img src="/images/Cordova-sports.jpg" height="500" style="margin-top: 1%;"></v-img>
-                  <v-card-title style="font-size: 50px; font-weight: bold;" class="text-center">Sports</v-card-title>
-                  <v-card-text>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdjasdjasdha</p>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn color="primary" @click="dialogSports = false">Close</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-
             <v-col cols="12" lg="3" md="6" sm="6">
-                <v-card @click="dialogHealthWellness = true">
-                    <v-img src="/images/Cordova-health-wellness.jpg"></v-img>
-                    <v-card-text style="font-size: 40px; font-weight: bold; padding-bottom: 47px" class="text-center">Health-Wellness</v-card-text>
-                    <v-card-text style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">dssadsd</v-card-text>
-                </v-card>
+                <Link>
+                    <v-card>
+                        <v-img src="/images/Cordova-health-wellness.jpg" cover height="250"></v-img>
+                        <v-card-text>
+                            <p class="text-h5">Heath and wellness</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn>See more</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </Link>
             </v-col>
-
-            <v-dialog v-model="dialogHealthWellness" scrollable max-width="800">
-                <v-card>
-                  <v-img src="../images/Cordova-health-wellness.jpg" height="500" style="margin-top: 1%;"></v-img>
-                  <v-card-title style="font-size: 40px; font-weight: bold;" class="text-center">Health-Wellness</v-card-title>
-                  <v-card-text>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-size: 22px; font-weight: lighter;">asdhasfhasdhasdhasdhasd</p>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn color="primary" @click="dialogHealthWellness = false">Close</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
 
         </v-row>
 
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      dialog: false,
-      selectedImage: null,
-      selectedImageIndex: -1,
-      dialogFestival: false,
-      dialogExplore: false,
-      dialogProvince: false,
-      dialogLocalnews: false,
-      dialogEvents: false,
-      dialogSports: false,
-      dialogHealthWellness: false,
-      secondItems: [
-        {
-          src: "../images/Cordova-local-news.jpg",
-          title: "Local News",
-          description: "Description for Image 1",
-        },
-        {
-          src: "../images/Cordova-events.jpg",
-          title: "Events",
-          description: "Description for Image 2",
-        },
-        {
-          src: "../images/Cordova-sports.jpg",
-          title: "Sports",
-          description: "Description for Image 3",
-        },
-        {
-          src: "../images/Cordova-health-wellness.jpg",
-          title: "Health & Wellness",
-          description: "Description for Image 4",
-        },
-      ],
-      items: [
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-        },
-      ],
-    };
-  },
-  methods: {
-    openDialog(item) {
-      this.selectedImage = item;
-      this.dialog = true;
-    },
-    openDialog(type) {
-      if (type === 'Festival') {
-        this.dialogFestival = true;
-      } else if (type === 'Explore') {
-        this.dialogExplore = true;
-      } else if (type === 'Province') {
-        this.dialogProvince = true;
-      } else if (type === 'Localnews') {
-        this.dialogLocalnews = true;
-      } else if (type === 'Events') {
-        this.dialogEvents = true;
-      } else if (type === 'Sports') {
-        this.dialogSports = true;
-      } else if (type === 'Wellness') {
-        this.dialogHealthWellness = true;
-      }
-    },
-    closeDialog() {
-      this.dialog = false;
-      this.selectedImage = null;
-    },
-  },
-};
-
-</script>
-
+<!-- 
 <style>
 .container {
   display: flex;
@@ -401,4 +271,4 @@ h1 {
     border-top-right-radius: 5%;
   }
 
-</style>
+</style> -->

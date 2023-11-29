@@ -22,7 +22,7 @@ use Inertia\Inertia;
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/barangays', [ViewController::class, 'barangays']);
-Route::get('/municipal', [ViewController::class, 'municipal']);
+Route::get('/the-municipal', [ViewController::class, 'municipal']);
 Route::get('/visitors', [ViewController::class, 'visitors']);
 Route::get('/support', [ViewController::class, 'support']);
 Route::get('/contact-us', [ViewController::class, 'contact_us']);
