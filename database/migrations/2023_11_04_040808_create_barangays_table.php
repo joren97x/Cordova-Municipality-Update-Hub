@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('barangays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('about');
-            $table->string('mission');
-            $table->string('vision');
+            $table->text('about');
+            $table->text('mission');
+            $table->text('vision');
             $table->string('image');
-            $table->string('feastday');
+            $table->date('feastday');
             $table->timestamps();
         });
     }

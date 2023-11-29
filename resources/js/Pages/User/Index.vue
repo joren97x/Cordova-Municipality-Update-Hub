@@ -1,233 +1,92 @@
 <script setup>
-import Layout from "../Layouts/UserLayout.vue";
+    import Layout from "../Layouts/UserLayout.vue";
 
-defineOptions({
-  layout: Layout,
-});
+    defineOptions({
+        layout: Layout,
+    });
 
-const municipalityDescription = "The beauty of Province";
-const republicAct = "Republic Act of the Philippines";
-
-const items = [
-  {
-    src: "../images/Cordova-10K.jpg",
-  },
-  {
-    src: "../images/bangbang.jpg",
-  },
-  {
-    src: "../images/solea-mactan27.jpg",
-  },
-  {
-    src: "../images/gilutongan.jpg",
-  },
-];
+    const municipalityDescription = "The beauty of Province";
+    const republicAct = "Republic Act of the Philippines";
+    const items = [
+        {
+            src: "../images/Cordova-10K.jpg",
+        },
+        {
+            src: "../images/bangbang.jpg",
+        },
+        {
+            src: "../images/solea-mactan27.jpg",
+        },
+        {
+            src: "../images/gilutongan.jpg",
+        },
+    ];
 </script>
 <template>
-  <div class="background-container">
-    <v-sheet class="image-background">
-      <v-carousel cycle height="900" hide-delimiters :show-arrows="false">
-        <v-carousel-item v-for="(item, i) in items" :src="item.src" :key="i" cover>
-          <v-sheet class="background-overlay"></v-sheet>
-          <div class="d-flex justify-center align-center flex-column" style="height: 85%;">
-            <h1 class="title">MUNICIPALITY OF CORDOVA</h1>
-            <div class="text-paragraph">{{ municipalityDescription }}</div>
-            <div class="bottom-text">{{ republicAct }}</div>
-          </div>
-        </v-carousel-item>
-      </v-carousel>
-    </v-sheet>
-  </div>
+    <div class="background-container">
+        <v-sheet class="image-background">
+            <v-carousel cycle height="900" hide-delimiters :show-arrows="false">
+                <v-carousel-item v-for="(item, i) in items" :src="item.src" :key="i" cover>
+                <v-sheet class="background-overlay"></v-sheet>
+                <div class="d-flex justify-center align-center flex-column" style="height: 85%;">
+                    <h1 class="title">MUNICIPALITY OF CORDOVA</h1>
+                    <div class="text-paragraph">{{ municipalityDescription }}</div>
+                    <div class="bottom-text">{{ republicAct }}</div>
+                </div>
+                </v-carousel-item>
+            </v-carousel>
+        </v-sheet>
+    </div>
   <div class="icon-container">
-  <div class="icon" @click="openDialog('Festival')">
-    <img src="/images/Cordova-Festival.jpg" width="500" height="320" style="border-radius: 3%" />
-    <div class="icon-title">Festival</div>
-    <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
-  </div>
-<v-dialog v-model="dialogFestival" scrollable max-width="800">
-    <v-card>
-      <v-img src="/images/Cordova-Festival.jpg" height="500" style="margin-top: 1%;"></v-img>
-      <v-card-title class="headline">Festival</v-card-title>
-      <v-card-text>
-        <p>asdjasdjasdhadghadvkjadv</p>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="primary" @click="dialogFestival = false">Close</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-  <div class="icon" @click="openDialog('Explore')">
-    <img src="/images/Cordova-Map.jpg" width="500" height="320" style="border-radius: 3%" />
-    <div class="icon-title">Explore</div>
-    <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
-  </div>
-<v-dialog v-model="dialogExplore" scrollable max-width="800">
-    <v-card>
-      <v-img src="../images/Cordova-Map.jpg" height="500" style="margin-top: 1%;"></v-img>
-      <v-card-title class="headline">Explore</v-card-title>
-      <v-card-text>
-        <p>asdhasfhasdhasdhasdhasd</p>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="primary" @click="dialogExplore = false">Close</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-  <div class="icon" @click="openDialog('Province')">
-    <img src="/images/Cordova-Expressway.jpg" width="500" height="320" style="border-radius: 3%" />
-    <div class="icon-title">Province</div>
-    <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
-  </div>
-<v-dialog v-model="dialogProvince" scrollable max-width="800">
-    <v-card>
-      <v-img src="../images/Cordova-Expressway.jpg" height="500" style="margin-top: 1%;"></v-img>
-      <v-card-title class="headline">Province</v-card-title>
-      <v-card-text>
-        <p>alksdlkjasdlkjalskjdlkasjd</p>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="primary" @click="dialogProvince = false">Close</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+    <div class="icon">
+        <img src="/images/Cordova-Festival.jpg" width="500" height="320" style="border-radius: 3%" />
+        <div class="icon-title">Festival</div>
+        <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
+    </div>
+   
+    <div class="icon">
+        <img src="/images/Cordova-Map.jpg" width="500" height="320" style="border-radius: 3%" />
+        <div class="icon-title">Explore</div>
+        <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
+    </div>
+    <div class="icon">
+        <img src="/images/Cordova-Expressway.jpg" width="500" height="320" style="border-radius: 3%" />
+        <div class="icon-title">Province</div>
+        <div class="icon-description">laksdjlajsdlkjasljdlkasjdlkajslkdjlaksjdlkajslkdjlasjkdlkas</div>
+    </div>
 </div>
 <div>
     <h2 class="lates" style="justify-content: center; display: flex; font-size: 40px">
       CORDOVA LATEST NEWS
     </h2>
 
-    <v-card>
-      <v-img :src="latestNews.image" aspect-ratio="16/9" cover height="500"></v-img>
-
-      <v-card-title style="font-size: 25px; margin: 15px">{{
-        latestNews.title
-      }}</v-card-title>
-
-      <v-card-text style="font-size: 20px; margin: 15px">{{
-        latestNews.description
-      }}</v-card-text>
-    </v-card>
+   
   </div>
   <div class="icon-container">
-    <div class="icon" @click="openDialog('Localnews')">
+    <div class="icon">
       <img src="/images/Cordova-local-news.jpg" width="350" height="320" style="border-radius: 3%" />
       <div class="icon-title">Local News</div>
       <div class="icon-description">laksdjlajsdlkjasljdl</div>
     </div>
-  <v-dialog v-model="dialogLocalnews" scrollable max-width="800">
-      <v-card>
-        <v-img src="/images/Cordova-local-news.jpg" height="350" style="margin-top: 1%;"></v-img>
-        <v-card-title class="headline">Local News</v-card-title>
-        <v-card-text>
-          <p>asdjasdjasdhad</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" @click="dialogLocalnews = false">Close</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-    <div class="icon" @click="openDialog('Events')">
+    <div class="icon">
       <img src="/images/Cordova-events.jpg" aspect-ratio="16/9" cover width="350" height="320" style="border-radius: 3%" />
       <div class="icon-title">Events</div>
       <div class="icon-description">laksdjlajsdlkja</div>
     </div>
-  <v-dialog v-model="dialogEvents" scrollable max-width="800">
-      <v-card>
-        <v-img src="../images/Cordova-events.jpg" height="350" style="margin-top: 1%;"></v-img>
-        <v-card-title class="headline">Event</v-card-title>
-        <v-card-text>
-          <p>asdhasfhasdha</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" @click="dialogEvents = false">Close</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-
-    <div class="icon" @click="openDialog('Sports')">
+    <div class="icon">
         <img src="/images/Cordova-sports.jpg" width="350" height="320" style="border-radius: 3%" />
         <div class="icon-title">Sports</div>
         <div class="icon-description">laksdjlajsdlk</div>
       </div>
-    <v-dialog v-model="dialogSports" scrollable max-width="800">
-        <v-card>
-          <v-img src="/images/Cordova-sports.jpg" height="500" style="margin-top: 1%;"></v-img>
-          <v-card-title class="headline">Sports</v-card-title>
-          <v-card-text>
-            <p>asdjasdjasdha</p>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="primary" @click="dialogSports = false">Close</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-
-
-      <div class="icon" @click="openDialog('Wellness')">
+   
+      <div class="icon">
         <img src="/images/Cordova-health-wellness.jpg" width="350" height="320" style="border-radius: 3%" />
         <div class="icon-title">Health-Wellness</div>
         <div class="icon-description">laksdjlajsdl</div>
       </div>
-    <v-dialog v-model="dialogHealthWellness" scrollable max-width="800">
-        <v-card>
-          <v-img src="../images/Cordova-health-wellness.jpg" height="500" style="margin-top: 1%;"></v-img>
-          <v-card-title class="headline">Health-Wellness</v-card-title>
-          <v-card-text>
-            <p>asdhasfhasdhasdhasdhasd</p>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="primary" @click="dialogHealthWellness = false">Close</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+   
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      dialogFestival: false,
-      dialogExplore: false,
-      dialogProvince: false,
-      dialogLocalnews: false,
-      dialogEvents: false,
-      dialogSports: false,
-      dialogHealthWellness: false,
-      latestNews: {
-        title: "Latest News Title",
-        description:
-          "This is the latest news in Cordova. It's an example news description.",
-        image: "images/buagsong.jpg",
-      },
-      // ... other data properties
-    };
-  },
-  methods: {
-    openDialog(type) {
-      if (type === 'Festival') {
-        this.dialogFestival = true;
-      } else if (type === 'Explore') {
-        this.dialogExplore = true;
-      } else if (type === 'Province') {
-        this.dialogProvince = true;
-      } else if (type === 'Localnews') {
-        this.dialogLocalnews = true;
-      } else if (type === 'Events') {
-        this.dialogEvents = true;
-      } else if (type === 'Sports') {
-        this.dialogSports = true;
-      } else if (type === 'Wellness') {
-        this.dialogHealthWellness = true;
-      }
-    },
-  },
-};
-
-</script>
-
 <style scoped>
 .title {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

@@ -3,11 +3,7 @@ import Layout from "../Layouts/UserLayout.vue";
 defineOptions({
   layout: Layout,
 });
-defineProps({
-  barangay: Object,
-  SKofficials: Object,
-  BOofficials: Object,
-});
+
 </script>
 <template>
     <v-card width="100%" class="text-center" elevation="0">

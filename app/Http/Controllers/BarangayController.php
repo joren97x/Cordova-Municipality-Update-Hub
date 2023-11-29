@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Barangay;
 use Illuminate\Http\Request;
 
@@ -18,4 +19,9 @@ class BarangayController extends Controller
         $barangay->update();
         return back();
     }
+
+    public function edit(Barangay $barangay) {
+        return Inertia::render('MunicipalAdmin/EditBarangay', ['barangay' => $barangay]);
+    }
+
 }

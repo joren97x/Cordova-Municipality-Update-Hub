@@ -22,9 +22,7 @@ class MunicipalAdminHomeController extends Controller
         return Inertia::render('MunicipalAdmin/Posts');
     }
 
-    public function edit_barangay(Barangay $barangay) {
-        return Inertia::render('MunicipalAdmin/EditBarangay', ['barangay' => $barangay]);
-    }
+    
 
     public function requests() {
         return Inertia::render('MunicipalAdmin/Requests');

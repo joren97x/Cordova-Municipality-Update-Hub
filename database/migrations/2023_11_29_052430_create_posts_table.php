@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barangay_id');
+            $table->string('area_type');
             $table->string('category');
             $table->string('title');
-            $table->string('body');
+            $table->string('status');
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -70,4 +70,4 @@ Route::get('/visitors/essential-travel-facts', function() {
 });
 
 
-Route::get('/barangay/edit-barangay/{barangay}', [MunicipalAdminHomeController::class, 'edit_barangay']);
+Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);

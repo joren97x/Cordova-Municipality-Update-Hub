@@ -1,72 +1,105 @@
 <script setup>
-import Layout from "../Layouts/UserLayout.vue";
-defineOptions({
-  layout: Layout,
-});
-defineProps({
-  barangay: Object,
-  SKofficials: Object,
-  BOofficials: Object,
-});
+	import Layout from "../Layouts/UserLayout.vue";
+	defineOptions({layout: Layout});
+	defineProps({
+		barangay: Object,
+		SKofficials: Object,
+		BOofficials: Object,
+	});
 </script>
 
 <template>
-  <div class="container">
-    <img
-      :src="`../images/${barangay.image}`"
-      alt=""
-      srcset=""
-      width="500"
-      class="image"
-    />
-    <h1 class="heading">{{ barangay.name }}</h1>
-  </div>
-  <div class="about">
-    <h2>About</h2>
-    <p>{{ barangay.about }}</p>
-  </div>
-  <div style="display: flex; justify-content: space-between; margin-top: 20px">
-    <div style="flex: 1; text-align: center">
-      <h2 style="font-size: 55px">Mission</h2>
-      <p>{{ barangay.mission }}</p>
-    </div>
-    <div style="flex: 1; text-align: center">
-      <h2 style="font-size: 55px">Vision</h2>
-      <p>{{ barangay.vision }}</p>
-    </div>
-  </div>
-  <div style="text-align: center; margin-top: 5%">
-    <h2 style="font-size: 50px">Barangay & SK Officials</h2>
-    <div style="display: flex; justify-content: space-between; margin-top: 20px">
-        <v-carousel hide-delimiters style="width: 70%; margin-left: 10%">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-            cover
-          ></v-carousel-item>
-        </v-carousel>
-        <v-carousel hide-delimiters style="width: 70%; margin-right: 10%; margin-left:10%;">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-            cover
-          ></v-carousel-item>
-        </v-carousel>
+	<!-- <div class="container">
+		<img
+		:src="`../images/${barangay.image}`"
+		alt=""
+		srcset=""
+		width="500"
+		class="image"
+		/>
+		<h1 class="heading">{{ barangay.name }}</h1>
+	</div> -->
+	<v-parallax :src="`../images/${barangay.image}`" height="480">
+		<div class="d-flex flex-column fill-height justify-center align-center text-white">
+			<h1 class="text-h1 font-weight-thin mb-4">
+				{{ barangay.name }}
+			</h1>
+		</div>
+	</v-parallax>
+	
+	<div class="my-5">
+		<p class="text-center text-h3">About</p>
+		<p class="text-center text-h6">{{ barangay.about }}</p>
+	</div>
+
+	<v-row class="my-4">
+		<v-col cols="6">
+			<p class="text-center text-h3">Mission</p>
+			<p class="text-center text-h6">{{ barangay.mission }}</p>
+		</v-col>
+		<v-col cols="6">
+			<p class="text-center text-h3">Vision</p>
+			<p class="text-center text-h6">{{ barangay.vision }}</p>
+		</v-col>
+	</v-row>
+
+	<div style="text-align: center; margin-top: 5%">
+		<h2 style="font-size: 50px">Barangay & SK Officials</h2>
+		<!-- <div style="display: flex; justify-content: space-between; margin-top: 20px">
+			<v-carousel hide-delimiters style="width: 70%; margin-left: 10%">
+				<v-carousel-item
+					v-for="(item, i) in items"
+					:key="i"
+					:src="item.src"
+					cover
+				></v-carousel-item>
+				</v-carousel>
+				<v-carousel hide-delimiters style="width: 70%; margin-right: 10%; margin-left:10%;">
+				<v-carousel-item
+					v-for="(item, i) in items"
+					:key="i"
+					:src="item.src"
+					cover
+				></v-carousel-item>
+			</v-carousel>
+		</div> -->
+		<v-row>
+			<v-col cols="6">
+				<v-slide-group class="pa-4" show-arrows>
+					<v-slide-group-item v-for="n in 15" :key="n">
+						<v-card color="grey-lighten-1" :class="['ma-4', selectedClass]" height="200" width="150">
+							<div style="position: absolute; bottom: 0;" class="text-center">
+								<p>John Doe {{ n }} </p>
+								<v-divider class="ms-2"></v-divider>
+								<p class="ms-3">Punong barangay</p>
+							</div>
+						</v-card>
+					</v-slide-group-item>
+				</v-slide-group>
+			</v-col>
+			<v-col cols="6">
+				<v-slide-group class="pa-4" show-arrows>
+					<v-slide-group-item v-for="n in 15" :key="n">
+						<v-card color="grey-lighten-1" :class="['ma-4', selectedClass]" height="200" width="150">
+							<div style="position: absolute; bottom: 0;" class="text-center">
+								<p>John Doe {{ n }} </p>
+								<v-divider class="ms-2"></v-divider>
+								<p class="ms-3">Punong barangay</p>
+							</div>
+						</v-card>
+					</v-slide-group-item>
+				</v-slide-group>
+			</v-col>
+		</v-row>
+			<p class="text-h3">Feast Day</p>
+			<p>{{ barangay.feastday }} date picker here!</p>
+			
 </div>
-<div style="text-align: center; margin-top: 5%;">
-    <h2 style="font-size: 50px">Feast Day</h2>
-    <p>{{ barangay.feastday }}</p>
-  </div>
-</div>
-      <div style="text-align: center; margin-top: 10px;">
-        <h1>IMPORTANT ANNOUNCEMENT</h1>
+        <p class="text-center text-h2">IMPORTANT ANNOUNCEMENT</p>
         <!-- <v-card :key="BOofficial.id" v-for="BOofficial in BOofficials">
           <v-img :src="`../images/${BOofficial.image}`"></v-img>
           {{ BOofficial.image }}
         </v-card> -->
-        </div>
         <v-row style="margin-bottom: 3%;">
             <v-col cols="12" lg="3" md="6" sm="6">
                 <v-card @click="dialogLocalnews = true">
