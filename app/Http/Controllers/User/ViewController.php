@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Inertia\Inertia;
 use App\Models\Barangay;
 use App\Models\Official;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ViewController extends Controller
 {
     //
     public function barangays() {
-
         return Inertia::render('User/Barangays', ['barangays' => Barangay::all()]);
     }
 
@@ -57,7 +56,5 @@ class ViewController extends Controller
         return Inertia::render('User/Support');
     }
 
-    public function forgotpassword() {
-        return Inertia::render('Auth/forgotpassword');
-    }
+  
 }

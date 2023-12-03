@@ -19,37 +19,27 @@ class AuthController extends Controller
         return Inertia::render('Auth/ForgotPassword');
     }
 
-    public function sign_up(Request $request) {
-        $user = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        $user['role'] = 'municipal_admin';
-        User::create($user);
-        return redirect('/sign-in');
-    }
-
-    public function signUp() {
-        return Inertia::render('Auth/SignUp');
-    }
-
     public function logout() {
         Auth::logout();
         return redirect('/sign-in');
     }
 
     public function signin(Request $request) {
-        $user = $request->validate([
+
+        $validatedUser = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-        if(Auth::attempt($user)){
-            $userr = User::where('email', $user['email'])->first();
-            Auth::login($userr);
-            if($userr['role'] == 'barangay_admin') {
-            return redirect('/BarangayAdminLayout');
+        if(Auth::attempt($validatedUser)){
+            $user = User::where('email', $validatedUser['email'])->first();
+            Auth::login($user);
+            if($user->role == 'barangay_admin') {
+                return redirect('/barangay-admin/dashboard');
             }
-            return redirect('/MunicipalAdminLayout');
+            else {
+                return redirect('/municipal-admin/dashboard');
+            }
+
         }
     }
 }

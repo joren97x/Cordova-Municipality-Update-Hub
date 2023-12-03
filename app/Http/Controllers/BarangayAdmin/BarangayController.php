@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BarangayAdmin;
 
 use Inertia\Inertia;
 use App\Models\Barangay;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BarangayController extends Controller
 {

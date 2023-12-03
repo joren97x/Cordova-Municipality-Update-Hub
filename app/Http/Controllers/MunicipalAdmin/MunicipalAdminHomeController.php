@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MunicipalAdmin;
 
 use App\Models\Barangay;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
+
 
 class MunicipalAdminHomeController extends Controller
 {
