@@ -18,6 +18,7 @@
                     prepend-avatar="https://m.media-amazon.com/images/M/MV5BMzcyOTM2NDA5OF5BMl5BanBnXkFtZTgwMTYzMTQzNzM@._V1_.jpg"
                     title="Hev Abi"
                     subtitle="hev@abi.com"
+                    class="mb-2"
                     >
                     <template v-slot:append>
                         <v-btn variant="text" color="red">

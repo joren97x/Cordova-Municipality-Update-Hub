@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangayController;
 use App\Http\Controllers\User\ViewController;
+use App\Http\Controllers\MunicipalAdmin\QuestionController;
+use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
-use App\Http\Controllers\MunicipalAdmin\QuestionController;
 
 /*
 |--------------------------------------------------------------------------

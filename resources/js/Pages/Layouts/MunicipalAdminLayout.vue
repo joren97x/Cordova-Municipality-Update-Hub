@@ -37,6 +37,14 @@
                     Questions
                 </v-list-item>
             </Link>
+            <Link href="/municipal-admin/email-notify-lists">
+                <v-list-item value="ss" prepend-icon="mdi mdi-message-badge-outline">
+                    <template v-slot:append>
+                        <v-chip>64</v-chip>
+                    </template> 
+                    Email notify list
+                </v-list-item>
+            </Link>
             <Link href="/municipal-admin/visitor">
                 <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
                     Visitors
@@ -48,11 +56,7 @@
                 </v-list-item>
             </Link>
             
-            <Link href="/municipal-admin/email-notify-lists">
-                <v-list-item value="ss" prepend-icon="mdi mdi-message-badge-outline">
-                    Email notify list
-                </v-list-item>
-            </Link>
+            
         </v-list>
         <template v-slot:append>
             <Link href="/logout" method="GET">
@@ -66,8 +70,8 @@
 
       </v-navigation-drawer>
 
-      <v-main>
-        <slot> <h1 style="text-align: center;">Welcome To Dashboard</h1> </slot>
+      <v-main class="bg-grey-lighten-2">
+        <slot> </slot>
       </v-main>
     </v-layout>
   </v-card>
