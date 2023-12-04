@@ -7,6 +7,7 @@ use App\Http\Controllers\BarangayController;
 use App\Http\Controllers\User\ViewController;
 use App\Http\Controllers\MunicipalAdmin\QuestionController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
+use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
 
@@ -57,3 +58,5 @@ Route::post('/municipal-admin/update-barangay/{barangay}', [BarangayController::
 Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
 
 Route::get('/barangay-admin/dashboard', [BarangayAdminHomeController::class, 'dashboard']);
+Route::get('/barangay-admin/pending-posts', [BarangayAdminPostController::class, 'pending']);
+Route::get('/barangay-admin/posts', [BarangayAdminPostController::class, 'index']);

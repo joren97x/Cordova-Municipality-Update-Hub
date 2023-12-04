@@ -21,7 +21,7 @@
                     class="mb-2"
                     >
                     <template v-slot:append>
-                        <v-btn variant="text" color="red">
+                        <v-btn variant="text" color="red" prepend-icon="mdi-close">
                             Remove
                         </v-btn>
                     </template>

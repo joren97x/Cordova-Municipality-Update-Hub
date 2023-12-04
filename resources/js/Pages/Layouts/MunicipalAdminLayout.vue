@@ -1,3 +1,20 @@
+<script setup>
+
+    import {ref, watch} from 'vue'
+    const panels = ref([])
+    const showPanels = ref(false)
+
+    watch(showPanels, () => {
+        console.log(showPanels.value)
+        if(showPanels.value == true) {
+            panels.value = ["all"]
+        }
+        else {
+            panels.value = []
+        }
+    })
+
+</script>
 <template>
   <v-card>
     <v-layout>
@@ -45,11 +62,25 @@
                     Email notify list
                 </v-list-item>
             </Link>
-            <Link href="/municipal-admin/visitor">
+            <!-- <Link href="/municipal-admin/visitor">
                 <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
                     Visitors
                 </v-list-item>
-            </Link>
+            </Link> -->
+            <v-list-item prepend-icon="mdi-account-group" @click="showPanels = !showPanels" :append-icon="showPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">Visitors</v-list-item>
+            <v-expansion-panels variant="accordion" v-model="panels">
+                <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
+                    <template v-slot:text>
+                        <v-list-item prepend-icon="mdi-car" value="1">Essential travel facts</v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="2">Must see sites</v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="3">Entertainment, shopping and leisures </v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="4">Bed and dine </v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="5">Moving around the city </v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="6">Money exchange center</v-list-item>
+                        <v-list-item prepend-icon="mdi-car" value="7">Events, festivals and activities</v-list-item>
+                    </template>
+                </v-expansion-panel>
+            </v-expansion-panels>
             <Link href="/municipal-admin/posts">
                 <v-list-item value="Post" prepend-icon="mdi mdi-post-outline">
                     The municipal

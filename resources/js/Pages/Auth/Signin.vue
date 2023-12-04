@@ -19,7 +19,6 @@
                 <v-img src="../fakelogo.jpg" cover width="250"></v-img>
             </div>
             <p class="text-center text-h3">Sign in</p>
-            {{ Loginform }}
             <v-card-item>
                 <v-text-field
                     label="Email"

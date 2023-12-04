@@ -1,5 +1,19 @@
 <script setup>
 
+    import {ref, watch} from 'vue'
+    const panels = ref(["all"])
+    const showPanels = ref(true)
+
+    watch(showPanels, () => {
+        console.log(showPanels.value)
+        if(showPanels.value == true) {
+            panels.value = ["all"]
+        }
+        else {
+            panels.value = []
+        }
+    })
+
     const items = [
         'Sports',
         'Events',
@@ -22,21 +36,32 @@
   
           <v-list density="compact" nav>
             <Link href="/barangay-admin/posts">
-                  <v-list-item value="Post" prepend-icon="mdi mdi-post-outline">
-                      Barangay
-                  </v-list-item>
-              </Link>
-              <Link href="#">
-                  <v-list-item prepend-icon="mdi mdi-home" value="dashboard"> 
-                      Posts
-                  </v-list-item>
-              </Link>
-              <Link href="/barangay-admin/manage-posts">
-                  <v-list-item value="Municipality" prepend-icon="mdi mdi-post-outline">
-                      Pending posts
-                  </v-list-item>
-              </Link>
-              <Link href="/barangay-admin/pending-posts">
+                <v-list-item value="Post" prepend-icon="mdi mdi-post-outline">
+                    Barangay
+                </v-list-item>
+            </Link>
+            <Link href="/barangay-admin/posts">
+                <v-list-item prepend-icon="mdi mdi-home" value="dashboard"> 
+                    Posts
+                </v-list-item>
+            </Link>
+            <Link href="/barangay-admin/pending-posts">
+                <v-list-item value="Municipality" prepend-icon="mdi mdi-post-outline">
+                    Pending posts
+                </v-list-item>
+            </Link>
+            <v-list-item prepend-icon="mdi-bullhorn" @click="showPanels = !showPanels" :append-icon="showPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">Announcements</v-list-item>
+                <v-expansion-panels variant="accordion" v-model="panels">
+                    <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
+                        <template v-slot:text>
+                            <v-list-item prepend-icon="mdi-car" value="1">Local news</v-list-item>
+                            <v-list-item prepend-icon="mdi-car" value="2">Events</v-list-item>
+                            <v-list-item prepend-icon="mdi-car" value="3">Sports</v-list-item>
+                            <v-list-item prepend-icon="mdi-car" value="4">Health and wellness</v-list-item>
+                        </template>
+                    </v-expansion-panel>
+                </v-expansion-panels>
+              <!-- <Link href="/barangay-admin/pending-posts">
                   <v-list-item value="Request" prepend-icon="mdi mdi-account-question-outline"> 
                       Local news
                   </v-list-item>
@@ -55,7 +80,7 @@
                   <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
                       Health and wellness
                   </v-list-item>
-              </Link>
+              </Link> -->
               
               
               

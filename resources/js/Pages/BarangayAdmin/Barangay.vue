@@ -7,5 +7,5 @@
 
 </script>
 <template>
-    <h1>Pending Posts</h1>
+    <h1>Barangay info page</h1>
 </template>
