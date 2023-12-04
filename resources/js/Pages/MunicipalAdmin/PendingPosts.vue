@@ -23,8 +23,8 @@
                         All barangays
                     </v-tab>
                     <v-tab :value="barangay.id" v-for="barangay in barangays" :key="barangay.id">
-                            {{ barangay.name }} 
-                            <v-chip color="red" variant="flat" size="x-small">{{ barangay.id }}</v-chip>
+                        {{ barangay.name }} 
+                        <v-chip color="red" variant="flat" size="x-small">{{ barangay.id }}</v-chip>
                     </v-tab>
                 </v-tabs>
 

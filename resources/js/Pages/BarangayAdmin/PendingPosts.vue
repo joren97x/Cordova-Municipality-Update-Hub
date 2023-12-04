@@ -1,7 +1,13 @@
 <script setup>
 
+    import {ref} from 'vue'
     import BarangayAdminLayout from '../Layouts/BarangayAdminLayout.vue'
+    import DeletePostDialog from '../Components/DeletePostDialog.vue'
+    import EditPostDialog from '../Components/EditPostDialog.vue'
     import {format} from 'date-fns'
+
+    const showDeletePostDialog = ref(false)
+    const showEditPostDialog = ref(false)
     defineOptions({
         layout: BarangayAdminLayout
     })
@@ -32,12 +38,15 @@
                     <v-card-actions>
                         <v-spacer/>
                         <!-- just check the post's status to show or not show the buttons -->
-                        <v-btn color="blue">Edit</v-btn>
-                        <v-btn color="red">Delete</v-btn>
+                        <v-btn color="blue" @click="showEditPostDialog = true">Edit</v-btn>
+                        <v-btn color="red" @click="showDeletePostDialog = true">Delete</v-btn>
                     </v-card-actions>
                 </v-card>
 
             </v-col>
         </v-row>
+
+        <DeletePostDialog @closeDeletePostDialog="showDeletePostDialog = false" :deletePostDialog="showDeletePostDialog" />
+        <EditPostDialog @closeEditPostDialog="showEditPostDialog = false" :editPostDialog="showEditPostDialog" />
     </v-container>
 </template>
