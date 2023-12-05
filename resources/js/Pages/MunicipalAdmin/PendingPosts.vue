@@ -1,21 +1,19 @@
 <script setup>
 
     import {ref} from 'vue'
-    import {format} from 'date-fns'
-    import MunicipalAdminLayout from '../Layouts/MunicipalAdminLayout.vue';
-    defineOptions({
-        layout: MunicipalAdminLayout
-    })
-    defineProps({
-        barangays: Object
-    })
+    import MunicipalAdminLayout from '../Layouts/MunicipalAdminLayout.vue'
+    import PostCard from '../Components/PostCard.vue';
 
-    const tab = ref(null)
+    defineOptions({ layout: MunicipalAdminLayout })
+    defineProps({ barangays: Object , auth: Object})
+
+    const tab = ref('0')
 
 </script>
 <template>
     <v-container>
         <p class="text-h4 ma-1">Pending posts</p>
+        {{ posts }}
         <v-card>
             <div class="d-flex flex-row">
                 <v-tabs v-model="tab" bg-color="grey-darken-2" direction="vertical">
@@ -24,44 +22,34 @@
                     </v-tab>
                     <v-tab :value="barangay.id" v-for="barangay in barangays" :key="barangay.id">
                         {{ barangay.name }} 
-                        <v-chip color="red" variant="flat" size="x-small">{{ barangay.id }}</v-chip>
+                        <v-chip color="red" variant="flat" v-if="barangay.pendingPostsCount > 0" size="x-small">{{ barangay.pendingPostsCount }}</v-chip>
                     </v-tab>
                 </v-tabs>
 
                 <v-card-text>
                     <v-window v-model="tab">
+                        
                         <v-window-item :value="barangay.id" v-for="barangay in barangays" :key="barangay.id">
-                            <p class="text-h5">{{ barangay.name }}</p>
                             <v-row>
                                 <v-col cols="12">
-                                    <v-card v-for="n in 3" :key="n" class="my-5">
-                                        <v-img src="https://t4.ftcdn.net/jpg/05/57/46/03/360_F_557460386_dKs9K9peVkWWi6VpnMFIKGciQJzRyCX6.jpg" height="180" cover></v-img>
-                                        <v-card-title>
-                                            Title Lorem, ipsum {{ n }}
-                                        </v-card-title>
-                                        <v-card-subtitle>
-                                            <v-icon>mdi-circle-medium</v-icon>
-                                            {{ format(new Date(), 'PPPP') }}
-                                            <v-icon>mdi-circle-medium</v-icon>
-                                            Category
-                                        </v-card-subtitle>
-                                        <v-card-text>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quos expedita iste id vero cumque reiciendis explicabo commodi accusantium exercitationem!
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, omnis.
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, aspernatur?
-                                        </v-card-text>
-                                        <v-card-actions>
-                                            <v-spacer/>
-                                            <v-btn color="red">Decline</v-btn>
-                                            <v-btn color="green">Approve</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
+                                    <p class="text-h4">{{ barangay.name }}</p>
                                 </v-col>
                             </v-row>
+                            <v-row v-if="barangay.posts.length > 0">
+                                <v-col cols="12" v-for="post in barangay.posts" :key="post.id" class="my-5">
+                                    <PostCard :post="post" :auth="auth" />
+                                </v-col>
+                            </v-row>
+                            <p v-else> No posts found. </p>
                         </v-window-item>
                         <v-window-item value="0">
-                            <p class="text-h5">All barangays</p>
+                            <p class="text-h4">All barangays</p>
                             <p>All pending posts from all barangays</p>
+                            <div v-for="barangay in barangays" :key="barangay.id">
+                                <v-col cols="12" v-for="post in barangay.posts" :key="post.id" class="my-5">
+                                    <PostCard :post="post" :auth="auth" />
+                                </v-col>
+                            </div>
                         </v-window-item>
                     </v-window>
                 </v-card-text>

@@ -12,14 +12,21 @@ class MunicipalAdminPostController extends Controller
 {
     //
     public function index() {
-        return Inertia::render('MunicipalAdmin/ManagePosts', ['posts' => Post::all()]);
+        return Inertia::render('MunicipalAdmin/ManagePosts', ['posts' => Post::where('status', 'approved')->where('barangay_id', auth()->user()->area_id)->latest()->get()]);
     }
 
     public function pending() {
+
+        $barangays = Barangay::all();
+
+        foreach($barangays as $barangay) {
+            $barangay->posts = Post::where('barangay_id', $barangay->id)->where('status', 'pending')->latest()->get();
+            $barangay->pendingPostsCount = count($barangay->posts);
+        }
+
         return Inertia::render('MunicipalAdmin/PendingPosts', 
         [
-            'posts' => Post::where('status', 'pending')->get(),
-            'barangays' => Barangay::all()
+            'barangays' => $barangays
         ]);
     }
 

@@ -15,6 +15,10 @@ class MunicipalAdminHomeController extends Controller
         return Inertia::render('MunicipalAdmin/Municipality');
     }
 
+    public function admins() {
+        return Inertia::render('MunicipalAdmin/Admins');
+    }
+
     public function dashboard() {
         return Inertia::render('MunicipalAdmin/Dashboard', ['barangays' => Barangay::all()]);
     }

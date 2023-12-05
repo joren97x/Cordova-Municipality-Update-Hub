@@ -7,5 +7,7 @@
 
 </script>
 <template>
-    CONTAT US PAGE
+    MAKITA ALL BARANGAY & MUNICIPAL ADMINS
+    <br>
+    ADD NEW ADMIN
 </template>

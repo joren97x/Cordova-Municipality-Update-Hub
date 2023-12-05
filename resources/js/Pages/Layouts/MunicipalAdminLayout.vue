@@ -45,7 +45,7 @@
             <Link href="/municipal-admin/pending-posts">
                 <v-list-item value="Request" prepend-icon="mdi-note-multiple"> 
                     <template v-slot:append>
-                        <v-chip>9+</v-chip>
+                        <v-chip>n</v-chip>
                     </template>
                     Pending posts
                 </v-list-item>
@@ -53,7 +53,7 @@
             <Link href="/municipal-admin/questions">
                 <v-list-item value="Contact" prepend-icon="mdi-chat-question">
                     <template v-slot:append>
-                        <v-chip>9+</v-chip>
+                        <v-chip>n</v-chip>
                     </template> 
                     Questions
                 </v-list-item>
@@ -61,7 +61,7 @@
             <Link href="/municipal-admin/email-notify-lists">
                 <v-list-item value="ss" prepend-icon="mdi-email-multiple">
                     <template v-slot:append>
-                        <v-chip>64</v-chip>
+                        <v-chip>n</v-chip>
                     </template> 
                     Email notify list
                 </v-list-item>
@@ -88,6 +88,11 @@
             <Link href="/municipal-admin/posts">
                 <v-list-item value="Post" prepend-icon="mdi mdi-post-outline">
                     The municipal
+                </v-list-item>
+            </Link>
+            <Link href="/municipal-admin/admins">
+                <v-list-item value="admins" prepend-icon="mdi-account">
+                    Admins
                 </v-list-item>
             </Link>
             

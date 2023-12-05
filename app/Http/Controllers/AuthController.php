@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
@@ -26,20 +27,20 @@ class AuthController extends Controller
 
     public function signin(Request $request) {
 
-        $validatedUser = $request->validate([
-            'email' => 'required',
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
             'password' => 'required'
         ]);
-        if(Auth::attempt($validatedUser)){
-            $user = User::where('email', $validatedUser['email'])->first();
-            Auth::login($user);
-            if($user->role == 'barangay_admin') {
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            if(auth()->user()->role == 'barangay_admin') {
                 return redirect('/barangay-admin/dashboard');
             }
             else {
                 return redirect('/municipal-admin/dashboard');
             }
-
         }
+
+        return back()->withErrors(['email' => 'The provided credentials do not match our records.',])->onlyInput('email');
     }
 }

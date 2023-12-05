@@ -1,31 +1,34 @@
 <script setup>
 
     import {format} from 'date-fns'
-
+    const props = defineProps({ post: Object, auth: Object })
+    console.log(props)
 </script>
 <template>
 
-    <v-card class="mb-6">
-        <v-img src="https://t4.ftcdn.net/jpg/05/57/46/03/360_F_557460386_dKs9K9peVkWWi6VpnMFIKGciQJzRyCX6.jpg" height="200" cover></v-img>
+    <v-card>
+        <v-img :src="`/images/banner/${post.banner}`" height="210" cover></v-img>
         <v-card-title>
-            Title Lorem, ipsum {{ n }}
+            {{ post.title }} <v-chip color="red" v-if="post.status == 'pending'" prepend-icon="mdi-alert-circle">Pending</v-chip>
         </v-card-title>
         <v-card-subtitle>
             <v-icon>mdi-circle-medium</v-icon>
-            {{ format(new Date(), 'PPPP') }}
+            {{ format(new Date(post.created_at), 'PPPP') }}
             <v-icon>mdi-circle-medium</v-icon>
-            Category
+            {{ post.category }}
         </v-card-subtitle>
         <v-card-text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quos expedita iste id vero cumque reiciendis explicabo commodi accusantium exercitationem!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, omnis.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, aspernatur?
+            {{ post.description }}
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'barangay_admin'">
             <v-spacer/>
-            <!-- just check the post's status to show or not show the buttons -->
-            <!-- <v-btn color="blue">Edit</v-btn>
-            <v-btn color="red">Delete</v-btn> -->
+            <v-btn color="blue">Edit</v-btn>
+            <v-btn color="red">Delete</v-btn>
+        </v-card-actions>
+        <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'municipal_admin'">
+            <v-spacer/>
+            <v-btn color="red">Decline</v-btn>
+            <v-btn color="green">Approve</v-btn>
         </v-card-actions>
     </v-card>
     
