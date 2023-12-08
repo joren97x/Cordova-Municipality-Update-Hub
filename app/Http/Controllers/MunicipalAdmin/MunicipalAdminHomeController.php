@@ -27,8 +27,6 @@ class MunicipalAdminHomeController extends Controller
         return Inertia::render('MunicipalAdmin/Posts');
     }
 
-    
-
     public function requests() {
         return Inertia::render('MunicipalAdmin/Requests');
     }
