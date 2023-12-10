@@ -119,6 +119,15 @@ class BarangaySeeder extends Seeder
                 "image" => "dapitan.jpg",
                 "feastday" => "2024-12-07"
             ],
+            [
+                "name" => "Cordova Municipality",
+                "about" => "Cordova is a picturesque municipality located on Mactan Island in the Philippines. Its history is deeply intertwined with the rich heritage of Mactan and the broader story of the nation. Before the arrival of Spanish colonizers in the 16th century, Mactan Island, including Cordova, was home to Cebuano-speaking indigenous people. It is renowned for the Battle of Mactan in
+                1521 when Lapu-Lapu, the local chieftain, successfully resisted Ferdinand Magellan's attempt to conquer the island. During the Spanish colonization, Cordova, like many other places in the Philippines, was brought under Spanish rule. It underwent significant changes as the Spaniards established settlements and introduced Christianity. The municipality has since evolved, reflecting a blend of indigenous roots and influences from colonial history. Today, Cordova stands as a testament to the enduring cultural heritage of the Philippines.",
+                "mission" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos laborum labore veritatis! Ipsa dignissimos totam laudantium quam quasi incidunt ut minima labore omnis fugiat dolorem soluta, vitae accusamus cupiditate animi!",
+                "vision" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi nostrum dignissimos sint odit quibusdam quas accusantium molestiae! Dolorum, animi sint odio provident ipsum perspiciatis corporis!",
+                "image" => "cordova-church.jpg",
+                "feastday" => "2023-01-15"
+            ],
         ];
         
         foreach($barangays as $barangay) {

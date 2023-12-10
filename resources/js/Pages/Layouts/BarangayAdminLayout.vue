@@ -1,6 +1,7 @@
 <script setup>
 
     import {ref, watch} from 'vue'
+    defineProps({ auth: Object })
     const panels = ref(["all"])
     const showPanels = ref(true)
 
@@ -38,7 +39,7 @@
           <v-divider></v-divider>
   
           <v-list density="compact" nav>
-            <Link href="/barangay-admin/posts">
+            <Link :href="`/barangay-admin/`">
                 <v-list-item value="Post" prepend-icon="mdi-home">
                     Barangay
                 </v-list-item>

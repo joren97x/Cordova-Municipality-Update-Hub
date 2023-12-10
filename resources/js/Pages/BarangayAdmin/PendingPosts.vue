@@ -22,7 +22,10 @@
                 <PostCard :post="post" :auth="auth" />
 
             </v-col>
+
         </v-row>
+        <p v-if="posts.length == 0" class="text-center">No pending posts found.</p>
+
 
         <DeletePostDialog @closeDeletePostDialog="showDeletePostDialog = false" :deletePostDialog="showDeletePostDialog" />
         <EditPostDialog @closeEditPostDialog="showEditPostDialog = false" :editPostDialog="showEditPostDialog" />

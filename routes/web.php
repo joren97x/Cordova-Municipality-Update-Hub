@@ -9,6 +9,7 @@ use App\Http\Controllers\MunicipalAdmin\QuestionController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
+use App\Http\Controllers\MunicipalAdmin\AdminController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
 use App\Http\Controllers\PostController;
 
@@ -37,6 +38,9 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/visitor', [MunicipalAdminHomeController::class, 'visitor']);
     Route::get('/municipal-admin/the-municipal', [MunicipalAdminHomeController::class, 'the_municipal']);
     Route::post('/municipal-admin/update-barangay/{barangay}', [BarangayController::class, 'update']);
+    Route::post('/municipal_admin/create-admin', [AdminController::class, 'store']);
+    Route::post('/municipal_admin/update-admin/{admin}', [AdminController::class, 'update']);
+    Route::post('/municipal_admin/delete-admin/{admin}', [AdminController::class, 'destroy']);
     Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
 });
 

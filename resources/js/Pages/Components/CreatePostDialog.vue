@@ -17,7 +17,6 @@
     function submit() {
         postForm.post('/create-post', {
             onSuccess: () => {
-                console.log("CLOSE THE DIALOG")
                 emit('closeCreatePostDialog')
             }
             
@@ -47,8 +46,8 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer/>
-                    <v-btn color="red" @click="emit('closeCreatePostDialog')">Cancel</v-btn>
-                    <v-btn @click="submit">Fordago</v-btn>
+                    <v-btn @click="emit('closeCreatePostDialog')">Cancel</v-btn>
+                    <v-btn color="green" @click="submit">Fordago</v-btn>
                 </v-card-actions>
             </v-card>
         </v-form>

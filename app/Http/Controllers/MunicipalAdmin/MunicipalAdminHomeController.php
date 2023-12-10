@@ -5,7 +5,7 @@ namespace App\Http\Controllers\MunicipalAdmin;
 use App\Models\Barangay;
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
-
+use App\Models\User;
 
 class MunicipalAdminHomeController extends Controller
 {
@@ -16,7 +16,7 @@ class MunicipalAdminHomeController extends Controller
     }
 
     public function admins() {
-        return Inertia::render('MunicipalAdmin/Admins');
+        return Inertia::render('MunicipalAdmin/Admins', ['admins' => User::all(), 'barangays' => Barangay::all()]);
     }
 
     public function dashboard() {

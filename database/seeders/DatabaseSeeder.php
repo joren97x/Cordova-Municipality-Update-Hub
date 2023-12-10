@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('asdasd')
         ]);
         \App\Models\User::factory()->create([
-            'area_id' => 1,
+            'area_id' => 14,
             'role' => 'municipal_admin',
             'email' => 'madmin@email.com',
             'password' => bcrypt('asdasd')
         ]);
+        $this->call(BarangaySeeder::class);
     }
 }
