@@ -8,6 +8,7 @@ use App\Http\Controllers\BarangayController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\User\ViewController;
 use App\Http\Controllers\MunicipalAdmin\AdminController;
+use App\Http\Controllers\MunicipalAdmin\OfficialController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
@@ -41,6 +42,7 @@ Route::middleware('municipal_admin')->group(function () {
     Route::post('/municipal_admin/create-admin', [AdminController::class, 'store']);
     Route::post('/municipal_admin/update-admin/{admin}', [AdminController::class, 'update']);
     Route::post('/municipal_admin/delete-admin/{admin}', [AdminController::class, 'destroy']);
+    Route::post('/municipal-admin/officials', [OfficialController::class, 'index']);
     Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
     Route::post('/municipal-admin/answer-question/{question}', [QuestionController::class, 'answer']);
     // Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
@@ -50,6 +52,7 @@ Route::middleware('barangay_admin')->group(function() {
     Route::get('/barangay-admin/dashboard', [BarangayAdminHomeController::class, 'dashboard']);
     Route::get('/barangay-admin/pending-posts', [BarangayAdminPostController::class, 'pending']);
     Route::get('/barangay-admin/posts', [BarangayAdminPostController::class, 'index']);
+    Route::get('/barangay-admin/officials', [OfficialController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function() {

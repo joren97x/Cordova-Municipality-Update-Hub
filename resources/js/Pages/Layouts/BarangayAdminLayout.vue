@@ -40,18 +40,23 @@
   
           <v-list density="compact" nav>
             <Link :href="`/barangay-admin/`">
-                <v-list-item value="Post" prepend-icon="mdi-home">
+                <v-list-item value="barangay" prepend-icon="mdi-home">
                     Barangay
                 </v-list-item>
             </Link>
             <Link href="/barangay-admin/posts">
-                <v-list-item prepend-icon="mdi-note" value="dashboard"> 
+                <v-list-item prepend-icon="mdi-note" value="posts"> 
                     Posts
                 </v-list-item>
             </Link>
             <Link href="/barangay-admin/pending-posts">
-                <v-list-item value="Municipality" prepend-icon="mdi-note-multiple">
+                <v-list-item value="pending-posts" prepend-icon="mdi-note-multiple">
                     Pending posts
+                </v-list-item>
+            </Link>
+            <Link href="/barangay-admin/officials">
+                <v-list-item value="officials" prepend-icon="mdi-note-multiple">
+                    Officials
                 </v-list-item>
             </Link>
             <v-list-item prepend-icon="mdi-bullhorn" @click="showPanels = !showPanels" :append-icon="showPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">Announcements</v-list-item>
@@ -65,29 +70,6 @@
                         </template>
                     </v-expansion-panel>
                 </v-expansion-panels>
-              <!-- <Link href="/barangay-admin/pending-posts">
-                  <v-list-item value="Request" prepend-icon="mdi mdi-account-question-outline"> 
-                      Local news
-                  </v-list-item>
-              </Link>
-              <Link href="/barangay-admin/questions">
-                  <v-list-item value="Contact" prepend-icon="mdi mdi-card-account-phone-outline">
-                      Events
-                  </v-list-item>
-              </Link>
-              <Link href="/barangay-admin/email-notify-lists">
-                  <v-list-item value="ss" prepend-icon="mdi mdi-message-badge-outline">
-                      Sports
-                  </v-list-item>
-              </Link>
-              <Link href="/barangay-admin/visitor">
-                  <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
-                      Health and wellness
-                  </v-list-item>
-              </Link> -->
-              
-              
-              
           </v-list>
           <template v-slot:append>
               <Link href="/logout" method="GET">
