@@ -3,15 +3,15 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\BarangayController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\User\ViewController;
-use App\Http\Controllers\MunicipalAdmin\QuestionController;
+use App\Http\Controllers\MunicipalAdmin\AdminController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
-use App\Http\Controllers\MunicipalAdmin\AdminController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +37,13 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/email-notify-lists', [MunicipalAdminHomeController::class, 'email_notify_lists']);
     Route::get('/municipal-admin/visitor', [MunicipalAdminHomeController::class, 'visitor']);
     Route::get('/municipal-admin/the-municipal', [MunicipalAdminHomeController::class, 'the_municipal']);
-    Route::post('/municipal-admin/update-barangay/{barangay}', [BarangayController::class, 'update']);
+    // Route::post('/municipal-admin/update-barangay/{barangay}', [BarangayController::class, 'update']);
     Route::post('/municipal_admin/create-admin', [AdminController::class, 'store']);
     Route::post('/municipal_admin/update-admin/{admin}', [AdminController::class, 'update']);
     Route::post('/municipal_admin/delete-admin/{admin}', [AdminController::class, 'destroy']);
-    Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
+    Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
+    Route::post('/municipal-admin/answer-question/{question}', [QuestionController::class, 'answer']);
+    // Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
 });
 
 Route::middleware('barangay_admin')->group(function() {
@@ -66,6 +68,7 @@ Route::get('/{barangay}/sports', [ViewController::class, 'sports']);
 Route::get('/{barangay}/local-news', [ViewController::class, 'local_news']);
 Route::get('/{barangay}/health-wellness', [ViewController::class, 'health_wellness']);
 Route::get('/barangay/{brgy}', [ViewController::class, 'barangay_explore']);
+Route::post('/create-question', [QuestionController::class, 'store']);
 Route::get('/Visitors/{topic}', function () {
     return Inertia::render('User/VisitorExplore');
 });

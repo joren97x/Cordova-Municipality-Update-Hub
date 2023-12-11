@@ -47,7 +47,7 @@
                 <v-card-actions>
                     <v-spacer/>
                     <v-btn @click="emit('closeCreatePostDialog')">Cancel</v-btn>
-                    <v-btn color="green" @click="submit">Fordago</v-btn>
+                    <v-btn color="green" @click="submit" :loading="postForm.processing" >Fordago</v-btn>
                 </v-card-actions>
             </v-card>
         </v-form>

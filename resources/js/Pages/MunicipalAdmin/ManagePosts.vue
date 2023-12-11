@@ -44,7 +44,7 @@
             </v-card>
         </v-dialog> -->
         <v-snackbar v-model="showSuccessSnackbar" location="top" timeout="2500">
-            POST SUCCESSFUL!
+            Post posted successfully.
         </v-snackbar>
     </v-container>
 </template>

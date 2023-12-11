@@ -1,129 +1,64 @@
 <script setup>
-import Layout from "../Layouts/UserLayout.vue";
-defineOptions({
-  layout: Layout,
-});
+
+    defineOptions({ layout: Layout })
+    import Layout from "../Layouts/UserLayout.vue"
+    import { useForm } from "@inertiajs/vue3"
+    import {ref} from 'vue'
+
+    const snackbar = ref(false)
+    const questionForm = useForm({
+        name: null,
+        email: null,
+        contact_no: null,
+        question: null
+    })
+
+    function submitQuestionForm() {
+        questionForm.post('/create-question', {
+            onSuccess: () => {
+                snackbar.value = true
+                questionForm.reset()
+            }
+        })
+    }
+
 </script>
 
 <template>
-    <div class="contact-container">
-      <div class="contact-section">
-        <h1>Contact Us</h1>
-        <p class="contact-info">
-          Poblacion, Cordova Cebu Philippines <br />
-          Telephone: 123-456-789 <br />
-          Fax No: 123-56-123 <br />
-          Email Address: cordova.cebu@gmail.com <br />
-        </p>
-        <div class="container-icon">
-          <v-btn
-          class="ma-2"
-          color="red"
-          icon="mdi-gmail"
-        ></v-btn>
-        <v-btn
-        class="ma-2"
-        color="indigo"
-        icon="mdi-facebook"
-      ></v-btn>
-          <v-btn
-          class="ma-2"
-          color="red"
-          icon="mdi-google"
-        ></v-btn>
-        </div>
-      </div>
-      <div class="help-section">
-        <h1 class="head">We're here to support you!</h1>
-        <v-text-field
-        label="Full Name"
-        variant="outlined"
-        clearable
-        prepend-inner-icon="mdi-account"
-      ></v-text-field>
-        <v-text-field
-        label="Email"
-        variant="outlined"
-        clearable
-        prepend-inner-icon="mdi-email"
-        ></v-text-field>
-        <v-text-field
-        label="Contact Number"
-        variant="outlined"
-        clearable
-        prepend-inner-icon="mdi-phone"
-        ></v-text-field>
-        <v-textarea
-        label="Message"
-        variant="outlined"
-        clearable
-        prepend-inner-icon="mdi-message"
-    ></v-textarea>
-        <v-btn flat color="red" class="send-button" style="margin-bottom: 12%;">Send</v-btn>
-      </div>
-    </div>
+
+    <v-container>
+        <v-card class="pa-5">
+           <v-form @submit.prevent>
+                <v-row>
+                    {{ questionForm }}
+                    <v-col cols="6" class="text-start fill-height" style="margin: auto">
+                        <p class="text-h4">Contact Us</p>
+                        <p>
+                        Poblacion, Cordova Cebu Philippines <br />
+                        Telephone: 123-456-789 <br />
+                        Fax No: 123-56-123 <br />
+                        Email Address: cordova.cebu@gmail.com <br />
+                        </p>
+                    </v-col>
+                    <v-col cols="6">
+                        <v-card title="Ask us question" elevation="0" class="pa-2">
+                            <v-text-field prepend-inner-icon="mdi-account" v-model="questionForm.name" label="Name"></v-text-field>
+                            <v-text-field prepend-inner-icon="mdi-email" v-model="questionForm.email" label="Email (optional)"></v-text-field>
+                            <v-text-field prepend-inner-icon="mdi-phone" v-model="questionForm.contact_no" label="Contact number (optional)"></v-text-field>
+                            <v-textarea prepend-inner-icon="mdi-message" v-model="questionForm.question" label="Your question..."></v-textarea>
+                        </v-card>
+                    </v-col>
+                </v-row>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn type="submit" :loading="questionForm.processing" @click="submitQuestionForm" >Send</v-btn>
+                </v-card-actions>
+           </v-form>
+        </v-card>
+    </v-container>
+
+    <v-snackbar v-model="snackbar" location="top">
+        Sucessfully submitted a question.
+    </v-snackbar>
+
   </template>
-
-  <style>
-    .contact-container {
-      display: flex;
-    }
-
-    .contact-section {
-      margin-left: 10%;
-      text-align: left;
-      margin-top: 10.5%;
-    }
-
-    .contact-info {
-      justify-content: left;
-      display: flex;
-      margin-left: 1%;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    .container-icon {
-      text-align: center;
-    }
-
-    .help-section {
-      margin-left: 12%; /* Adjust the margin as needed */
-      margin-top: 4%;
-    }
-
-    .head {
-      font-size: 60px;
-      display: flex;
-      justify-content: right;
-    }
-
-
-   @media only screen and (max-width: 800px) {
-        .contact-info {
-            justify-content: center;
-            display: flex;
-        }
-
-        .contact-container {
-            flex-direction: column;
-          }
-    }
-
-     @media only screen and (max-width: 1650px) {
-        h1 {
-           margin-left: 5%;
-            text-align: center;
-        }
-        .container-icon {
-            margin-right: 20%;
-            text-align: center;
-        }
-
-        .help-section {
-            margin-right: 5%;
-        }
-    }
-  </style>
-
-
