@@ -1,6 +1,7 @@
 <script setup>
 
     import {ref, watch} from 'vue'
+    defineProps({ auth: Object })
     const panels = ref([])
     const showPanels = ref(false)
 
@@ -18,23 +19,26 @@
 <template>
   <v-card>
     <v-layout>
-      <v-navigation-drawer :width="312" color="grey-darken-3">
+      <v-navigation-drawer :width="335" color="grey-darken-3">
         
         <v-list-item class="ma-2">
             <template v-slot:prepend>
-                <v-avatar size="60">
+                <v-avatar size="50">
                     <v-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Municipality_of_Cordova_Official_Seal.png/768px-Municipality_of_Cordova_Official_Seal.png"></v-img>
                 </v-avatar>
             </template>
             <p class="text-h6">Municipality admin</p>
+            <!-- <template v-slot:append>
+                <v-btn icon="mdi-menu-open" variant="text" @click="drawer = !drawer"></v-btn>
+            </template> -->
         </v-list-item>
 
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-            <Link href="/municipal-admin/dashboard">
+            <Link href="/municipal-admin/cordova-municipality">
                 <v-list-item prepend-icon="mdi mdi-home" value="dashboard"> 
-                    Municipal
+                    {{ auth.user.barangay.name }}
                 </v-list-item>
             </Link>
             <Link href="/municipal-admin/manage-posts">
@@ -66,6 +70,11 @@
                     Email notify list
                 </v-list-item>
             </Link>
+            <Link href="/municipal-admin/admins">
+                <v-list-item value="admins" prepend-icon="mdi-account">
+                    Admins
+                </v-list-item>
+            </Link>
             <!-- <Link href="/municipal-admin/visitor">
                 <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
                     Visitors
@@ -85,16 +94,12 @@
                     </template>
                 </v-expansion-panel>
             </v-expansion-panels>
-            <Link href="/municipal-admin/posts">
+            <!-- <Link href="/municipal-admin/posts">
                 <v-list-item value="Post" prepend-icon="mdi mdi-post-outline">
                     The municipal
                 </v-list-item>
-            </Link>
-            <Link href="/municipal-admin/admins">
-                <v-list-item value="admins" prepend-icon="mdi-account">
-                    Admins
-                </v-list-item>
-            </Link>
+            </Link> -->
+           
             
             
         </v-list>

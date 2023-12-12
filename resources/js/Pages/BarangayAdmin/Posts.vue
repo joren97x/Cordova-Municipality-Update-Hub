@@ -7,9 +7,7 @@
 
     const showCreatePostDialog = ref(false)
     const successSnackbar = ref(false)
-    defineOptions({
-        layout: BarangayAdminLayout
-    })
+    defineOptions({ layout: BarangayAdminLayout })
     defineProps({auth: Object, posts: Object})
     
 </script>

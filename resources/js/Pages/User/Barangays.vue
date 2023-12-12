@@ -14,7 +14,7 @@ defineProps({
   <v-container fluid fill-height>
     <v-row align="center" justify="center">
         <v-col cols="4" v-for="brgy in barangays" :key="brgy">
-            <Link :href="`/barangay/${brgy.id}`">
+            <Link :href="`/barangay/${brgy.name}`">
                 <v-hover v-slot="{ isHovering, props }" open-delay="200">
                     <v-card key="brgy" class="animated-card" v-bind="props" :elevation="isHovering ? 16: 0">
                         <v-img

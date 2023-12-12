@@ -19,10 +19,6 @@ class MunicipalAdminHomeController extends Controller
         return Inertia::render('MunicipalAdmin/Admins', ['admins' => User::all(), 'barangays' => Barangay::all()]);
     }
 
-    public function dashboard() {
-        return Inertia::render('MunicipalAdmin/Dashboard', ['barangays' => Barangay::all()]);
-    }
-
     public function posts() {
         return Inertia::render('MunicipalAdmin/Posts');
     }
@@ -44,7 +40,8 @@ class MunicipalAdminHomeController extends Controller
     }
 
     public function the_municipal() {
-        return Inertia::render('MunicipalAdmin/TheMunicipal');
+        $b = Barangay::find(auth()->user()->area_id);
+        return Inertia::render('MunicipalAdmin/TheMunicipal', ['municipal' => $b]);
     }
 
 }

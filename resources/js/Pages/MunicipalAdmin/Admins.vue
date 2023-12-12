@@ -99,10 +99,8 @@
         <v-row>
             <v-col cols="10">
                 <p class="text-h4">Admins</p>
-            
             </v-col>
-            <v-col>
-                <v-spacer/>
+            <v-col cols="2">
                 <v-btn prepend-icon="mdi-plus" color="green" @click="createAdminDialog = true">New admin</v-btn>
             </v-col>
         </v-row>

@@ -18,6 +18,7 @@ class QuestionSeeder extends Seeder
         for($i = 0; $i <= 10; $i++) {
             DB::table('questions')->insert([
                 'name' => fake()->name(),
+                'email' => fake()->email(),
                 'question' => fake()->sentence(10)
             ]);
         }

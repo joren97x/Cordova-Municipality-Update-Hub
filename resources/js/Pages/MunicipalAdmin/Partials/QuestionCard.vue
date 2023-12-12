@@ -23,6 +23,7 @@
                 deleteQuestionDialog.value = false
                 emit('questionDeleted') 
             },
+            preserveScroll: true,   
         })
     }
 
@@ -32,6 +33,7 @@
                 deleteQuestionDialog.value = false
                 emit('questionAnswered') 
             },
+            preserveScroll: true,   
         })
     }
 

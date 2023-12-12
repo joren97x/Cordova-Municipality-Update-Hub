@@ -46,7 +46,7 @@ class AuthController extends Controller
             }
             else {
                 // Redirects to the dashboard for municipal_admin (another type of user)
-                return redirect('/municipal-admin/dashboard');
+                return redirect('/municipal-admin/cordova-municipality');
             }
         }
 

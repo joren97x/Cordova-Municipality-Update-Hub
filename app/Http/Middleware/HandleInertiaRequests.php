@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Barangay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -37,6 +38,9 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
+        $barangay = Barangay::where('id', Auth::user() ? Auth::user()->area_id : null)->select('name', 'id')->first();
+
         return array_merge(parent::share($request), [
             //
             'auth' => Auth::user() ? 
@@ -45,7 +49,8 @@ class HandleInertiaRequests extends Middleware
                         'id' => Auth::user()->id,
                         'area_id' => Auth::user()->area_id,
                         'role' => Auth::user()->role,
-                        'email' => Auth::user()->email
+                        'email' => Auth::user()->email,
+                        'barangay' => $barangay
                     ]
                 ] : null
         ]);

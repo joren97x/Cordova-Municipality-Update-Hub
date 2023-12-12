@@ -39,9 +39,9 @@
           <v-divider></v-divider>
   
           <v-list density="compact" nav>
-            <Link :href="`/barangay-admin/`">
+            <Link :href="`/barangay-admin/barangay/${auth.user.barangay.name}`">
                 <v-list-item value="barangay" prepend-icon="mdi-home">
-                    Barangay
+                    {{ auth.user.barangay.name }}
                 </v-list-item>
             </Link>
             <Link href="/barangay-admin/posts">
@@ -54,11 +54,11 @@
                     Pending posts
                 </v-list-item>
             </Link>
-            <Link href="/barangay-admin/officials">
+            <!-- <Link href="/barangay-admin/officials">
                 <v-list-item value="officials" prepend-icon="mdi-note-multiple">
                     Officials
                 </v-list-item>
-            </Link>
+            </Link> -->
             <v-list-item prepend-icon="mdi-bullhorn" @click="showPanels = !showPanels" :append-icon="showPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">Announcements</v-list-item>
                 <v-expansion-panels variant="accordion" v-model="panels">
                     <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">

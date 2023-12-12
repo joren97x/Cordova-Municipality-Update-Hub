@@ -25,8 +25,8 @@
             <v-col cols="12" v-for="post in posts" :key="post.id">
                 <PostCard :post="post" />
             </v-col>
-
         </v-row>
+        <p v-if="posts.length <= 0" class="text-center"> No posts yet. </p>
 
         <CreatePostDialog :createPostDialog="showCreatePostDialog" @closeCreatePostDialog="() => {showCreatePostDialog = false; showSuccessSnackbar = true}" :auth="auth" />
         <DeletePostDialog :deletePostDialog="showDeletePostDialog" @closeDeletePostDialog="showDeletePostDialog = false" />

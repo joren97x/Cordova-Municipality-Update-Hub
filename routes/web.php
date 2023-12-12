@@ -13,6 +13,7 @@ use App\Http\Controllers\BarangayAdmin\BarangayAdminHomeController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
+use App\Http\Controllers\BarangayAdmin\BarangayAdminBarangayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/manage-posts', [MunicipalAdminPostController::class, 'index']);
     Route::get('/municipal-admin/pending-posts', [MunicipalAdminPostController::class, 'pending']);
     Route::get('/municipal-admin/questions', [QuestionController::class, 'index']);
-    Route::get('/municipal-admin/dashboard', [MunicipalAdminHomeController::class, 'dashboard']);
+    Route::get('/municipal-admin/cordova-municipality', [MunicipalAdminHomeController::class, 'the_municipal']);
     Route::get('/municipal-admin/posts', [MunicipalAdminHomeController::class, 'posts']);
     Route::get('/municipal-admin/admins', [MunicipalAdminHomeController::class, 'admins']);
     Route::get('/municipal-admin/requests', [MunicipalAdminHomeController::class, 'requests']);
@@ -50,6 +51,7 @@ Route::middleware('municipal_admin')->group(function () {
 
 Route::middleware('barangay_admin')->group(function() {
     Route::get('/barangay-admin/dashboard', [BarangayAdminHomeController::class, 'dashboard']);
+    Route::get('/barangay-admin/barangay/{barangay}', [BarangayAdminBarangayController::class, 'show']);
     Route::get('/barangay-admin/pending-posts', [BarangayAdminPostController::class, 'pending']);
     Route::get('/barangay-admin/posts', [BarangayAdminPostController::class, 'index']);
     Route::get('/barangay-admin/officials', [OfficialController::class, 'index']);

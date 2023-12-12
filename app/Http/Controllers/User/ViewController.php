@@ -11,7 +11,7 @@ class ViewController extends Controller
 {
     //
     public function barangays() {
-        return Inertia::render('User/Barangays', ['barangays' => Barangay::all()]);
+        return Inertia::render('User/Barangays', ['barangays' => Barangay::where('id', '!=', 14)->get()]);
     }
 
     public function events() {
@@ -30,10 +30,11 @@ class ViewController extends Controller
         return Inertia::render('User/HealthWellness');
     }
 
-    public function barangay_explore(Barangay $brgy) {
-        $SKofficials = Official::where('barangay_id', $brgy->id)->where('position_name', 'SK')->get();
-        $Barangayofficials = Official::where('barangay_id', $brgy->id)->where('position_name', 'BO')->get();
-        return Inertia::render('User/BarangayExplore', ['barangay' => $brgy, 'SKofficials' => $SKofficials, 'BOofficials' => $Barangayofficials]);
+    public function barangay_explore($brgy) {
+        $barangay = Barangay::where('name', $brgy)->first();
+        $SKofficials = Official::where('barangay_id', $barangay->id)->where('position_name', 'SK')->get();
+        $Barangayofficials = Official::where('barangay_id', $barangay->id)->where('position_name', 'BO')->get();
+        return Inertia::render('User/BarangayExplore', ['barangay' => $barangay, 'SKofficials' => $SKofficials, 'BOofficials' => $Barangayofficials]);
     }
 
     public function municipal() {
