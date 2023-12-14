@@ -1,7 +1,20 @@
 <script setup>
 
-    const props = defineProps({deletePostDialog: Boolean})
-    const emit = defineEmits('closeDeletePostDialog')
+    import { router } from "@inertiajs/vue3"
+    import {ref} from 'vue'
+    const props = defineProps({ deletePostDialog: Boolean, post:Object })
+    const emit = defineEmits(['closeDeletePostDialog', 'postDeleted'])
+    const loading = ref(false)
+
+    function submitDeletePost() {
+        loading.value = true
+        router.delete(`/delete-post/${props.post.id}`, {
+            onSuccess: () => {
+                loading.value = false
+                emit('postDeleted')
+            }
+        })
+    }
 
 </script>
 <template>
@@ -13,7 +26,7 @@
             <v-card-actions>
                 <v-spacer/>
                 <v-btn  @click="emit('closeDeletePostDialog')">Cancel</v-btn>
-                <v-btn color="red" @click="emit('closeDeletePostDialog')">DELETE</v-btn>
+                <v-btn color="red" @click="submitDeletePost" :loading="loading">DELETE</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

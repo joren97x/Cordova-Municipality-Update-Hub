@@ -11,24 +11,46 @@
         })
     }
 
+    const headers = [
+        { title: 'Id', align: 'start', key: 'Id', value: "Id", sortable: true },
+        { title: 'Email', align: 'start', key: 'Email', value: "Email" },
+        { title: 'Actions', align: 'start', key: 'Actions', value: "Actions" }
+    ]
+
+    const emailArr = [
+        {
+            id: 1,
+            email: "email2@email.com",
+        },
+        {
+            id: 2,
+            email: "email1@email.com",
+        },
+        {
+            id: 3,
+            email: "email3@email.com",
+        },
+        {
+            id: 5,
+            email: "email5@email.com",
+        },
+    ]
+
 </script>
 <template>
     
     <v-container>
-        <v-table>
-            <thead>
+        <v-data-table :headers="headers" :items="emailArr">
+            <template v-slot:item="{item}">
                 <tr>
-                    <th class="text-left"> Emails </th>
-                    <th class="text-left"> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in emails" :key="item.email">
+                    <td>{{ item.id }}</td>
                     <td>{{ item.email }}</td>
-                    <td><v-btn prepend-icon="mdi-bell">Notify</v-btn></td>
+                    <td>
+                        <v-btn size="small" prepend-icon="mdi-bell">Notify</v-btn>
+                    </td>
                 </tr>
-            </tbody>
-        </v-table>
+            </template>            
+        </v-data-table>
     </v-container>
 
 </template>

@@ -28,7 +28,7 @@
         </v-row>
         <p v-if="posts.length <= 0" class="text-center"> No posts yet. </p>
 
-        <CreatePostDialog :createPostDialog="showCreatePostDialog" @closeCreatePostDialog="() => {showCreatePostDialog = false; showSuccessSnackbar = true}" :auth="auth" />
+        <CreatePostDialog :createPostDialog="showCreatePostDialog" @postSucess="() => {showCreatePostDialog = false; showSuccessSnackbar = true}" @closeCreatePostDialog="() => {showCreatePostDialog = false;}" :auth="auth" />
         <DeletePostDialog :deletePostDialog="showDeletePostDialog" @closeDeletePostDialog="showDeletePostDialog = false" />
         <EditPostDialog :editPostDialog="showEditPostDialog" @closeEditPostDialog="showEditPostDialog = false" />
         <!-- <v-dialog v-model="deletePostDialog" width="50%">

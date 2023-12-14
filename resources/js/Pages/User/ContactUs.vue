@@ -30,7 +30,6 @@
         <v-card class="pa-5">
            <v-form @submit.prevent>
                 <v-row>
-                    {{ questionForm }}
                     <v-col cols="6" class="text-start fill-height" style="margin: auto">
                         <p class="text-h4">Contact Us</p>
                         <p>
@@ -42,10 +41,10 @@
                     </v-col>
                     <v-col cols="6">
                         <v-card title="Ask us question" elevation="0" class="pa-2">
-                            <v-text-field prepend-inner-icon="mdi-account" v-model="questionForm.name" label="Name"></v-text-field>
+                            <v-text-field prepend-inner-icon="mdi-account" :error-messages="questionForm.errors.name" v-model="questionForm.name" label="Name"></v-text-field>
                             <v-text-field prepend-inner-icon="mdi-email" v-model="questionForm.email" label="Email (optional)"></v-text-field>
                             <v-text-field prepend-inner-icon="mdi-phone" v-model="questionForm.contact_no" label="Contact number (optional)"></v-text-field>
-                            <v-textarea prepend-inner-icon="mdi-message" v-model="questionForm.question" label="Your question..."></v-textarea>
+                            <v-textarea prepend-inner-icon="mdi-message" :error-messages="questionForm.errors.question" v-model="questionForm.question" label="Your question..."></v-textarea>
                         </v-card>
                     </v-col>
                 </v-row>

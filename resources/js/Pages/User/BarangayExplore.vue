@@ -81,7 +81,7 @@
             <p class="text-center text-h4">IMPORTANT ANNOUNCEMENTS</p>
             <v-row style="margin-bottom: 3%;">
                 <v-col cols="12" lg="3" md="6" sm="6">
-                    <Link>
+                    <Link :href="`/${barangay.name}/local-news`">
                         <v-card>
                             <v-img src="/images/Cordova-local-news.jpg" cover height="250"></v-img>
                             <v-card-text>
@@ -112,7 +112,7 @@
                 </v-col>
 
                 <v-col cols="12" lg="3" md="6" sm="6">
-                    <Link>
+                    <Link :href="`/${barangay.name}/sports`">
                         <v-card>
                             <v-img src="/images/Cordova-sports.jpg" cover height="250"></v-img>
                                 <v-card-text>
@@ -127,7 +127,7 @@
                 </v-col>
 
                 <v-col cols="12" lg="3" md="6" sm="6">
-                    <Link>
+                    <Link :href="`/${barangay.name}/health-and-wellness`">
                         <v-card>
                             <v-img src="/images/Cordova-health-wellness.jpg" cover height="250"></v-img>
                             <v-card-text>
@@ -145,7 +145,7 @@
 
         <v-divider class="my-5"/>
 
-<v-row>
+<v-row class="mb-6">
     <v-col cols="12">
         <p class="text-center text-h5">Feast day</p>
     </v-col>
@@ -162,6 +162,15 @@
 </v-row>
 
 </template>
+
+<style scoped>
+
+    a {
+        text-decoration: none;
+    }
+
+</style>
+
 <!-- 
 <style>
 .container {

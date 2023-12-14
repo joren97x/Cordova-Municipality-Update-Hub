@@ -1,8 +1,7 @@
 <script setup>
 
-
-    const props = defineProps({editPostDialog: Boolean})
-    const emit = defineEmits('closeEditPostDialog')
+    const props = defineProps({ editPostDialog: Boolean, post: Object })
+    const emit = defineEmits(['closeEditPostDialog'])
 
 </script>
 <template>

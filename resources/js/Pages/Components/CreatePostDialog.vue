@@ -2,7 +2,7 @@
 
     import {ref} from 'vue'    
     const props = defineProps({createPostDialog: Boolean, auth: Object})
-    const emit = defineEmits('closeCreatePostDialog', 'showSuccessSnackbar')
+    const emit = defineEmits('closeCreatePostDialog', 'showSuccessSnackbar', 'postSucess')
     import {useForm} from '@inertiajs/vue3'
     const inline = ref()
 
@@ -17,9 +17,10 @@
     function submit() {
         postForm.post('/create-post', {
             onSuccess: () => {
-                emit('closeCreatePostDialog')
+                emit('postSucess')
+                emit('showSuccessSnackbar')
+                postForm.reset()
             }
-            
         })
     }
 

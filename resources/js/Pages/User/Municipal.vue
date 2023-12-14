@@ -190,8 +190,10 @@
 
 <template>
   	<v-parallax :src="`/images/cordova-church.jpg`" height="480">
+        <div class="overlay"></div>
+
 		<div class="d-flex flex-column fill-height justify-center align-center text-white">
-			<h1 class="text-h1 font-weight-thin mb-4">
+			<h1 class="text-h1 font-weight-thin mb-4" style="z-index: 10;">
 				OUR HISTORY
 			</h1>
 		</div>
@@ -370,6 +372,18 @@
 		</v-table>
 	</v-container>
 </template>
+
+<style scoped>
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to change the darkness */
+    z-index: 0;
+}
+</style>
 <!-- 
 <style scoped>
 .image-overlay {

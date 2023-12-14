@@ -40,7 +40,7 @@
                     the municipal
                 </v-btn>
                 </Link>
-            <Link  href="/barangays" :id="$page.component == 'User/Barangays' ? 'border_bottom' : ''">
+            <Link  href="/barangays" :id="$page.component == 'User/Barangays' || $page.component.includes('User/Announcements/') || $page.component == 'User/BarangayExplore' ? 'border_bottom' : ''">
                 <v-btn class="buttons">
                     barangays
                 </v-btn>
@@ -51,7 +51,7 @@
                 </v-btn>
             </Link>
         </v-app-bar>
-        <v-main>
+        <v-main class="bg-grey-lighten-3">
             <slot></slot>
             <Footer />
         </v-main>

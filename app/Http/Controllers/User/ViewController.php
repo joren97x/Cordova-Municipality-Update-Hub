@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use App\Models\Barangay;
 use App\Models\Official;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use GuzzleHttp\Psr7\Request;
 
 class ViewController extends Controller
 {
@@ -14,20 +16,28 @@ class ViewController extends Controller
         return Inertia::render('User/Barangays', ['barangays' => Barangay::where('id', '!=', 14)->get()]);
     }
 
-    public function events() {
-        return Inertia::render('User/Events');
+    public function events($barangay) {
+        $brgy =  Barangay::where('name', $barangay)->first();
+        $posts = Post::where('barangay_id', $brgy->id)->where('category', 'events')->get();
+        return Inertia::render('User/Announcements/Events', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
-    public function sports() {
-        return Inertia::render('User/Sports');
+    public function sports($barangay) {
+        $brgy =  Barangay::where('name', $barangay)->first();
+        $posts = Post::where('barangay_id', $brgy->id)->get();
+        return Inertia::render('User/Announcements/Sports', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
-    public function local_news() {
-        return Inertia::render('User/LocalNews');
+    public function local_news($barangay) {
+        $brgy =  Barangay::where('name', $barangay)->first();
+        $posts = Post::where('barangay_id', $brgy->id)->get();
+        return Inertia::render('User/Announcements/LocalNews', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
-    public function health_wellness() {
-        return Inertia::render('User/HealthWellness');
+    public function health_and_wellness($barangay) {
+        $brgy =  Barangay::where('name', $barangay)->first();
+        $posts = Post::where('barangay_id', $brgy->id)->get();
+        return Inertia::render('User/Announcements/HealthAndWellness', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
     public function barangay_explore($brgy) {

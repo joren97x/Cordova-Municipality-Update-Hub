@@ -34,6 +34,7 @@
                 </v-avatar>
             </template>
             <p class="text-h6">Barangay admin</p>
+            <p class="text-caption">{{ auth.user.email }}</p>
         </v-list-item>
   
           <v-divider></v-divider>
@@ -63,10 +64,18 @@
                 <v-expansion-panels variant="accordion" v-model="panels">
                     <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
                         <template v-slot:text>
-                            <v-list-item prepend-icon="mdi-newspaper" value="1">Local news</v-list-item>
-                            <v-list-item prepend-icon="mdi-basketball" value="2">Events</v-list-item>
-                            <v-list-item prepend-icon="mdi-calendar-multiple" value="3">Sports</v-list-item>
-                            <v-list-item prepend-icon="mdi-medication" value="4">Health and wellness</v-list-item>
+                            <Link href="/barangay-admin/announcements/local-news">
+                                <v-list-item prepend-icon="mdi-newspaper" value="1">Local news</v-list-item>
+                            </Link>
+                            <Link href="/barangay-admin/announcements/events">
+                                <v-list-item prepend-icon="mdi-basketball" value="2">Events</v-list-item>
+                            </Link>
+                            <Link href="/barangay-admin/announcements/sports">
+                                <v-list-item prepend-icon="mdi-calendar-multiple" value="3">Sports</v-list-item>
+                            </Link>
+                            <Link href="/barangay-admin/announcements/health-and-wellness">
+                                <v-list-item prepend-icon="mdi-medication" value="4">Health and wellness</v-list-item>
+                            </Link>
                         </template>
                     </v-expansion-panel>
                 </v-expansion-panels>

@@ -1,27 +1,33 @@
 <script setup>
-import { ref } from "vue";
-const email = ref("");
+
+    const icons = [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ]
+
 </script>
 <template>
-  <footer class="text-center justify-center d-flex border">
-    <v-card elevation="0" width="50%">
-      <p class="text-h5 font-weight-bold">DON'T MISS A MOMENT!</p>
-      <p>Sign up to receive lastest update</p>
-      <v-text-field
-        label="Email address"
-        v-model="email"
-        color="pink"
-        variant="outlined"
-        placeholder="example@email.com"
-      >
-        <template v-slot:append-inner>
-          <v-expand-transition>
-            <v-btn append-icon="mdi-bell" class="rounded-pill" color="pink" v-if="email"
-              >Notify me</v-btn
-            >
-          </v-expand-transition>
-        </template>
-      </v-text-field>
-    </v-card>
-  </footer>
+  <v-footer class="bg-indigo-lighten-1 text-center d-flex flex-column">
+        <div>
+            <v-btn
+                v-for="icon in icons"
+                :key="icon"
+                class="mx-4"
+                :icon="icon"
+                variant="text"
+            ></v-btn>
+        </div>
+
+    <div class="pt-0">
+      Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+    </div>
+
+    <v-divider></v-divider>
+
+    <div>
+      {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+    </div>
+  </v-footer>
 </template>

@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarangayAdmin\AnnouncementController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BarangayController;
 use App\Http\Controllers\QuestionController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\BarangayAdmin\BarangayAdminBarangayController;
 Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/municipality', [MunicipalAdminHomeController::class, 'municipality']);
     Route::get('/municipal-admin/manage-posts', [MunicipalAdminPostController::class, 'index']);
+    Route::put('/municipal-admin/approve-post', [MunicipalAdminPostController::class, 'approve']);
+    Route::put('/municipal-admin/decline-post', [MunicipalAdminPostController::class, 'decline']);
     Route::get('/municipal-admin/pending-posts', [MunicipalAdminPostController::class, 'pending']);
     Route::get('/municipal-admin/questions', [QuestionController::class, 'index']);
     Route::get('/municipal-admin/cordova-municipality', [MunicipalAdminHomeController::class, 'the_municipal']);
@@ -55,12 +58,21 @@ Route::middleware('barangay_admin')->group(function() {
     Route::get('/barangay-admin/pending-posts', [BarangayAdminPostController::class, 'pending']);
     Route::get('/barangay-admin/posts', [BarangayAdminPostController::class, 'index']);
     Route::get('/barangay-admin/officials', [OfficialController::class, 'index']);
+    Route::get('/barangay-admin/announcements/local-news', [AnnouncementController::class, 'local_news']);
+    Route::get('/barangay-admin/announcements/events', [AnnouncementController::class, 'events']);
+    Route::get('/barangay-admin/announcements/sports', [AnnouncementController::class, 'sports']);
+    Route::get('/barangay-admin/announcements/health-and-wellness', [AnnouncementController::class, 'health_and_wellness']);
 });
 
 Route::middleware('auth')->group(function() {
     Route::post('/create-post', [PostController::class, 'store']);
+    Route::delete('/delete-post/{post}', [PostController::class, 'destroy']);
 });
 
+Route::get('/{barangay}/events', [ViewController::class, 'events']);
+Route::get('/{barangay}/sports', [ViewController::class, 'sports']);
+Route::get('/{barangay}/local-news', [ViewController::class, 'local_news']);
+Route::get('/{barangay}/health-and-wellness', [ViewController::class, 'health_and_wellness']);
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/barangays', [ViewController::class, 'barangays']);
 Route::get('/the-municipal', [ViewController::class, 'municipal']);
@@ -68,16 +80,13 @@ Route::get('/visitors', [ViewController::class, 'visitors']);
 Route::get('/support', [ViewController::class, 'support']);
 Route::get('/contact-us', [ViewController::class, 'contact_us']);
 Route::get('/forgotpassword', [ViewController::class, 'forgotpassword']);
-Route::get('/{barangay}/events', [ViewController::class, 'events']);
-Route::get('/{barangay}/sports', [ViewController::class, 'sports']);
-Route::get('/{barangay}/local-news', [ViewController::class, 'local_news']);
-Route::get('/{barangay}/health-wellness', [ViewController::class, 'health_wellness']);
 Route::get('/barangay/{brgy}', [ViewController::class, 'barangay_explore']);
+
+
 Route::post('/create-question', [QuestionController::class, 'store']);
 Route::get('/Visitors/{topic}', function () {
     return Inertia::render('User/VisitorExplore');
 });
-
 Route::post('/signin', [AuthController::class, 'signin']);
 Route::get('/sign-in', [AuthController::class, 'sign_in']);
 Route::get('/logout', [AuthController::class, 'logout']);

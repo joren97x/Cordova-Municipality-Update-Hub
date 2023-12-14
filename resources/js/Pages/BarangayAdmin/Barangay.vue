@@ -82,12 +82,12 @@
             <v-col cols="12" class="justify-center d-flex">
                 <br>
                 <v-date-picker
-                view-mode
-                hide-header
-                v-model="date"
-                min="2016-06-15"
-                max="2024-03-20"
-      ></v-date-picker>
+                    view-mode
+                    hide-header
+                    v-model="date"
+                    min="2016-06-15"
+                    max="2024-03-20"
+                ></v-date-picker>
             </v-col>
         </v-row>
 

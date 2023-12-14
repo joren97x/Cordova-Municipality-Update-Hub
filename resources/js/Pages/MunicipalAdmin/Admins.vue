@@ -47,6 +47,7 @@
     })
 
     function setUpdateAdminForm(admin) {
+        console.log(admin)
         updateAdminForm.id = admin.id
         updateAdminForm.email = admin.email
         updateAdminForm.role = admin.role
@@ -93,9 +94,18 @@
         })
     }
 
+    const headers = [
+        { title: 'Id', align: 'start', key: 'Id', value: "Id", sortable: true },
+        { title: 'Email', align: 'start', key: 'Email', value: "Email" },
+        { title: 'Barangay', align: 'start', key: 'Barangay', value: "Barangay" },
+        { title: 'Role', align: 'start', key: 'Role', value: "Role" },
+        { title: 'Actions', align: 'start', key: 'Actions', value: "Actions" }
+    ]
+
 </script>
 <template>
     <v-container>
+        
         <v-row>
             <v-col cols="10">
                 <p class="text-h4">Admins</p>
@@ -104,7 +114,23 @@
                 <v-btn prepend-icon="mdi-plus" color="green" @click="createAdminDialog = true">New admin</v-btn>
             </v-col>
         </v-row>
-        <v-table class="mt-4">
+
+        <v-data-table :items="admins" :headers="headers">
+            <template v-slot:item="{item}">
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ barangays[item.area_id-1].name }}</td>
+                    <td>{{ item.role == "barangay_admin" ? "Barangay admin" : "Municipal admin" }}</td>
+                    <td>
+                        <v-btn class="me-2" prepend-icon="mdi-square-edit-outline" @click="setUpdateAdminForm(item)" color="blue">Edit</v-btn>
+                        <v-btn color="red" prepend-icon="mdi-delete-empty-outline" @click="setDeleteAdminForm(item)">Delete</v-btn>
+                    </td>
+                </tr>
+            </template>
+        </v-data-table>
+
+        <!-- <v-table class="mt-4">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -121,12 +147,13 @@
                     <td>{{ barangays[admin.area_id-1].name }}</td>
                     <td>{{ admin.role == "barangay_admin" ? "Barangay admin" : "Municipal admin" }}</td>
                     <td>
-                        <v-btn class="me-2" prepend-icon="mdi-square-edit-outline" @click="setUpdateAdminForm(admin)" color="blue">Edit</v-btn>
-                        <v-btn color="red" prepend-icon="mdi-delete-empty-outline" @click="setDeleteAdminForm(admin)">Delete</v-btn>
+                        <v-btn class="me-2" prepend-icon="mdi-square-edit-outline" @click="setUpdateAdminForm(item)" color="blue">Edit</v-btn>
+                        <v-btn color="red" prepend-icon="mdi-delete-empty-outline" @click="setDeleteAdminForm(item)">Delete</v-btn>
                     </td>
                 </tr>
             </tbody>
-        </v-table>
+        </v-table> -->
+
     </v-container>
 
     <v-dialog v-model="editAdminDialog" width="69%">

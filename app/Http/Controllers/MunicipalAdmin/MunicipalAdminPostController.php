@@ -30,4 +30,19 @@ class MunicipalAdminPostController extends Controller
         ]);
     }
 
+    public function approve(Request $request) {
+        $post = Post::find($request->id);
+        $post->status = "approved";
+        $post->update();
+        return back();
+    }
+
+    public function decline(Request $request) {
+        $post = Post::find($request->id);
+        $post->status = "declined";
+        $post->update();
+        return back();
+    }
+
+
 }
