@@ -1,5 +1,8 @@
 <script setup>
 
+    import {ref} from 'vue'
+    const email = ref('')
+
     const icons = [
         'mdi-facebook',
         'mdi-twitter',
@@ -9,25 +12,36 @@
 
 </script>
 <template>
-  <v-footer class="bg-indigo-lighten-1 text-center d-flex flex-column">
-        <div>
-            <v-btn
-                v-for="icon in icons"
-                :key="icon"
-                class="mx-4"
-                :icon="icon"
-                variant="text"
-            ></v-btn>
+    <v-card class="pa-4">
+        <v-row justify="center" class="d-flex">
+            <v-col>
+                <p class="text-h6">Get connected with us on social networks!</p>
+            </v-col>
+            <v-col cols="4" class="justify-center d-flex">
+                <v-btn
+                    v-for="icon in icons"
+                    :key="icon"
+                    class="mx-4"
+                    :icon="icon"
+                    variant="text"
+                ></v-btn>
+            </v-col>
+        </v-row>
+        <p class="text-center text-h5 font-weight-bold">Dont miss a moment!</p>
+        <p class="text-center text-h6 mb-3">Sign up to receive the latest updates.</p>
+        <v-row justify="center" class="d-flex">
+            <v-col cols="8" class="justify-center d-flex">
+                <v-text-field v-model="email" variant="outlined" label="Email address">
+                    <template v-slot:append-inner>
+                        <v-fade-transition>
+                            <v-btn icon="mdi-send" v-show="email" variant="text"></v-btn>
+                        </v-fade-transition>
+                    </template>
+                </v-text-field>
+            </v-col>
+        </v-row>
+        <div class="px-4 py-2  text-center w-100">
+           <strong>Copyright {{ new Date().getFullYear() }} - All Rights Reserved | Municipality of Cordova</strong>
         </div>
-
-    <div class="pt-0">
-      Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </div>
-
-    <v-divider></v-divider>
-
-    <div>
-      {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-    </div>
-  </v-footer>
+    </v-card>
 </template>

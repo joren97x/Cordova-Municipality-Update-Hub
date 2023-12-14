@@ -15,6 +15,8 @@ use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminBarangayController;
+use App\Http\Controllers\MunicipalAdmin\MunicipalAdminVisitorController;
+use App\Http\Controllers\User\VisitorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,13 @@ Route::middleware('municipal_admin')->group(function () {
     Route::post('/municipal-admin/officials', [OfficialController::class, 'index']);
     Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
     Route::post('/municipal-admin/answer-question/{question}', [QuestionController::class, 'answer']);
+    Route::get('/municipal-admin/visitors/events', [MunicipalAdminVisitorController::class, 'events']);
+    Route::get('/municipal-admin/visitors/bed-and-dine', [MunicipalAdminVisitorController::class, 'bed_and_dine']);
+    Route::get('/municipal-admin/visitors/must-see-sites', [MunicipalAdminVisitorController::class, 'must_see_sites']);
+    Route::get('/municipal-admin/visitors/entertainment', [MunicipalAdminVisitorController::class, 'entertainment']);
+    Route::get('/municipal-admin/visitors/around-the-city', [MunicipalAdminVisitorController::class, 'around_the_city']);
+    Route::get('/municipal-admin/visitors/money-exchange-centers', [MunicipalAdminVisitorController::class, 'money_exchange_centers']);
+    Route::get('/municipal-admin/visitors/essential-travel-facts', [MunicipalAdminVisitorController::class, 'essential_travel_facts']);
     // Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
 });
 
@@ -68,6 +77,14 @@ Route::middleware('auth')->group(function() {
     Route::post('/create-post', [PostController::class, 'store']);
     Route::delete('/delete-post/{post}', [PostController::class, 'destroy']);
 });
+
+Route::get('/visitors/essential-travel-facts', [VisitorController::class, 'essential_travel_facts']);
+Route::get('/visitors/must-see-sites', [VisitorController::class, 'must_see_sites']);
+Route::get('/visitors/entertainment', [VisitorController::class, 'entertainment']);
+Route::get('/visitors/bed-and-dine', [VisitorController::class, 'bed_and_dine']);
+Route::get('/visitors/around-the-city', [VisitorController::class, 'around_the_city']);
+Route::get('/visitors/money-exchange-centers', [VisitorController::class, 'money_exchange_centers']);
+Route::get('/visitors/events', [VisitorController::class, 'events']);
 
 Route::get('/{barangay}/events', [ViewController::class, 'events']);
 Route::get('/{barangay}/sports', [ViewController::class, 'sports']);

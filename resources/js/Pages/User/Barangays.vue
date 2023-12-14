@@ -1,12 +1,7 @@
 <script setup>
-import Layout from "../Layouts/UserLayout.vue";
-defineOptions({
-  layout: Layout,
-});
-
-defineProps({
-  barangays: Object,
-});
+    import Layout from "../Layouts/UserLayout.vue"
+    defineOptions({ layout: Layout })
+    defineProps({ barangays: Object })
 </script>
 
 

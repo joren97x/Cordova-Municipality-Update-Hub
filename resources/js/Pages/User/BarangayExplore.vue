@@ -78,7 +78,7 @@
         <v-divider class="my-5"/>
 
         <v-container>
-            <p class="text-center text-h4">IMPORTANT ANNOUNCEMENTS</p>
+            <p class="text-center text-h4">Important accouncements</p>
             <v-row style="margin-bottom: 3%;">
                 <v-col cols="12" lg="3" md="6" sm="6">
                     <Link :href="`/${barangay.name}/local-news`">
@@ -145,21 +145,21 @@
 
         <v-divider class="my-5"/>
 
-<v-row class="mb-6">
-    <v-col cols="12">
-        <p class="text-center text-h5">Feast day</p>
-    </v-col>
-    <v-col cols="12" class="justify-center d-flex">
-        <br>
-        <v-date-picker
-            view-mode
-            hide-header
-            v-model="date"
-            min="2016-06-15"
-            max="2024-03-20"
-        ></v-date-picker>
-    </v-col>
-</v-row>
+        <v-row class="mb-6">
+            <v-col cols="12">
+                <p class="text-center text-h5">Feast day</p>
+            </v-col>
+            <v-col cols="12" class="justify-center d-flex">
+                <br>
+                <v-date-picker
+                    view-mode
+                    hide-header
+                    v-model="date"
+                    min="2016-06-15"
+                    max="2024-03-20"
+                ></v-date-picker>
+            </v-col>
+        </v-row>
 
 </template>
 

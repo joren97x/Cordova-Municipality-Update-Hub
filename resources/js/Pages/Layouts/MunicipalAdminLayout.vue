@@ -84,13 +84,27 @@
             <v-expansion-panels variant="accordion" v-model="panels">
                 <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
                     <template v-slot:text>
-                        <v-list-item prepend-icon="mdi-car" value="1">Essential travel facts</v-list-item>
-                        <v-list-item prepend-icon="mdi-island" value="2">Must see sites</v-list-item>
-                        <v-list-item prepend-icon="mdi-shopping" value="3">Entertainment, shopping and leisures </v-list-item>
-                        <v-list-item prepend-icon="mdi-bed" value="4">Bed and dine </v-list-item>
-                        <v-list-item prepend-icon="mdi-map" value="5">Moving around the city </v-list-item>
-                        <v-list-item prepend-icon="mdi-cash" value="6">Money exchange center</v-list-item>
-                        <v-list-item prepend-icon="mdi-bullhorn" value="7">Events, festivals and activities</v-list-item>
+                        <Link href="/municipal-admin/visitors/essential-travel-facts">
+                            <v-list-item prepend-icon="mdi-car" value="1">Essential travel facts</v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/must-see-sites">
+                            <v-list-item prepend-icon="mdi-island" value="2">Must see sites</v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/entertainment">
+                            <v-list-item prepend-icon="mdi-shopping" value="3">Entertainment, shopping and leisures </v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/bed-and-dine">
+                            <v-list-item prepend-icon="mdi-bed" value="4">Bed and dine </v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/around-the-city">
+                            <v-list-item prepend-icon="mdi-map" value="5">Moving around the city </v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/money-exchange-centers">
+                            <v-list-item prepend-icon="mdi-cash" value="6">Money exchange centers</v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/visitors/events">
+                            <v-list-item prepend-icon="mdi-bullhorn" value="7">Events, festivals and activities</v-list-item>
+                        </Link>
                     </template>
                 </v-expansion-panel>
             </v-expansion-panels>

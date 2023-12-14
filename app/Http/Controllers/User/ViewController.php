@@ -24,19 +24,19 @@ class ViewController extends Controller
 
     public function sports($barangay) {
         $brgy =  Barangay::where('name', $barangay)->first();
-        $posts = Post::where('barangay_id', $brgy->id)->get();
+        $posts = Post::where('barangay_id', $brgy->id)->where('category', 'sports')->get();
         return Inertia::render('User/Announcements/Sports', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
     public function local_news($barangay) {
         $brgy =  Barangay::where('name', $barangay)->first();
-        $posts = Post::where('barangay_id', $brgy->id)->get();
+        $posts = Post::where('barangay_id', $brgy->id)->where('category', 'local news')->get();
         return Inertia::render('User/Announcements/LocalNews', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
     public function health_and_wellness($barangay) {
         $brgy =  Barangay::where('name', $barangay)->first();
-        $posts = Post::where('barangay_id', $brgy->id)->get();
+        $posts = Post::where('barangay_id', $brgy->id)->where('category', 'health and wellness')->get();
         return Inertia::render('User/Announcements/HealthAndWellness', ['posts' => $posts, 'barangay' => $barangay]);
     }
 
