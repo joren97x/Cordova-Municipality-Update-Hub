@@ -42,7 +42,7 @@ class AuthController extends Controller
             // Checks the role of the authenticated user
             if(auth()->user()->role == 'barangay_admin') {
                 // Redirects to the dashboard for barangay_admin (a specific type of user)
-                return redirect('/barangay-admin/dashboard');
+                return redirect('/barangay-admin/posts');
             }
             else {
                 // Redirects to the dashboard for municipal_admin (another type of user)

@@ -44,7 +44,6 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/email-notify-lists', [MunicipalAdminHomeController::class, 'email_notify_lists']);
     Route::get('/municipal-admin/visitor', [MunicipalAdminHomeController::class, 'visitor']);
     Route::get('/municipal-admin/the-municipal', [MunicipalAdminHomeController::class, 'the_municipal']);
-    // Route::post('/municipal-admin/update-barangay/{barangay}', [BarangayController::class, 'update']);
     Route::post('/municipal_admin/create-admin', [AdminController::class, 'store']);
     Route::post('/municipal_admin/update-admin/{admin}', [AdminController::class, 'update']);
     Route::post('/municipal_admin/delete-admin/{admin}', [AdminController::class, 'destroy']);
@@ -58,7 +57,6 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/visitors/around-the-city', [MunicipalAdminVisitorController::class, 'around_the_city']);
     Route::get('/municipal-admin/visitors/money-exchange-centers', [MunicipalAdminVisitorController::class, 'money_exchange_centers']);
     Route::get('/municipal-admin/visitors/essential-travel-facts', [MunicipalAdminVisitorController::class, 'essential_travel_facts']);
-    // Route::get('/barangay/edit-barangay/{barangay}', [BarangayController::class, 'edit']);
 });
 
 Route::middleware('barangay_admin')->group(function() {

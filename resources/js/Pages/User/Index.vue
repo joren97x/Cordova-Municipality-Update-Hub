@@ -1,8 +1,10 @@
 <script setup>
 
     import Layout from "../Layouts/UserLayout.vue"
-    import { format } from "date-fns";
-    defineOptions({ layout: Layout });
+    import { format } from "date-fns"
+    import PostCard from '../Components/PostCard.vue'
+    defineOptions({ layout: Layout })
+    defineProps({ lposts: Object, sposts: Object, hposts: Object, eposts: Object, auth: Object })
 
     const items = [
         {
@@ -42,20 +44,14 @@
         </v-row>
         <v-divider class="my-4" />
         <v-row>
-            <v-col cols="4" v-for="n in 3" :key="n">
-                <v-card>
-                    <v-img height="200" width="100%" cover src="https://img.freepik.com/premium-vector/latest-news-announcement-banner-with-megaphone_183875-699.jpg"></v-img>
-                    <v-card-title>
-                        Title
-                    </v-card-title>
-                    <v-card-text>
-                        <p class="text-body text-grey-darken-2 mb-2"> <v-icon>mdi-circle-medium</v-icon> {{ format(new Date(), 'PPPP') }}</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta aperiam pariatur doloremque quia eius.
+            <v-col cols="4" v-for="post in lposts" :key="post.id">
+                <PostCard :post="post" />
+            </v-col>
+            <v-col cols="12" v-if="lposts.length == 0">
+                <v-card color="grey" height="250" class="d-flex align-center justify-center my-6">
+                    <v-card-text class="text-center text-h5">
+                        <v-icon>mdi-alert-circle-outline</v-icon> No local news available at the moment.
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer/>
-                        <v-btn>See more</v-btn>
-                    </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>
@@ -73,20 +69,14 @@
         </v-row>
         <v-divider class="my-4" />
         <v-row>
-            <v-col cols="4" v-for="n in 3" :key="n">
-                <v-card>
-                    <v-img height="200" width="100%" cover src="https://img.freepik.com/premium-vector/latest-news-announcement-banner-with-megaphone_183875-699.jpg"></v-img>
-                    <v-card-title>
-                        Title
-                    </v-card-title>
-                    <v-card-text>
-                        <p class="text-body text-grey-darken-2 mb-2"> <v-icon>mdi-circle-medium</v-icon> {{ format(new Date(), 'PPPP') }}</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta aperiam pariatur doloremque quia eius.
+            <v-col cols="4" v-for="post in eposts" :key="post.id">
+                <PostCard :post="post" />
+            </v-col>
+            <v-col cols="12" v-if="eposts.length == 0">
+                <v-card color="grey" height="250" class="d-flex align-center justify-center my-6">
+                    <v-card-text class="text-center text-h5">
+                        <v-icon>mdi-alert-circle-outline</v-icon> No events found.
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer/>
-                        <v-btn>See more</v-btn>
-                    </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>
@@ -104,20 +94,14 @@
         </v-row>
         <v-divider class="my-4" />
         <v-row>
-            <v-col cols="4" v-for="n in 3" :key="n">
-                <v-card>
-                    <v-img height="200" width="100%" cover src="https://img.freepik.com/premium-vector/latest-news-announcement-banner-with-megaphone_183875-699.jpg"></v-img>
-                    <v-card-title>
-                        Title
-                    </v-card-title>
-                    <v-card-text>
-                        <p class="text-body text-grey-darken-2 mb-2"> <v-icon>mdi-circle-medium</v-icon> {{ format(new Date(), 'PPPP') }}</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta aperiam pariatur doloremque quia eius.
+            <v-col cols="4" v-for="post in sposts" :key="post.id">
+                <PostCard :post="post" />
+            </v-col>
+            <v-col cols="12" v-if="sposts.length == 0">
+                <v-card color="grey" height="250" class="d-flex align-center justify-center my-6">
+                    <v-card-text class="text-center text-h5">
+                        <v-icon>mdi-alert-circle-outline</v-icon> Sorry, no sports highlights available at the moment.
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer/>
-                        <v-btn>See more</v-btn>
-                    </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>
@@ -127,7 +111,6 @@
         <v-row>
             <v-col cols="10">
                 <p class="text-h4">Health and wellness</p>
-            
             </v-col>
             <v-spacer/>
             <v-col cols="2" class="justify-end d-flex" align-self="end">
@@ -136,20 +119,14 @@
         </v-row>
         <v-divider class="my-4" />
         <v-row>
-            <v-col cols="4" v-for="n in 3" :key="n">
-                <v-card>
-                    <v-img height="200" width="100%" cover src="https://img.freepik.com/premium-vector/latest-news-announcement-banner-with-megaphone_183875-699.jpg"></v-img>
-                    <v-card-title>
-                        Title
-                    </v-card-title>
-                    <v-card-text>
-                        <p class="text-body text-grey-darken-2 mb-2"> <v-icon>mdi-circle-medium</v-icon> {{ format(new Date(), 'PPPP') }}</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta aperiam pariatur doloremque quia eius.
+            <v-col cols="4" v-for="post in hposts" :key="post.id">
+                <PostCard :post="post" />
+            </v-col>
+            <v-col cols="12" v-if="hposts.length == 0">
+                <v-card color="grey" height="250" class="d-flex align-center justify-center my-6">
+                    <v-card-text class="text-center text-h5">
+                        <v-icon>mdi-alert-circle-outline</v-icon> Sorry, no health and wellness posts to show right now.
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer/>
-                        <v-btn>See more</v-btn>
-                    </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>

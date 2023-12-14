@@ -46,10 +46,8 @@
         <EditPostDialog @closeEditPostDialog="editPostDialog = false" :editPostDialog="editPostDialog"  :post="selectedPost" />
     </v-container>
 
-    <v-snackbar v-model="snackbar">
-    
+    <v-snackbar v-model="snackbar" location="top">
         {{ msg }}
-    
     </v-snackbar>
 
 </template>

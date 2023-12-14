@@ -6,7 +6,7 @@
     import { router } from '@inertiajs/vue3'
 
     defineOptions({ layout: MunicipalAdminLayout })
-    defineProps({ barangays: Object , auth: Object})
+    defineProps({ barangays: Object, auth: Object})
 
     const tab = ref('0')
     const loading = ref(false)
@@ -16,6 +16,7 @@
     const approvePostDialog = ref(false)
     const declinePostDialog = ref(false)
     function showApprovePostDialog(post) {
+        console.log(post)
         selectedPost.value = post
         approvePostDialog.value = true
     }
@@ -82,7 +83,7 @@
                             </v-row>
                             <v-row v-if="barangay.posts.length > 0">
                                 <v-col cols="12" v-for="post in barangay.posts" :key="post.id" class="my-5">
-                                    <PostCard :post="post" :auth="auth" />
+                                    <PostCard :post="post" :auth="auth" @approvePost="showApprovePostDialog(post)"  @declinePost="showDeclinePostDialog(post)" />
                                 </v-col>
                             </v-row>
                             <p v-else> No posts found. </p>
@@ -113,7 +114,7 @@
             </v-card>
         </v-dialog>
 
-        <v-dialog v-model="declinePostDialog" width="80%">
+        <v-dialog v-model="declinePostDialog" width="69%">
             <v-card title="Decline post">
                 <v-card-text>Are you sure you want to <strong class="text-red">decline</strong> this post?</v-card-text>
                 <v-card-actions>

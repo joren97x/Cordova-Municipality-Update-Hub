@@ -21,16 +21,18 @@
         <v-card-text>
             {{ post.description }}
         </v-card-text>
-        <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'barangay_admin'">
-            <v-spacer/>
-            <v-btn color="blue" @click="emit('showEditPostDialog')">Edit</v-btn>
-            <v-btn color="red" @click="emit('showDeletePostDialog')">Delete</v-btn>
-        </v-card-actions>
-        <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'municipal_admin'">
-            <v-spacer/>
-            <v-btn color="red" @click="emit('declinePost')">Decline</v-btn>
-            <v-btn color="green" @click="emit('approvePost')">Approve</v-btn>
-        </v-card-actions>
+        <div v-if="auth">
+            <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'barangay_admin'">
+                <v-spacer/>
+                <v-btn color="blue" @click="emit('showEditPostDialog')">Edit</v-btn>
+                <v-btn color="red" @click="emit('showDeletePostDialog')">Delete</v-btn>
+            </v-card-actions>
+            <v-card-actions v-if="post.status == 'pending' && auth.user.role == 'municipal_admin'">
+                <v-spacer/>
+                <v-btn color="red" @click="emit('declinePost')">Decline</v-btn>
+                <v-btn color="green" @click="emit('approvePost')">Approve</v-btn>
+            </v-card-actions>
+        </div>
     </v-card>
     
 </template>

@@ -25,7 +25,7 @@ class PostSeeder extends Seeder
                 'banner' =>  str_replace($imagePath . '/', '', fake()->randomElement($images)),
                 'area_type' => fake()->randomElement(['barangay', 'municipality', 'barangay']),
                 'category' => fake()->randomElement(['Events', 'Sports', 'Health and wellness', 'Local news']),
-                'title' => fake()->sentence(6),
+                'title' => fake()->sentence(2),
                 'status' => fake()->randomElement(['approved', 'pending']),
                 'description' => fake()->sentence(20)
             ]);

@@ -56,7 +56,13 @@ class ViewController extends Controller
     }
 
     public function index() {
-        return Inertia::render('User/Index');
+
+        $lposts = Post::where('category', 'local news')->where('barangay_id', 14)->get();
+        $eposts = Post::where('category', 'events')->where('barangay_id', 14)->get();
+        $sposts = Post::where('category', 'sports')->where('barangay_id', 14)->get();
+        $hposts = Post::where('category', 'health and wellness')->where('barangay_id', 14)->get();
+
+        return Inertia::render('User/Index', ['lposts' => $lposts, 'eposts' => $eposts, 'sposts' => $sposts, 'hposts' => $hposts]);
     }
 
     public function contact_us() {

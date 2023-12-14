@@ -78,7 +78,7 @@
         <v-divider class="my-5"/>
 
         <v-container>
-            <p class="text-center text-h4">Important accouncements</p>
+            <p class="text-center text-h4 mb-4">Important accouncements</p>
             <v-row style="margin-bottom: 3%;">
                 <v-col cols="12" lg="3" md="6" sm="6">
                     <Link :href="`/${barangay.name}/local-news`">
@@ -99,15 +99,15 @@
                 <v-col cols="12" lg="3" md="6" sm="6">
                     <Link :href="`/${barangay.name}/events`">
                         <v-card>
-                        <v-img src="/images/Cordova-events.jpg" cover height="250"></v-img>
-                        <v-card-text>
-                            <p class="text-h5">Events</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-btn>See more</v-btn>
-                        </v-card-actions>
-                    </v-card>
+                            <v-img src="/images/Cordova-events.jpg" cover height="250"></v-img>
+                            <v-card-text>
+                                <p class="text-h5">Events</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, provident!</p>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn>See more</v-btn>
+                            </v-card-actions>
+                        </v-card>
                     </Link>
                 </v-col>
 

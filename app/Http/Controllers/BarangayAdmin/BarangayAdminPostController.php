@@ -14,7 +14,7 @@ class BarangayAdminPostController extends Controller
     }
 
     public function pending() {
-        return Inertia::render('BarangayAdmin/PendingPosts', ['posts' => Post::where('status', 'pending')->latest()->get()]);
+        return Inertia::render('BarangayAdmin/PendingPosts', ['posts' => Post::where('barangay_id', auth()->user()->area_id)->where('status', 'pending')->latest()->get()]);
     }
 
 }
