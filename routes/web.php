@@ -15,6 +15,7 @@ use App\Http\Controllers\BarangayAdmin\BarangayAdminPostController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminHomeController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminPostController;
 use App\Http\Controllers\BarangayAdmin\BarangayAdminBarangayController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminVisitorController;
 use App\Http\Controllers\User\VisitorController;
 
@@ -36,7 +37,9 @@ Route::middleware('municipal_admin')->group(function () {
     Route::put('/municipal-admin/approve-post', [MunicipalAdminPostController::class, 'approve']);
     Route::put('/municipal-admin/decline-post', [MunicipalAdminPostController::class, 'decline']);
     Route::get('/municipal-admin/pending-posts', [MunicipalAdminPostController::class, 'pending']);
-    Route::get('/municipal-admin/questions', [QuestionController::class, 'index']);
+    Route::get('/municipal-admin/questions/{category}', [QuestionController::class, 'index']);
+    // Route::get('/municipal-admin/questions/answered', [QuestionController::class, 'answered']);
+    // Route::get('/municipal-admin/questions/featured', [QuestionController::class, 'featured']);
     Route::get('/municipal-admin/cordova-municipality', [MunicipalAdminHomeController::class, 'the_municipal']);
     Route::get('/municipal-admin/posts', [MunicipalAdminHomeController::class, 'posts']);
     Route::get('/municipal-admin/admins', [MunicipalAdminHomeController::class, 'admins']);
@@ -48,8 +51,8 @@ Route::middleware('municipal_admin')->group(function () {
     Route::post('/municipal_admin/update-admin/{admin}', [AdminController::class, 'update']);
     Route::post('/municipal_admin/delete-admin/{admin}', [AdminController::class, 'destroy']);
     Route::post('/municipal-admin/officials', [OfficialController::class, 'index']);
-    Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
-    Route::post('/municipal-admin/answer-question/{question}', [QuestionController::class, 'answer']);
+    Route::put('/municipal-admin/answer-question/{question}', [QuestionController::class, 'answer']);
+    Route::put('/municipal-admin/feature-question/{question}', [QuestionController::class, 'feature']);
     Route::get('/municipal-admin/visitors/events', [MunicipalAdminVisitorController::class, 'events']);
     Route::get('/municipal-admin/visitors/bed-and-dine', [MunicipalAdminVisitorController::class, 'bed_and_dine']);
     Route::get('/municipal-admin/visitors/must-see-sites', [MunicipalAdminVisitorController::class, 'must_see_sites']);
@@ -57,6 +60,7 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/visitors/around-the-city', [MunicipalAdminVisitorController::class, 'around_the_city']);
     Route::get('/municipal-admin/visitors/money-exchange-centers', [MunicipalAdminVisitorController::class, 'money_exchange_centers']);
     Route::get('/municipal-admin/visitors/essential-travel-facts', [MunicipalAdminVisitorController::class, 'essential_travel_facts']);
+    Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
 });
 
 Route::middleware('barangay_admin')->group(function() {
@@ -106,3 +110,4 @@ Route::post('/signin', [AuthController::class, 'signin']);
 Route::get('/sign-in', [AuthController::class, 'sign_in']);
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/forgot-password', [AuthController::class, 'forgot_password']);
+Route::post('/email-notify', [EmailController::class, 'store']);

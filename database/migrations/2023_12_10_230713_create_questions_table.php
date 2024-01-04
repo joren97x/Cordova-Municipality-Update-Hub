@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('contact_no')->nullable();
             $table->text('question');
-            $table->boolean('is_answered')->default(false);
+            $table->string('status')->default('unanswered');
             $table->text('answer')->nullable();
             $table->timestamps();
         });

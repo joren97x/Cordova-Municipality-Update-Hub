@@ -3,15 +3,25 @@
     import {ref, watch} from 'vue'
     defineProps({ auth: Object })
     const panels = ref([])
+    const questionPanels = ref([])
+    const showQuestionPanels = ref(false)
     const showPanels = ref(false)
 
     watch(showPanels, () => {
-        console.log(showPanels.value)
         if(showPanels.value == true) {
             panels.value = ["all"]
         }
         else {
             panels.value = []
+        }
+    })
+
+    watch(showQuestionPanels, () => {
+        if(showQuestionPanels.value == true) {
+            questionPanels.value = ["all"]
+        }
+        else {
+            questionPanels.value = []
         }
     })
 
@@ -42,7 +52,7 @@
                 </v-list-item>
             </Link>
             <Link href="/municipal-admin/manage-posts">
-                <v-list-item value="Municipality" prepend-icon="mdi-note-edit">
+                <v-list-item value="Municipality" prepend-icon="mdi-post">
                     Manage posts
                 </v-list-item>
             </Link>
@@ -54,14 +64,7 @@
                     Pending posts
                 </v-list-item>
             </Link>
-            <Link href="/municipal-admin/questions">
-                <v-list-item value="Contact" prepend-icon="mdi-chat-question">
-                    <template v-slot:append>
-                        <v-chip>n</v-chip>
-                    </template> 
-                    Questions
-                </v-list-item>
-            </Link>
+            
             <Link href="/municipal-admin/email-notify-lists">
                 <v-list-item value="ss" prepend-icon="mdi-email-multiple">
                     <template v-slot:append>
@@ -75,11 +78,24 @@
                     Admins
                 </v-list-item>
             </Link>
-            <!-- <Link href="/municipal-admin/visitor">
-                <v-list-item value="dash3board" prepend-icon="mdi mdi-account-group">
-                    Visitors
-                </v-list-item>
-            </Link> -->
+            <v-list-item value="Contact" prepend-icon="mdi-chat-question" @click="showQuestionPanels = !showQuestionPanels" :append-icon="showQuestionPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">
+                Questions
+            </v-list-item>
+            <v-expansion-panels variant="accordion" v-model="questionPanels">
+                <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
+                    <template v-slot:text>
+                        <Link href="/municipal-admin/questions/unanswered">
+                            <v-list-item prepend-icon="mdi-head-question" value="1">Unanswered</v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/questions/answered">
+                            <v-list-item prepend-icon="mdi-comment-check-outline" value="2">Answered</v-list-item>
+                        </Link>
+                        <Link href="/municipal-admin/questions/featured">
+                            <v-list-item prepend-icon="mdi-frequently-asked-questions" value="3">Featured </v-list-item>
+                        </Link>
+                    </template>
+                </v-expansion-panel>
+            </v-expansion-panels>
             <v-list-item prepend-icon="mdi-account-group" @click="showPanels = !showPanels" :append-icon="showPanels ? 'mdi-chevron-up' : 'mdi-chevron-down'">Visitors</v-list-item>
             <v-expansion-panels variant="accordion" v-model="panels">
                 <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">

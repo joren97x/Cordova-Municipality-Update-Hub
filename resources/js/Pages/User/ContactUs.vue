@@ -42,7 +42,7 @@
                     <v-col cols="6">
                         <v-card title="Ask us question" elevation="0" class="pa-2">
                             <v-text-field prepend-inner-icon="mdi-account" :error-messages="questionForm.errors.name" v-model="questionForm.name" label="Name"></v-text-field>
-                            <v-text-field prepend-inner-icon="mdi-email" v-model="questionForm.email" label="Email (optional)"></v-text-field>
+                            <v-text-field prepend-inner-icon="mdi-email" v-model="questionForm.email" label="Email"></v-text-field>
                             <v-text-field prepend-inner-icon="mdi-phone" v-model="questionForm.contact_no" label="Contact number (optional)"></v-text-field>
                             <v-textarea prepend-inner-icon="mdi-message" :error-messages="questionForm.errors.question" v-model="questionForm.question" label="Your question..."></v-textarea>
                         </v-card>
