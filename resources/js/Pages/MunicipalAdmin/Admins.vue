@@ -96,17 +96,16 @@
 
     const headers = [
         { title: 'Id', align: 'start', key: 'Id', value: "Id", sortable: true },
-        { title: 'Email', align: 'start', key: 'Email', value: "Email" },
-        { title: 'Barangay', align: 'start', key: 'Barangay', value: "Barangay" },
-        { title: 'Role', align: 'start', key: 'Role', value: "Role" },
-        { title: 'Actions', align: 'start', key: 'Actions', value: "Actions" }
+        { title: 'Email', align: 'start', key: 'email', value: "email" },
+        { title: 'Barangay', align: 'start', key: 'name', value: "name" },
+        { title: 'Role', align: 'start', key: 'role', value: "role" },
+        { title: 'Actions', align: 'start', key: 'Actions', value: "Actions", sortable: false }
     ]
 
 </script>
 <template>
     <v-container>
-        
-        <v-row>
+        <v-row class="ma-1">
             <v-col cols="10">
                 <p class="text-h4">Admins</p>
             </v-col>

@@ -38,8 +38,6 @@ Route::middleware('municipal_admin')->group(function () {
     Route::put('/municipal-admin/decline-post', [MunicipalAdminPostController::class, 'decline']);
     Route::get('/municipal-admin/pending-posts', [MunicipalAdminPostController::class, 'pending']);
     Route::get('/municipal-admin/questions/{category}', [QuestionController::class, 'index']);
-    // Route::get('/municipal-admin/questions/answered', [QuestionController::class, 'answered']);
-    // Route::get('/municipal-admin/questions/featured', [QuestionController::class, 'featured']);
     Route::get('/municipal-admin/cordova-municipality', [MunicipalAdminHomeController::class, 'the_municipal']);
     Route::get('/municipal-admin/posts', [MunicipalAdminHomeController::class, 'posts']);
     Route::get('/municipal-admin/admins', [MunicipalAdminHomeController::class, 'admins']);

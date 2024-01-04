@@ -1,52 +1,28 @@
 <script setup>
 
     import MunicipalAdminLayout from '../Layouts/MunicipalAdminLayout.vue';
-    defineOptions({
-        layout: MunicipalAdminLayout
-    })
-    const emails = []
-    for(let i = 0; i < 11; i++) {
-        emails.push({
-            email: `wagamama${i}00${i+1}@email.com`
-        })
-    }
-
+    defineOptions({ layout: MunicipalAdminLayout })
+    defineProps({ emails: Object })
+    
     const headers = [
-        { title: 'Id', align: 'start', key: 'Id', value: "Id", sortable: true },
-        { title: 'Email', align: 'start', key: 'Email', value: "Email" },
-        { title: 'Actions', align: 'start', key: 'Actions', value: "Actions" }
-    ]
-
-    const emailArr = [
-        {
-            id: 1,
-            email: "email2@email.com",
-        },
-        {
-            id: 2,
-            email: "email1@email.com",
-        },
-        {
-            id: 3,
-            email: "email3@email.com",
-        },
-        {
-            id: 5,
-            email: "email5@email.com",
-        },
+        { title: 'Id', align: 'center', key: 'Id', value: "Id", sortable: true },
+        { title: 'Email', align: 'center', key: 'Email', value: "Email" },
+        { title: 'Actions', align: 'center', key: 'Actions', value: "Actions" }
     ]
 
 </script>
 <template>
     
     <v-container>
-        <v-data-table :headers="headers" :items="emailArr">
+        <p class="text-h4 ma-1">Email notify lists</p>
+        <v-data-table :headers="headers" :items="emails">
             <template v-slot:item="{item}">
                 <tr>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.email }}</td>
-                    <td>
-                        <v-btn size="small" prepend-icon="mdi-bell">Notify</v-btn>
+                    <td class="text-center">{{ item.id }}</td>
+                    <td class="text-center">{{ item.email }}</td>
+                    <td class="text-center">
+                        <v-btn size="small" prepend-icon="mdi-bell" class="me-2">Notify</v-btn>
+                        <v-btn size="small" prepend-icon="mdi-delete-empty">Delete</v-btn>
                     </td>
                 </tr>
             </template>            

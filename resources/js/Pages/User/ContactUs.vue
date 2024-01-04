@@ -50,7 +50,7 @@
                 </v-row>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn type="submit" :loading="questionForm.processing" @click="submitQuestionForm" >Send</v-btn>
+                    <v-btn type="submit" :loading="questionForm.processing" @click="submitQuestionForm" variant="flat" color="red">Send</v-btn>
                 </v-card-actions>
            </v-form>
         </v-card>

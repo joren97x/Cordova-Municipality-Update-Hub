@@ -29,7 +29,7 @@
 <template>
   <v-card>
     <v-layout>
-      <v-navigation-drawer :width="335" color="grey-darken-3">
+      <v-navigation-drawer :width="280" color="grey-darken-3">
         
         <v-list-item class="ma-2">
             <template v-slot:prepend>
@@ -38,9 +38,7 @@
                 </v-avatar>
             </template>
             <p class="text-h6">Municipality admin</p>
-            <!-- <template v-slot:append>
-                <v-btn icon="mdi-menu-open" variant="text" @click="drawer = !drawer"></v-btn>
-            </template> -->
+            
         </v-list-item>
 
         <v-divider></v-divider>
@@ -85,13 +83,13 @@
                 <v-expansion-panel value="all" class="bg-grey-darken-3" elevation="0">
                     <template v-slot:text>
                         <Link href="/municipal-admin/questions/unanswered">
-                            <v-list-item prepend-icon="mdi-head-question" value="1">Unanswered</v-list-item>
+                            <v-list-item prepend-icon="mdi-head-question" value="unanswered">Unanswered</v-list-item>
                         </Link>
                         <Link href="/municipal-admin/questions/answered">
-                            <v-list-item prepend-icon="mdi-comment-check-outline" value="2">Answered</v-list-item>
+                            <v-list-item prepend-icon="mdi-comment-check-outline" value="answered">Answered</v-list-item>
                         </Link>
                         <Link href="/municipal-admin/questions/featured">
-                            <v-list-item prepend-icon="mdi-frequently-asked-questions" value="3">Featured </v-list-item>
+                            <v-list-item prepend-icon="mdi-frequently-asked-questions" value="featured">Featured </v-list-item>
                         </Link>
                     </template>
                 </v-expansion-panel>

@@ -77,6 +77,7 @@
 
         <v-row>
             <v-col cols="12">
+                {{  }}
                 <p class="text-center text-h5">Feast day</p>
             </v-col>
             <v-col cols="12" class="justify-center d-flex">

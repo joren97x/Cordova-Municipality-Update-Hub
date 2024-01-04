@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MunicipalAdmin;
 use App\Models\Barangay;
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
+use App\Models\Email;
 use App\Models\User;
 
 class MunicipalAdminHomeController extends Controller
@@ -32,7 +33,7 @@ class MunicipalAdminHomeController extends Controller
     }
 
     public function email_notify_lists() {
-        return Inertia::render('MunicipalAdmin/EmailNotifyList');
+        return Inertia::render('MunicipalAdmin/EmailNotifyList', ['emails' => Email::all()]);
     }
 
     public function visitor() {

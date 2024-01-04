@@ -7,6 +7,7 @@ use App\Models\Barangay;
 use App\Models\Official;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Question;
 use GuzzleHttp\Psr7\Request;
 
 class ViewController extends Controller
@@ -70,7 +71,7 @@ class ViewController extends Controller
     }
 
     public function support() {
-        return Inertia::render('User/Support');
+        return Inertia::render('User/Support', ['questions' => Question::where('status', 'featured')->get()]);
     }
 
   
