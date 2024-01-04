@@ -11,7 +11,9 @@
     const featureQuestionDialog = ref(false)
     const answerQuestionForm = useForm({ answer: props.question.answer })
     const deleteQuestionForm = useForm({})
-    const featureQuestionForm = useForm({})
+    const featureQuestionForm = useForm({
+        status: props.question.status
+    })
     const editAnswer = ref(false)
 
     function submitFeatureQuestionForm(id) {
@@ -85,10 +87,10 @@
             <v-textarea label="Question" active readonly :value="question.question">
             </v-textarea>
             <v-form @submit.prevent>
-                <v-text-field label="Your answer..." :readonly="question.status != 'unanswered'" v-model="answerQuestionForm.answer" clearable :loading="answerQuestionForm.processing">
+                <v-text-field label="Your answer..." :readonly="question.status != 'unanswered' || editAnswer" v-model="answerQuestionForm.answer" :clearable="question.status == 'unanswered'" :loading="answerQuestionForm.processing">
                     <template v-slot:append-inner>
                         <v-fade-transition>
-                            <v-btn type="submit" @click="submitAnswerQuestionForm(question.id)" :loading="answerQuestionForm.processing" variant="text" v-if="answerQuestionForm.answer || editAnswer" color="blue" icon="mdi-send"></v-btn>
+                            <v-btn type="submit" @click="submitAnswerQuestionForm(question.id)" :loading="answerQuestionForm.processing" variant="text" v-if="question.status == 'unanswered' || editAnswer" color="blue" icon="mdi-send"></v-btn>
                         </v-fade-transition>
                     </template>
                 </v-text-field>
@@ -114,17 +116,18 @@
     </v-dialog>
 
     <v-dialog v-model="featureQuestionDialog" width="50%">
-        <v-card title="Feature question">
+        <v-card :title="question.status == 'featured' ? 'Unfeature question' : 'Feature question'">
             <v-card-item>
                 <v-alert icon="mdi-star" color="orange-lighten-2" class="text-white">
-                    Yo, do you want to feature this question?
+                    Yo, do you want to {{ question.status == 'featured' ? 'unfeature' : 'feature' }} this question?
                 </v-alert>
-
             </v-card-item>
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn @click="featureQuestionDialog = false">Cancel</v-btn>
-                <v-btn color="blue" :loading="featureQuestionForm.processing" @click="submitFeatureQuestionForm(question.id)" >Feature</v-btn>
+                <v-btn color="blue" :loading="featureQuestionForm.processing" @click="submitFeatureQuestionForm(question.id)" >
+                    {{ question.status == 'featured' ? 'UNFEATURE' : 'feature' }}
+                </v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

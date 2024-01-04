@@ -31,26 +31,19 @@ class QuestionController extends Controller
         return back();
     }
 
-    public function feature(Question $question) {
-        $question->status = "featured";
+    public function feature(Question $question, Request $request) {
+        if($request->status == 'featured') {
+            $question->status = "answered";
+        }
+        else {
+            $question->status = "featured";
+        }
         $question->update();
         return back();
     }
 
     public function index($category) {
         return Inertia::render('MunicipalAdmin/Questions', ['questions' => Question::where('status', $category)->get()]);
-    }
-
-    public function unanswered() {
-        return Inertia::render('MunicipalAdmin/Questions', ['questions' => Question::where('status', 'unanswered')->get()]);
-    }
-
-    public function answered() {
-        return Inertia::render('MunicipalAdmin/Questions', ['questions' => Question::where('status', false)->get()]);
-    }
-
-    public function featured() {
-        return Inertia::render('MunicipalAdmin/Questions', ['questions' => Question::where('status', false)->get()]);
     }
 
     public function destroy(Question $question) {
