@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use App\Models\Barangay;
+use App\Models\Email;
+use App\Models\Post;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -53,6 +56,14 @@ class HandleInertiaRequests extends Middleware
                         'barangay' => $barangay
                     ]
                 ] : null
+        ], [
+            'shared' => [
+                'pending_posts' => Post::where('status', 'pending')->count(),
+                'email_notify_list' => Email::count(),
+                'unanswered_q' => Question::where('status', 'unanswered')->count(),
+                'answered_q' => Question::where('status', 'answered')->count(),
+                'featured_q' => Question::where('status', 'featured')->count(),
+            ]
         ]);
     }
 }

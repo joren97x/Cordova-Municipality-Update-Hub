@@ -5,7 +5,7 @@
     import QuestionCard from './Partials/QuestionCard.vue'
 
     defineOptions({ layout: MunicipalAdminLayout })
-    defineProps({ questions: Object, a: Number })
+    defineProps({ questions: Object, shared: Object, page_title: Object })
 
     const message = ref('')
     const snackbar = ref(false)
@@ -17,10 +17,12 @@
 </script>
 <template>
     <v-row class="ma-3">
-    <p class="text-h4 ma-1">Questions</p>
-        <v-col cols="12" v-for="question in questions" :key="question.id">
-            <QuestionCard :question="question" @questionDeleted="showSnackbar('Question deleted.')" @questionAnswered="showSnackbar('Answered succesfully')"  />
-        </v-col>
+        <p class="text-h4 ma-1 text-capitalize"> {{ page_title }} Questions</p>
+        <v-slide-x-transition group>
+            <v-col cols="12" v-for="question in questions" :key="question.id">
+                <QuestionCard :question="question" @questionDeleted="showSnackbar('Question deleted.')" @questionAnswered="showSnackbar('Answered succesfully')"  />
+            </v-col>
+        </v-slide-x-transition>
     </v-row>
     <p v-if="questions.length == 0" class="text-center">No questions found.</p>
 

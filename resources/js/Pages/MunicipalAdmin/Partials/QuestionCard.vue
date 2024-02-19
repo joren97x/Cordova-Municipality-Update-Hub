@@ -2,7 +2,8 @@
 
     import {useForm} from '@inertiajs/vue3'
     import {ref} from 'vue'
-    import { format } from 'date-fns';
+    import { format } from 'date-fns'
+    import emailjs from '@emailjs/browser'
 
     const props = defineProps({question: Object})
     const emit = defineEmits(['questionDeleted', 'questionAnswered', 'questionFeatured'])
@@ -36,11 +37,31 @@
         })
     }
 
-    function submitAnswerQuestionForm(id) {
-        answerQuestionForm.put(`/municipal-admin/answer-question/${id}`, { 
+    function submitAnswerQuestionForm(question) {
+        console.log(question)
+        answerQuestionForm.put(`/municipal-admin/answer-question/${question.id}`, { 
             onSuccess: () => { 
                 deleteQuestionDialog.value = false
                 emit('questionAnswered') 
+                emailjs.send('service_950dhig', 'template_xzp03ja', {
+                    sendername: `Municipal admin`,
+                    to: question.email,
+                    subject: "The answer to your question",
+                    replyto: `Municipal admin`,
+                    message: `Dear ${question.name},
+                        Your question:
+                            ${question.question}
+                        Answer:
+                            ${answerQuestionForm.answer}
+                    `
+                }, 'eEt-YCYeYc0LoTRxJ').then(
+                    (response) => {
+                        console.log('SUCCESS!', response.status, response.text);
+                    },
+                    (error) => {
+                        console.log('FAILED...', error);
+                    },
+                );
             },
             preserveScroll: true,   
         })
@@ -52,7 +73,7 @@
     <v-card>
         <v-card-item>
             <v-list-item 
-            prepend-avatar="https://m.media-amazon.com/images/M/MV5BMzcyOTM2NDA5OF5BMl5BanBnXkFtZTgwMTYzMTQzNzM@._V1_.jpg"
+            prepend-avatar="https://www.postendekker.nl/wp-content/uploads/2021/10/dummy-profile.jpg"
             :title="question.name"
             :subtitle="question.email"
             class="mb-2"
@@ -83,17 +104,16 @@
                 </v-tooltip>
             </template>
             </v-list-item>
-
-            <v-textarea label="Question" active readonly :value="question.question">
-            </v-textarea>
+            {{ question.question }}
+            <v-divider class="my-4" />
             <v-form @submit.prevent>
-                <v-text-field label="Your answer..." :readonly="question.status != 'unanswered' || editAnswer" v-model="answerQuestionForm.answer" :clearable="question.status == 'unanswered'" :loading="answerQuestionForm.processing">
+                <v-textarea rows="1" auto-grow label="Your answer..." :readonly="question.status != 'unanswered' || editAnswer" v-model="answerQuestionForm.answer" :clearable="question.status == 'unanswered'" :loading="answerQuestionForm.processing">
                     <template v-slot:append-inner>
                         <v-fade-transition>
-                            <v-btn type="submit" @click="submitAnswerQuestionForm(question.id)" :loading="answerQuestionForm.processing" variant="text" v-if="question.status == 'unanswered' || editAnswer" color="blue" icon="mdi-send"></v-btn>
+                            <v-btn type="submit" @click="submitAnswerQuestionForm(question)" :loading="answerQuestionForm.processing" variant="text" v-if="question.status == 'unanswered' || editAnswer" color="blue" icon="mdi-send"></v-btn>
                         </v-fade-transition>
                     </template>
-                </v-text-field>
+                </v-textarea>
             </v-form>
 
         </v-card-item>

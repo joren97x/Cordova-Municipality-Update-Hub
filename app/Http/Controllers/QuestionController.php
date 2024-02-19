@@ -43,7 +43,11 @@ class QuestionController extends Controller
     }
 
     public function index($category) {
-        return Inertia::render('MunicipalAdmin/Questions', ['questions' => Question::where('status', $category)->get()]);
+        return Inertia::render('MunicipalAdmin/Questions', 
+        [
+            'questions' => Question::where('status', $category)->get(),
+            'page_title' => $category
+        ]);
     }
 
     public function destroy(Question $question) {
