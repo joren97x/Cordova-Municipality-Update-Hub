@@ -1,7 +1,7 @@
 <script setup>
 
-    import {useForm} from '@inertiajs/vue3'
-    import {ref} from 'vue'
+    import { useForm } from '@inertiajs/vue3'
+    import { ref } from 'vue'
     import { format } from 'date-fns'
     import emailjs from '@emailjs/browser'
 
@@ -12,16 +12,16 @@
     const featureQuestionDialog = ref(false)
     const answerQuestionForm = useForm({ answer: props.question.answer })
     const deleteQuestionForm = useForm({})
+    const editAnswer = ref(false)
     const featureQuestionForm = useForm({
         status: props.question.status
     })
-    const editAnswer = ref(false)
 
     function submitFeatureQuestionForm(id) {
         featureQuestionForm.put(`/municipal-admin/feature-question/${id}`, { 
-            onSuccess: () => { 
+            onStart: () => {
                 featureQuestionDialog.value = false
-                emit('questionFeatured') 
+                emit('questionFeatured', 'The question has been set to FAQs')
             },
             preserveScroll: true,   
         })
@@ -29,20 +29,21 @@
 
     function submitDeleteQuestionForm(id) {
         deleteQuestionForm.delete(`/municipal-admin/delete-question/${id}`, { 
-            onSuccess: () => { 
+            onStart: () => {
                 deleteQuestionDialog.value = false
-                emit('questionDeleted') 
+                emit('questionDeleted', 'Question deleted')
             },
             preserveScroll: true,   
         })
     }
 
+    
     function submitAnswerQuestionForm(question) {
         console.log(question)
         answerQuestionForm.put(`/municipal-admin/answer-question/${question.id}`, { 
-            onSuccess: () => { 
+            onStart: () => {
                 deleteQuestionDialog.value = false
-                emit('questionAnswered') 
+                emit('questionAnswered', 'Successfully answered question and reply sent to user via email')
                 emailjs.send('service_950dhig', 'template_xzp03ja', {
                     sendername: `Municipal admin`,
                     to: question.email,
@@ -56,12 +57,12 @@
                     `
                 }, 'eEt-YCYeYc0LoTRxJ').then(
                     (response) => {
-                        console.log('SUCCESS!', response.status, response.text);
+                        console.log('SUCCESS!', response.status, response.text)
                     },
                     (error) => {
-                        console.log('FAILED...', error);
+                        console.log('FAILED...', error)
                     },
-                );
+                )
             },
             preserveScroll: true,   
         })
@@ -151,5 +152,9 @@
             </v-card-actions>
         </v-card>
     </v-dialog>
+
+    <v-snackbar v-model="snackbar">
+        {{ message }}
+    </v-snackbar>
 
 </template>

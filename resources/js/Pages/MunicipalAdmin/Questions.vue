@@ -9,7 +9,7 @@
 
     const message = ref('')
     const snackbar = ref(false)
-    function showSnackbar(msg) {
+    const showSnackbar = (msg) => {
         message.value = msg
         snackbar.value = true
     }
@@ -20,7 +20,7 @@
         <p class="text-h4 ma-1 text-capitalize"> {{ page_title }} Questions</p>
         <v-slide-x-transition group>
             <v-col cols="12" v-for="question in questions" :key="question.id">
-                <QuestionCard :question="question" @questionDeleted="showSnackbar('Question deleted.')" @questionAnswered="showSnackbar('Answered succesfully')"  />
+                <QuestionCard :question="question" @questionDeleted="showSnackbar" @questionAnswered="showSnackbar" @questionFeatured="showSnackbar" />
             </v-col>
         </v-slide-x-transition>
     </v-row>

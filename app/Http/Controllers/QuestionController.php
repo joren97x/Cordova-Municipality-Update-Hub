@@ -52,7 +52,7 @@ class QuestionController extends Controller
 
     public function destroy(Question $question) {
         $question->delete();
-        return back();
+        return back()->with('message', 'Question deleted');
     }
 
 

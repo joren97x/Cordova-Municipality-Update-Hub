@@ -8,6 +8,9 @@ import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({
+    theme: {
+      defaultTheme: 'light'
+    },
     components,
     directives,
   })

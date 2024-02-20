@@ -1,11 +1,18 @@
 <script setup>
 
     import {ref, watch} from 'vue'
+    import { useTheme } from 'vuetify'
     defineProps({ auth: Object, shared: Object })
+    
+    const theme = useTheme()
     const panels = ref([])
     const questionPanels = ref([])
     const showQuestionPanels = ref(false)
     const showPanels = ref(false)
+
+    function toggleTheme() {
+        theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
 
     watch(showPanels, () => {
         if(showPanels.value == true) {
@@ -30,7 +37,6 @@
   <v-card>
     <v-layout>
       <v-navigation-drawer :width="280" color="grey-darken-3">
-        
         <v-list-item class="ma-2">
             <template v-slot:prepend>
                 <v-avatar size="50">
