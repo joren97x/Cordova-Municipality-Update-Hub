@@ -18,6 +18,7 @@ use App\Http\Controllers\BarangayAdmin\BarangayAdminBarangayController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MunicipalAdmin\MunicipalAdminVisitorController;
 use App\Http\Controllers\User\VisitorController;
+use App\Models\Email;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,8 @@ Route::middleware('municipal_admin')->group(function () {
     Route::get('/municipal-admin/visitors/money-exchange-centers', [MunicipalAdminVisitorController::class, 'money_exchange_centers']);
     Route::get('/municipal-admin/visitors/essential-travel-facts', [MunicipalAdminVisitorController::class, 'essential_travel_facts']);
     Route::delete('/municipal-admin/delete-question/{question}', [QuestionController::class, 'destroy']);
+    Route::delete('/municipal-admin/delete-email/{email}', [EmailController::class, 'destroy']);
+    Route::put('/municipal-admin/update-answer/{question}', [QuestionController::class, 'update']);
 });
 
 Route::middleware('barangay_admin')->group(function() {

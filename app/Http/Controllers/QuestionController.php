@@ -25,6 +25,11 @@ class QuestionController extends Controller
     }
 
     public function answer(Question $question, Request $request) {
+
+        $request->validate([
+            'answer' => 'required'
+        ]);
+
         $question->answer = $request->answer;
         $question->status = "answered";
         $question->update();
@@ -53,6 +58,15 @@ class QuestionController extends Controller
     public function destroy(Question $question) {
         $question->delete();
         return back()->with('message', 'Question deleted');
+    }
+
+    public function update(Question $question, Request $request) {
+        $request->validate([
+            'answer' => 'required'
+        ]);
+        $question->answer = $request->answer;
+        $question->update();
+        return back();
     }
 
 

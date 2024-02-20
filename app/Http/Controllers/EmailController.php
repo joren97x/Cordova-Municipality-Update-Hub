@@ -15,4 +15,10 @@ class EmailController extends Controller
         Email::create($email);
         return back();
     }
+
+    public function destroy(Email $email) {
+        $email->delete();
+        return back();
+    }
+
 }

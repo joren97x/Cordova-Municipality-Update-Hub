@@ -6,22 +6,21 @@
     import emailjs from '@emailjs/browser'
 
     const props = defineProps({question: Object})
-    const emit = defineEmits(['questionDeleted', 'questionAnswered', 'questionFeatured'])
+    const emit = defineEmits(['questionDeleted', 'questionAnswered', 'questionFeatured', 'answerUpdated'])
     
     const deleteQuestionDialog = ref(false)
     const featureQuestionDialog = ref(false)
+    const editAnswer = ref(false)
     const answerQuestionForm = useForm({ answer: props.question.answer })
     const deleteQuestionForm = useForm({})
-    const editAnswer = ref(false)
-    const featureQuestionForm = useForm({
-        status: props.question.status
-    })
+    const featureQuestionForm = useForm({ status: props.question.status })
+    const updateQuestionAnswerForm = useForm({ answer: props.question.answer })
 
-    function submitFeatureQuestionForm(id) {
+    function submitFeatureQuestionForm(id, status) {
         featureQuestionForm.put(`/municipal-admin/feature-question/${id}`, { 
             onStart: () => {
                 featureQuestionDialog.value = false
-                emit('questionFeatured', 'The question has been set to FAQs')
+                emit('questionFeatured', status)
             },
             preserveScroll: true,   
         })
@@ -37,7 +36,6 @@
         })
     }
 
-    
     function submitAnswerQuestionForm(question) {
         console.log(question)
         answerQuestionForm.put(`/municipal-admin/answer-question/${question.id}`, { 
@@ -67,6 +65,20 @@
             preserveScroll: true,   
         })
     }
+
+    function submitUpdateAnswerQuestionForm(id) {
+        updateQuestionAnswerForm.put(`/municipal-admin/update-answer/${id}`, { 
+            onStart: () => {
+            },
+            onSuccess: () => {
+                emit('answerUpdated', 'Answer successfully updated')
+                editAnswer.value = false
+            },
+            preserveScroll: true,   
+        })
+    }
+
+
 
 </script>
 
@@ -108,10 +120,17 @@
             {{ question.question }}
             <v-divider class="my-4" />
             <v-form @submit.prevent>
-                <v-textarea rows="1" auto-grow label="Your answer..." :readonly="question.status != 'unanswered' || editAnswer" v-model="answerQuestionForm.answer" :clearable="question.status == 'unanswered'" :loading="answerQuestionForm.processing">
+                <v-textarea rows="1" v-if="question.status == 'unanswered'" :error-messages="answerQuestionForm.errors.answer" label="Your answer..." v-model="answerQuestionForm.answer" :clearable="question.status == 'unanswered'" :loading="answerQuestionForm.processing">
                     <template v-slot:append-inner>
                         <v-fade-transition>
-                            <v-btn type="submit" @click="submitAnswerQuestionForm(question)" :loading="answerQuestionForm.processing" variant="text" v-if="question.status == 'unanswered' || editAnswer" color="blue" icon="mdi-send"></v-btn>
+                            <v-btn type="submit" @click="submitAnswerQuestionForm(question)" :loading="answerQuestionForm.processing" variant="text" color="blue" icon="mdi-send"></v-btn>
+                        </v-fade-transition>
+                    </template>
+                </v-textarea>
+                <v-textarea v-else rows="1" :error-messages="updateQuestionAnswerForm.errors.answer" auto-grow label="Your answer..." :readonly="!editAnswer" v-model="updateQuestionAnswerForm.answer" :clearable="question.status == 'unanswered'" :loading="updateQuestionAnswerForm.processing">
+                    <template v-slot:append-inner>
+                        <v-fade-transition>
+                            <v-btn type="submit" @click="submitUpdateAnswerQuestionForm(question.id)" :loading="updateQuestionAnswerForm.processing" variant="text" v-if="editAnswer" color="blue" icon="mdi-send"></v-btn>
                         </v-fade-transition>
                     </template>
                 </v-textarea>
@@ -146,7 +165,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn @click="featureQuestionDialog = false">Cancel</v-btn>
-                <v-btn color="blue" :loading="featureQuestionForm.processing" @click="submitFeatureQuestionForm(question.id)" >
+                <v-btn color="blue" :loading="featureQuestionForm.processing" @click="submitFeatureQuestionForm(question.id, question.status == 'featured' ? 'Question has been unfeatured' : 'Question set to featured')" >
                     {{ question.status == 'featured' ? 'UNFEATURE' : 'feature' }}
                 </v-btn>
             </v-card-actions>

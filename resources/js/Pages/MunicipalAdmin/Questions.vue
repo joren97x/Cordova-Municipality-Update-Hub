@@ -20,7 +20,7 @@
         <p class="text-h4 ma-1 text-capitalize"> {{ page_title }} Questions</p>
         <v-slide-x-transition group>
             <v-col cols="12" v-for="question in questions" :key="question.id">
-                <QuestionCard :question="question" @questionDeleted="showSnackbar" @questionAnswered="showSnackbar" @questionFeatured="showSnackbar" />
+                <QuestionCard :question="question" @answerUpdated="showSnackbar" @questionDeleted="showSnackbar" @questionAnswered="showSnackbar" @questionFeatured="showSnackbar" />
             </v-col>
         </v-slide-x-transition>
     </v-row>
